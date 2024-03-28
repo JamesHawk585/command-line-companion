@@ -1,0 +1,15 @@
+.snippetCard {
+    width: 25vw;
+    height: 40vw;
+    color: #fff;
+    background-color: #313A3C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease-in;
+    margin: 40px;
+    position: relative;
+}
+
