@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "./SnippetForm.css";
+import "./AddSnippetForm.css";
 
 
 const API = "http://127.0.0.1:5555/snippets";
@@ -69,4 +69,4 @@ const closeModal = (e) => {
   );
 };
 
-export default SnippetForm;
+export default AddSnippetForm;

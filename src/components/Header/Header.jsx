@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
-import AddSnippetForm from "./AddSnippetForm/AddSnippetForm.jsx"
-import "./client/src/App.css"
+import AddSnippetForm from "../AddSnippetForm/AddSnippetForm.jsx"
+import '../../App.css';
+
 
 const Header = ({ onSnippetAdded }) => {
 
