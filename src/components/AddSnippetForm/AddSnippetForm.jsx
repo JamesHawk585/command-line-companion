@@ -4,7 +4,7 @@ import "./SnippetForm.css";
 
 const API = "http://127.0.0.1:5555/snippets";
 
-const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
+const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
   const formRef = useRef(null)
   const onSubmit = (e) => {
     e.preventDefault();

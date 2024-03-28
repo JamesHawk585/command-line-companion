@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import SnippetForm from "./SnippetForm/SnippetForm";
-import "./App.css"
+import AddSnippetForm from "./AddSnippetForm/AddSnippetForm.jsx"
+import "./client/src/App.css"
 
 const Header = ({ onSnippetAdded }) => {
 
@@ -24,7 +24,7 @@ const Header = ({ onSnippetAdded }) => {
             <button onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
-        <SnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted}/>
+        <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted}/>
       </header>
   );
 };

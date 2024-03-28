@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./Header.jsx";
-import SnippetList from "./SnippetList/SnippetList.jsx";
+import Header from "./components/Header/Header.jsx";
+import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import React, { useState, useEffect } from "react";
 
 const API = "http://127.0.0.1:5555/snippets";
