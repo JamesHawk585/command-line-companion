@@ -17,7 +17,7 @@ const SnippetList = ({ API, snippets, onSnippetDeleted, onSnippetEdited }) => {
           snippetId={snippetObj.id}
           title={snippetObj.title}
           tags={snippetObj.tags}
-          languageSelect={snippetObj.languageSelect}
+          languageSelect={snippetObj.language_select}
           code={snippetObj.code}
           onSnippetDeleted={onSnippetDeleted}
           explanation={snippetObj.explanation}

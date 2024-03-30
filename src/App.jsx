@@ -24,6 +24,7 @@ export default () => {
   };
 
   const onSnippetAdded = (snippetObj) => {
+    console.log(snippetObj)
     return setSnippets([...snippets, snippetObj]);
   };
 
