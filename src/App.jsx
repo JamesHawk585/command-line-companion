@@ -24,12 +24,11 @@ export default () => {
   };
 
   const onSnippetAdded = (snippetObj) => {
-    console.log(snippetObj)
     return setSnippets([...snippets, snippetObj]);
   };
 
   const onSnippetEdited = (responseSnippetObject) => {
-    console.log(responseSnippetObject)
+    console.log("onSnippetEdited", responseSnippetObject)
     setSnippets(
       snippets.map((snippet) => {
         if (snippet.id === responseSnippetObject.id) {

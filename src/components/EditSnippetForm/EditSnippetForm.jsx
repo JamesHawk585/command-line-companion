@@ -7,7 +7,9 @@ function EditSnippetForm({ editRef, onSnippetFormEdited, snippetId }) {
 
 const onSubmitEditForm = (e) => {
   e.preventDefault()
+  console.log("e.target inside of onSubmitEditForm", e.target)
   const formData = Object.fromEntries(new FormData(e.target));
+  console.log("formData obj in onSubmitEditForm", formData)
   fetch(`${API}/${snippetId}`,
     {
       method: "PATCH",
@@ -17,6 +19,7 @@ const onSubmitEditForm = (e) => {
       body: JSON.stringify(formData)
     })
     .then(r => r.json())
+    // .then(responseSnippetObject => console.log(responseSnippetObject))
     .then(responseSnippetObject => onSnippetFormEdited(responseSnippetObject, e))
     formRef.current.reset()
 };
@@ -39,7 +42,7 @@ const closeEditModal = (e) => {
         </label>
         <label>
           Language
-          <select name="languageSelect">
+          <select name="language_select">
             <option>JavaScript</option>
             <option>Python</option>
             <option>HTML</option>
