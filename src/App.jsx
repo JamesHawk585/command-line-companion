@@ -40,10 +40,21 @@ export default () => {
     );
   };
 
+  const snippetsFilteredBySearchTerm = (searchTerm) => {
+    console.log(searchTerm)
+    snippets.filter((snippet) => {
+      if (snippet.title === searchTerm) {
+        console.log(snippet)
+      }
+    })
+  }
+
+  console.log(snippetsFilteredBySearchTerm())
+
   return (
     <>
       <div className="app">
-        <Header onSnippetAdded={onSnippetAdded} />
+        <Header onSnippetAdded={onSnippetAdded} snippetsFilteredBySearchTerm={snippetsFilteredBySearchTerm}/>
         <section className="snippetCardContainer">
           <SnippetList
             API={API}
