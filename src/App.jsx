@@ -42,14 +42,14 @@ export default () => {
 
   const snippetsFilteredBySearchTerm = (searchTerm) => {
     console.log(searchTerm)
-    snippets.filter((snippet) => {
-      if (snippet.title === searchTerm) {
-        console.log(snippet)
-      }
-    })
-  }
+    const filteredSnippetsArray = snippets.filter((snippet) => {
+      return snippet.title === searchTerm;
+    });
+    console.log(filteredSnippetsArray)
+    return filteredSnippetsArray
+    }
 
-  console.log(snippetsFilteredBySearchTerm())
+  
 
   return (
     <>
