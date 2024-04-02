@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Home from "../Home/Home.jsx";
 import Authentication from "../Authentication/Authentication.jsx";
@@ -18,7 +18,7 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
-      <h1 className="nav-title">Command-Line-Companion</h1>
+      <h1 className="nav-title">Command-Line-Companion 💻</h1>
       <section className="nav-menu">
         {menu ? (
           <ul>
@@ -29,7 +29,7 @@ const Navigation = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/authenticate">Login/Signup</Link>
+              <Link to="/authentication">Login/Signup</Link>
             </li>
             <li className="logout-button" onClick={handleLogout}>
               {" "}
@@ -45,3 +45,5 @@ const Navigation = () => {
     </div>
   );
 };
+
+export default Navigation
