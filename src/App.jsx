@@ -73,6 +73,7 @@ export default () => {
                 API={API}
                 filteredSnippets={filteredSnippets}
                 onSnippetEdited={onSnippetEdited}
+                onSnippetDeleted={onSnippetDeleted}
                 onSnip
               />
             </div>

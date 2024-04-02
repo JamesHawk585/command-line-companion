@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Home from "../Home/Home.jsx";
 import Authentication from "../Authentication/Authentication.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import './Navigation.css'
 const Navigation = () => {
   const [menu, setMenu] = useState(false);
 
@@ -23,13 +23,13 @@ const Navigation = () => {
         {menu ? (
           <ul>
             <li className="close-button" onClick={() => setMenu(!menu)}>
-              x
+              Close
             </li>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => setMenu(!menu)}>Home</Link>
             </li>
             <li>
-              <Link to="/authentication">Login/Signup</Link>
+              <Link to="/authentication" onClick={() => setMenu(!menu)}>Login/Signup</Link>
             </li>
             <li className="logout-button" onClick={handleLogout}>
               {" "}
