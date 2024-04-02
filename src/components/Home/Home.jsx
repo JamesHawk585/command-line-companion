@@ -1,6 +1,16 @@
 import React from 'react'
+import Header from'../Header/Header.jsx'
+import SnippetList from '../SnippetList/SnippetList.jsx'
 
-const Home = () => {
+const Home = ({ 
+    onSnippetAdded,
+    searchTerm,
+    setSearchTerm,
+    API,
+    filteredSnippets,
+    onSnippetEdited,
+    onSnippetDeleted
+ }) => {
   return (
     <>
     <div className="app">
