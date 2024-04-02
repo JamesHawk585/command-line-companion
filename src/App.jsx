@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import React, { useState, useEffect } from "react";
+import { Route, Routes } from 'react-router-dom'
 
 const API = "http://127.0.0.1:5555/snippets";
 
@@ -50,6 +51,7 @@ export default () => {
   return (
     <>
       <div className="app">
+        <Home/>
         <Header onSnippetAdded={onSnippetAdded} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <section className="snippetCardContainer">
           <SnippetList
