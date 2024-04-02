@@ -3,8 +3,7 @@ import AddSnippetForm from "../AddSnippetForm/AddSnippetForm.jsx"
 import '../../App.css';
 
 
-const Header = ({ onSnippetAdded, snippetsFilteredBySearchTerm }) => {
-  const [searchTerm, setSearchTerm] = useState("")
+const Header = ({ onSnippetAdded, searchTerm, setSearchTerm }) => {
 
   const dialogRef = useRef(null);
 
@@ -17,10 +16,7 @@ const Header = ({ onSnippetAdded, snippetsFilteredBySearchTerm }) => {
         onSnippetAdded(newSnippetObject)
     }
 
-    console.log(searchTerm)
-
-    snippetsFilteredBySearchTerm(searchTerm)
-
+//  Controlled componenet = changing state causes the componenet to re-render. Comes with value={} and onChange={} jsx attributes. 
   return (
       <header className="header">
         <h1 id="cli-companion-logo">💻CLI-Companion</h1>

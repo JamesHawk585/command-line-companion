@@ -7,6 +7,7 @@ const API = "http://127.0.0.1:5555/snippets";
 
 export default () => {
   const [snippets, setSnippets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     fetch(API)
@@ -40,25 +41,21 @@ export default () => {
     );
   };
 
-  const snippetsFilteredBySearchTerm = (searchTerm) => {
-    console.log(searchTerm)
-    const filteredSnippetsArray = snippets.filter((snippet) => {
-      return snippet.title === searchTerm;
-    });
-    console.log(filteredSnippetsArray)
-    return filteredSnippetsArray
-    }
+  const filteredSnippets = snippets.filter((snippet) => {
+    return snippet.title.toLowerCase().includes(searchTerm.toLowerCase())
+  })
 
-  
+  console.log(filteredSnippets)
 
   return (
     <>
       <div className="app">
-        <Header onSnippetAdded={onSnippetAdded} snippetsFilteredBySearchTerm={snippetsFilteredBySearchTerm}/>
+        <Header onSnippetAdded={onSnippetAdded} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <section className="snippetCardContainer">
           <SnippetList
             API={API}
-            snippets={snippets}
+            // snippets={snippets}
+            filteredSnippets={filteredSnippets}
             onSnippetEdited={onSnippetEdited}
             onSnippetDeleted={onSnippetDeleted}
           />
