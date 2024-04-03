@@ -11,19 +11,31 @@
     transition: all 0.3s ease-in;
     margin: 40px;
     position: relative;
+    border-radius: 16px;
 }
 
 .snippetCard:hover {
     box-shadow: 0px 0px 11px #000000;
     background: skyblue;
-    color: black
+    color: black;
 }
 
 .delete-snippet-button {
     display: flex;
     align-self: end;
     position: absolute;
-    bottom: 15px; 
+    bottom: 15px;
+    border-radius: 8px; 
+}
+
+.delete-snippet-button:hover {
+    background: black;
+    color: white;    
+    display: flex;
+    align-self: end;
+    position: absolute;
+    bottom: 15px;
+    border-radius: 8px;
 }
 
 .edit-snippet-button {
@@ -31,5 +43,16 @@
     align-self: start;
     position: absolute;
     bottom: 15px;
+    border-radius: 8px;
+}
+
+.edit-snippet-button:hover {
+    background: black;
+    color: white;    
+    display: flex;
+    align-self: end;
+    position: absolute;
+    bottom: 15px;
+    border-radius: 8px;
 }
 

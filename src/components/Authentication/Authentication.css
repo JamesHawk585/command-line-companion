@@ -15,11 +15,13 @@ form {
     font-size: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
   }
 
   input[type="submit"]:hover {
     background: skyblue;
     color: black;
+    border-radius: 8px;
   }
   
   .auth-errors-switch-wrapper {
@@ -32,10 +34,12 @@ form {
   #register-or-signup-toggle-button{
     background-color: #313A3C;
     color: white;
+    border-radius: 8px;
   }
 
   #register-or-signup-toggle-button:hover {
     background: skyblue;
     color: black;
+    border-radius: 8px;
   }
   

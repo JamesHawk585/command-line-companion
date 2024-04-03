@@ -3,5 +3,21 @@
 }
 
 #search-bar-div {
-    padding-left: 35px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+.add-snippet-button:hover {
+    background: skyblue;
+    color: black;
+    border-radius: 4px;
+}
+
+.add-snippet-button {
+    border-radius: 4px;
 }

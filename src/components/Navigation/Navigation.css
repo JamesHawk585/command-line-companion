@@ -6,6 +6,9 @@
   
   .nav-title {
     font-family: "Splash", cursive;
+    padding-left: 15px;
+    text-align: center;
+    margin: 0 auto;
   }
   
   .nav-menu {
@@ -46,7 +49,5 @@
     margin: 2%;
   }
 
-  .nav-title {
-    padding-left: 15px;
-  }
+
   

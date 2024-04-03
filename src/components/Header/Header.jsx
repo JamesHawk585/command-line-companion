@@ -23,7 +23,7 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm }) => {
         <div id="search-bar-div">
           <label>
             🔎 <input type="search" id="search-bar" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
-            <button onClick={() => onAddButtonClick()}>+Add</button>
+            <button className="add-snippet-button" onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
         <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted}/>
