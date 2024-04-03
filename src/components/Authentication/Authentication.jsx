@@ -38,7 +38,7 @@ const Authentication = () => {
       <div className="auth-errors-switch-wrapper">
         <h2 className="auth-errors">{""}</h2>
         <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
-        <button onClick={handleSignUpClick}>
+        <button id="register-or-signup-toggle-button" onClick={handleSignUpClick}>
             {signUp ? "Log In!" : "Register Now!"}
         </button>
       </div>

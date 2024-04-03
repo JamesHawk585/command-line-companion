@@ -20,11 +20,11 @@
   }
   
   .nav-menu a:hover {
-    color: orange;
+    color: skyblue;
   }
   
   .logout-button:hover {
-    color: blue;
+    color: skyblue;
   }
   
   .close-button {
@@ -44,5 +44,9 @@
   .nav-menu li {
     font-family: Arial;
     margin: 2%;
+  }
+
+  .nav-title {
+    padding-left: 15px;
   }
   

@@ -13,6 +13,12 @@
     position: relative;
 }
 
+.snippetCard:hover {
+    box-shadow: 0px 0px 11px #000000;
+    background: skyblue;
+    color: black
+}
+
 .delete-snippet-button {
     display: flex;
     align-self: end;

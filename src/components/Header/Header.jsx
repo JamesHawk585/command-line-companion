@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import AddSnippetForm from "../AddSnippetForm/AddSnippetForm.jsx"
 import '../../App.css';
+import './Header.css'
 
 
 const Header = ({ onSnippetAdded, searchTerm, setSearchTerm }) => {
@@ -19,7 +20,7 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm }) => {
 //  Controlled componenet = changing state causes the componenet to re-render. Comes with value={} and onChange={} jsx attributes. 
   return (
       <header className="header">
-        <div>
+        <div id="search-bar-div">
           <label>
             🔎 <input type="search" id="search-bar" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
             <button onClick={() => onAddButtonClick()}>+Add</button>
