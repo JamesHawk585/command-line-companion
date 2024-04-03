@@ -41,8 +41,8 @@ const SnippetCard = ({
         <h3>{languageSelect}</h3>
         <h3>{code}</h3>
         <h3>{explanation}</h3>
-        <button onClick={(e) => handleEditSnippet(e)}>Edit</button>
-        <button onClick={(e) => handleDeleteSnippet(e, title)}>Delete</button>
+        <button className="edit-snippet-button" onClick={(e) => handleEditSnippet(e)}>Edit</button>
+        <button className="delete-snippet-button" onClick={(e) => handleDeleteSnippet(e, title)}>Delete</button>
     </div>
     <EditSnippetForm editRef={editRef} onSnippetFormEdited={onSnippetFormEdited} snippetId={snippetId}/>
     </>

@@ -18,7 +18,7 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
-      <h1 className="nav-title">Command-Line-Companion 💻</h1>
+      <h1 className="nav-title">Command Line Companion 💻</h1>
       <section className="nav-menu">
         {menu ? (
           <ul>

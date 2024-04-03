@@ -13,3 +13,17 @@
     position: relative;
 }
 
+.delete-snippet-button {
+    display: flex;
+    align-self: end;
+    position: absolute;
+    bottom: 15px; 
+}
+
+.edit-snippet-button {
+    display: flex;
+    align-self: start;
+    position: absolute;
+    bottom: 15px;
+}
+
