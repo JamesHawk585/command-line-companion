@@ -29,7 +29,7 @@
 }
 
 .delete-snippet-button:hover {
-    background: black;
+    background: #313A3C;;
     color: white;    
     display: flex;
     align-self: end;
@@ -47,7 +47,7 @@
 }
 
 .edit-snippet-button:hover {
-    background: black;
+    background: #313A3C;
     color: white;    
     display: flex;
     align-self: end;
