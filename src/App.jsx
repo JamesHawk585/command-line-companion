@@ -5,7 +5,7 @@ import Authentication from "./components/Authentication/Authentication.jsx";
 import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation/Navigation.jsx"
+import Navigation from "./components/Navigation/Navigation.jsx";
 
 const API = "http://127.0.0.1:5555/snippets";
 
@@ -61,28 +61,34 @@ export default () => {
         <Navigation />
         <Routes>
           <Route
-          path={"/"}
-          element=
-          {
-            <div>
-              <Home
-                onSnippetAdded={onSnippetAdded}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-                API={API}
-                filteredSnippets={filteredSnippets}
-                onSnippetEdited={onSnippetEdited}
-                onSnippetDeleted={onSnippetDeleted}
-                onSnip
-              />
-            </div>
-          }
+            path={"/"}
+            element={
+              <div>
+                <Home
+                  onSnippetAdded={onSnippetAdded}
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+                  API={API}
+                  filteredSnippets={filteredSnippets}
+                  onSnippetEdited={onSnippetEdited}
+                  onSnippetDeleted={onSnippetDeleted}
+                  onSnip
+                />
+              </div>
+            }
           />
-          <Route path={"/authentication"} element={<Authentication user={user} setUser={setUser}/>}/>
+          <Route
+            path={"/authentication"}
+            element={
+              <Authentication
+                user={user}
+                setUser={setUser}
+                updateUser={updateUser}
+              />
+            }
+          />
         </Routes>
       </div>
     </>
   );
 };
-
-

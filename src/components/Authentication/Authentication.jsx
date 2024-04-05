@@ -1,21 +1,41 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import "./Authentication.css";
 
-const Authentication = ({ user, setUser }) => {
+const Authentication = ({ user, setUser, updateUser }) => {
   const [signUp, setSignUp] = useState(false);
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     username: "",
   });
+
+  console.log(userData)
+
+  // Currently not doing anything with password and confirm password fields. 
 
   const handleSignUpClick = () => {
     return setSignUp((signUp) => !signUp);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("handleSubmit");
+    const config = {
+      method:"POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(userData)
+    }
+    fetch("http://127.0.0.1:5555/signup", config)
+    .then((r) => r.json())
+    .then((user) => {
+      updateUser(user);
+      navigate('/')
+    })
   };
 
   const handleChange = ({ target }) => {
@@ -27,7 +47,7 @@ const Authentication = ({ user, setUser }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>Username</label>
         <input
           type="text"
@@ -35,22 +55,24 @@ const Authentication = ({ user, setUser }) => {
           value={userData.username}
           onChange={handleChange}
         />
-        <label>Password</label>
+        {/* <label>Password</label>
         <input
-          type="text"
-          name="lastName"
-          value={userData.lastName}
+          type="password"
+          name="password"
+          // May need an additional callback function to ensure that the passwords match
+          // value={userData.password}
           onChange={handleChange}
-        />
+        /> */}
         {signUp && (
           <>
-            <label>Conform Passowrd</label>
+            {/* <label>Confirm Passowrd</label>
             <input
-              type="text"
-              name="lastName"
-              value={userData.lastName}
+              type="password"
+              name="confirmPassword"
+              // May need an additional callback function to ensure that the passwords match
+              value={userData.password}
               onChange={handleChange}
-            />
+            /> */}
             <label>Email</label>
             <input
               type="text"
@@ -61,15 +83,15 @@ const Authentication = ({ user, setUser }) => {
             <label>First Name</label>
             <input
               type="text"
-              name="firstName"
-              value={userData.firstName}
+              name="first_name"
+              value={userData.first_name}
               onChange={handleChange}
             />
             <label>Last Name</label>
             <input
               type="text"
-              name="lastName"
-              value={userData.lastName}
+              name="last_name"
+              value={userData.last_name}
               onChange={handleChange}
             />
           </>
