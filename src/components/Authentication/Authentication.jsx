@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import './Authentication.css'
 
-const Authentication = () => {
+const Authentication = ({ user, setUser }) => {
   const [signUp, setSignUp] = useState(false);
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    username: ""
+  })
 
   const handleSignUpClick = () => {
     return setSignUp((signUp) => !signUp);
@@ -12,6 +18,13 @@ const Authentication = () => {
     console.log("handleSubmit");
   };
 
+  const handleChange = ({ target }) => {
+    const { firstName, value } = target
+    const userDataCopy = {...userData}
+    userDataCopy[firstName] = value
+    setUserData(userDataCopy) 
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -19,8 +32,8 @@ const Authentication = () => {
         <input
           type="text"
           name="name"
-          value={""}
-          onChange={console.log}
+          value={userData.name}
+          onChange={handleChange}
         />
         {signUp && (
           <>
@@ -28,8 +41,8 @@ const Authentication = () => {
             <input
               type="text"
               name="email"
-              value={"value"}
-              onChange={console.log}
+              value={userData.email}
+              onChange={handleChange}
             />
           </>
         )}

@@ -78,7 +78,7 @@ export default () => {
             </div>
           }
           />
-          <Route path={"/authentication"} element={<Authentication/>}/>
+          <Route path={"/authentication"} element={<Authentication user={user} setUser={setUser}/>}/>
         </Routes>
       </div>
     </>
