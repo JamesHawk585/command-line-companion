@@ -40,10 +40,10 @@ const closeModal = (e) => {
           Title
           <input name="title" />
         </label>
-        <label className="tag-label">
+        {/* <label className="tag-label">
           Tags
           <input className="tags" name="tags" />
-        </label>
+        </label> */}
         <label>
           Language
           <select name="language_select">
