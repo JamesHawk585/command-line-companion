@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import './Authentication.css'
+import "./Authentication.css";
 
 const Authentication = ({ user, setUser }) => {
   const [signUp, setSignUp] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
-    lastName: "", 
+    lastName: "",
     email: "",
-    username: ""
-  })
+    username: "",
+  });
 
   const handleSignUpClick = () => {
     return setSignUp((signUp) => !signUp);
@@ -19,11 +19,11 @@ const Authentication = ({ user, setUser }) => {
   };
 
   const handleChange = ({ target }) => {
-    const { name, value } = target
-    const userDataCopy = {...userData}
-    userDataCopy[name] = value
-    setUserData(userDataCopy) 
-  }
+    const { name, value } = target;
+    const userDataCopy = { ...userData };
+    userDataCopy[name] = value;
+    setUserData(userDataCopy);
+  };
 
   return (
     <>
@@ -35,8 +35,22 @@ const Authentication = ({ user, setUser }) => {
           value={userData.username}
           onChange={handleChange}
         />
+        <label>Password</label>
+        <input
+          type="text"
+          name="lastName"
+          value={userData.lastName}
+          onChange={handleChange}
+        />
         {signUp && (
           <>
+            <label>Conform Passowrd</label>
+            <input
+              type="text"
+              name="lastName"
+              value={userData.lastName}
+              onChange={handleChange}
+            />
             <label>Email</label>
             <input
               type="text"
@@ -44,15 +58,32 @@ const Authentication = ({ user, setUser }) => {
               value={userData.email}
               onChange={handleChange}
             />
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={userData.firstName}
+              onChange={handleChange}
+            />
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={userData.lastName}
+              onChange={handleChange}
+            />
           </>
         )}
-        <input type="submit" value={signUp ? "Sign Up!" : "Log In!"}/>
+        <input type="submit" value={signUp ? "Sign Up!" : "Log In!"} />
       </form>
       <div className="auth-errors-switch-wrapper">
         <h2 className="auth-errors">{""}</h2>
         <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
-        <button id="register-or-signup-toggle-button" onClick={handleSignUpClick}>
-            {signUp ? "Log In!" : "Register Now!"}
+        <button
+          id="register-or-signup-toggle-button"
+          onClick={handleSignUpClick}
+        >
+          {signUp ? "Log In!" : "Register Now!"}
         </button>
       </div>
     </>
