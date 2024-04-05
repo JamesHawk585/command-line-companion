@@ -5,7 +5,7 @@ const Authentication = ({ user, setUser }) => {
   const [signUp, setSignUp] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
-    lastName: "",
+    lastName: "", 
     email: "",
     username: ""
   })
@@ -19,9 +19,9 @@ const Authentication = ({ user, setUser }) => {
   };
 
   const handleChange = ({ target }) => {
-    const { firstName, value } = target
+    const { name, value } = target
     const userDataCopy = {...userData}
-    userDataCopy[firstName] = value
+    userDataCopy[name] = value
     setUserData(userDataCopy) 
   }
 
@@ -31,8 +31,8 @@ const Authentication = ({ user, setUser }) => {
         <label>Username</label>
         <input
           type="text"
-          name="name"
-          value={userData.name}
+          name="username"
+          value={userData.username}
           onChange={handleChange}
         />
         {signUp && (
