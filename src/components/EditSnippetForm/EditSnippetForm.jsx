@@ -1,15 +1,14 @@
 import React, { useRef } from 'react'
 
-function EditSnippetForm({ editRef, onSnippetFormEdited, snippetId }) {
+function EditSnippetForm({ editRef, onSnippetFormEdited, snippetId, title, languageSelect, code, explanation }) {
     const formRef = useRef(null)
 
     const API = 'http://127.0.0.1:5555/snippets'
 
 const onSubmitEditForm = (e) => {
   e.preventDefault()
-  console.log("e.target inside of onSubmitEditForm", e.target)
   const formData = Object.fromEntries(new FormData(e.target));
-  console.log("formData obj in onSubmitEditForm", formData)
+  console.log(formData)
   fetch(`${API}/${snippetId}`,
     {
       method: "PATCH",
@@ -22,6 +21,7 @@ const onSubmitEditForm = (e) => {
     // .then(responseSnippetObject => console.log(responseSnippetObject))
     .then(responseSnippetObject => onSnippetFormEdited(responseSnippetObject, e))
     formRef.current.reset()
+
 };
 
 const closeEditModal = (e) => {
@@ -34,7 +34,7 @@ const closeEditModal = (e) => {
       <form className="form" onSubmit={(e) => onSubmitEditForm(e)} ref={formRef}>
         <label className="title-label">
           Title
-          <input name="title" />
+          <input name="title" defaultValue={title}/>
         </label>
         <label className="tag-label">
           Tags
@@ -42,7 +42,7 @@ const closeEditModal = (e) => {
         </label>
         <label>
           Language
-          <select name="language_select">
+          <select name="language_select" defaultValue={languageSelect}>
             <option>JavaScript</option>
             <option>Python</option>
             <option>HTML</option>
@@ -52,11 +52,11 @@ const closeEditModal = (e) => {
         </label>
         <label>
           Code
-          <textarea name="code"></textarea>
+          <textarea name="code" defaultValue={code}></textarea>
         </label>
         <label>
           Explanation
-          <textarea name="explanation"></textarea>
+          <textarea name="explanation" defaultValue={explanation}></textarea>
         </label>
         <button>Save</button>
         <button onClick={(e) => closeEditModal(e)}>Close</button>

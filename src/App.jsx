@@ -38,7 +38,6 @@ export default () => {
   };
 
   const onSnippetEdited = (responseSnippetObject) => {
-    console.log("onSnippetEdited", responseSnippetObject);
     setSnippets(
       snippets.map((snippet) => {
         if (snippet.id === responseSnippetObject.id) {
