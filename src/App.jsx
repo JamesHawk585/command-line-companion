@@ -9,7 +9,7 @@ import Navigation from "./components/Navigation/Navigation.jsx";
 
 const API = "http://127.0.0.1:5555/snippets";
 
-export default () => {
+function App() {
   const [snippets, setSnippets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
@@ -92,3 +92,6 @@ export default () => {
     </>
   );
 };
+
+
+export default App;

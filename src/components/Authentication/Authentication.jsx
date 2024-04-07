@@ -22,15 +22,16 @@ const Authentication = ({ user, setUser, updateUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e.target.value)
     console.log("handleSubmit");
     const config = {
       method:"POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(userData)
+      body: JSON.stringify(signUp ? userData : {"name": userData.name})
     }
-    fetch("http://127.0.0.1:5555/signup", config)
+    fetch( signUp ? "http://127.0.0.1:5555/signup": "http://127.0.0.1:5555/login", config)
     .then((r) => r.json())
     .then((user) => {
       updateUser(user);
