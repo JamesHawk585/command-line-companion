@@ -29,7 +29,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(signUp ? userData : {"name": userData.name})
+      body: JSON.stringify(signUp ? userData : {"username": userData.username})
     }
     fetch( signUp ? "http://127.0.0.1:5555/signup": "http://127.0.0.1:5555/login", config)
     .then((r) => r.json())
