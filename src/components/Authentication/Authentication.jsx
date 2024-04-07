@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useInsertionEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import "./Authentication.css";
 
@@ -46,6 +46,21 @@ const Authentication = ({ user, setUser, updateUser }) => {
     setUserData(userDataCopy);
   };
 
+  useEffect(() => {
+    fetchUser()
+  })
+
+
+const fetchUser = () => {
+  fetch('/authorized')
+  .then( r => {
+    if(r.ok){
+      console.log("Response is ok")
+    } else {
+      console.log("Response not ok")
+    }
+  })
+}
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
