@@ -22,8 +22,6 @@ const Authentication = ({ user, setUser, updateUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value)
-    console.log("handleSubmit");
     const config = {
       method:"POST",
       headers: {
@@ -52,12 +50,13 @@ const Authentication = ({ user, setUser, updateUser }) => {
 
 
 const fetchUser = () => {
-  fetch('/authorized')
-  .then( r => {
+  fetch('http://127.0.0.1:5555/authorized')
+  .then(r => {
     if(r.ok){
-      console.log("Response is ok")
+      console.log(r)
     } else {
       console.log("Response not ok")
+      console.log(r)
     }
   })
 }
