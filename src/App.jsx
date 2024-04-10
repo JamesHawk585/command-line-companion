@@ -13,16 +13,25 @@ function App() {
   const [snippets, setSnippets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
+  const [errors, setErrors] = useState(null)
 
-  useEffect(() => {
-    // Fetch user here
-  });
 
-  useEffect(() => {
+  const fetchSnippets = () => {
     fetch(API)
       .then((r) => r.json())
       .then((data) => setSnippets(data));
-  }, []);
+  };
+
+  const fetchUser = () => {
+    fetch("http://127.0.0.1:5555/authorized")
+    .then((r) => r.json())
+    .then(console.log)
+  }
+
+  useEffect(() => {
+    fetchSnippets()
+    fetchUser()
+  }, [])
 
   const onSnippetDeleted = async (snippetId, title) => {
     if (window.confirm(`Delete Snippet: "${title}"?`)) {
@@ -36,6 +45,8 @@ function App() {
   const onSnippetAdded = (snippetObj) => {
     return setSnippets([...snippets, snippetObj]);
   };
+
+
 
   const onSnippetEdited = (responseSnippetObject) => {
     setSnippets(

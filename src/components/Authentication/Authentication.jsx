@@ -44,22 +44,6 @@ const Authentication = ({ user, setUser, updateUser }) => {
     setUserData(userDataCopy);
   };
 
-  useEffect(() => {
-    fetchUser()
-  })
-
-
-const fetchUser = () => {
-  fetch('http://127.0.0.1:5555/authorized')
-  .then(r => {
-    if(r.ok){
-      console.log(r)
-    } else {
-      console.log("Response not ok")
-      console.log(r)
-    }
-  })
-}
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
