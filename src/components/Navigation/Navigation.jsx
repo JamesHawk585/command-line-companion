@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Home from "../Home/Home.jsx";
 import Authentication from "../Authentication/Authentication.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navigation.css'
-const Navigation = ({ user }) => {
+
+const Navigation = ({ user, updateUser }) => {
   const [menu, setMenu] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("handleLogout");
-    navigate("/");
+    fetch('/logout', {method: "DELETE"})
+    .then(r => {
+      updateUser(null)
+    })
+    navigate("/authentication");
   };
 
   const toggleMenu = () => setMenu((prev) => !prev);

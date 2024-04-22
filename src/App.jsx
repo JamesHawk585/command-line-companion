@@ -25,6 +25,7 @@ function App() {
   const fetchUser = () => {
     fetch("/authorized")
     .then(r => {
+      console.log(r)
       if(r.ok) {
         r.json().then(user => setUser(user))
       } else {
@@ -32,6 +33,7 @@ function App() {
       }
     })
   }
+
 
   useEffect(() => {
     fetchSnippets()
@@ -83,7 +85,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <Navigation />
+        <Navigation updateUser={updateUser}/>
         <Routes>
           <Route
             path={"/"}
