@@ -11,7 +11,7 @@ const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
     const formData = Object.fromEntries(new FormData(e.target));
     console.log(formData)
     fetch(
-      API,
+      "/snippets",
       {
         method: "POST",
         headers: {

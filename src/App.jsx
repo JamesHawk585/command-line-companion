@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation.jsx";
 
-const API = "http://127.0.0.1:5555/snippets";
+
 
 function App() {
   const [snippets, setSnippets] = useState([]);
@@ -17,15 +17,20 @@ function App() {
 
 
   const fetchSnippets = () => {
-    fetch(API)
+    fetch("/snippets")
       .then((r) => r.json())
       .then((data) => setSnippets(data));
   };
 
   const fetchUser = () => {
-    fetch("http://127.0.0.1:5555/authorized")
-    .then((r) => r.json())
-    .then(console.log)
+    fetch("/authorized")
+    .then(r => {
+      if(r.ok) {
+        console.log(r)
+      } else {
+        console.log("resp not ok")
+      }
+    })
   }
 
   useEffect(() => {
@@ -36,7 +41,7 @@ function App() {
   const onSnippetDeleted = async (snippetId, title) => {
     if (window.confirm(`Delete Snippet: "${title}"?`)) {
       setSnippets(snippets.filter((snippet) => snippet.id !== snippetId));
-      const response = await fetch(`${API}/${snippetId}`, {
+      const response = await fetch(`/snippets/${snippetId}`, {
         method: "DELETE",
       });
     }
@@ -79,7 +84,6 @@ function App() {
                   onSnippetAdded={onSnippetAdded}
                   searchTerm={searchTerm}
                   setSearchTerm={setSearchTerm}
-                  API={API}
                   filteredSnippets={filteredSnippets}
                   onSnippetEdited={onSnippetEdited}
                   onSnippetDeleted={onSnippetDeleted}

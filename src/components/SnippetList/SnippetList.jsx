@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
-const SnippetList = ({ API, filteredSnippets, onSnippetDeleted, onSnippetEdited }) => {
+const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited }) => {
 
   const passPatchResponseObjectFromChildToParent = (responseSnippetObject) => {
     onSnippetEdited(responseSnippetObject)
