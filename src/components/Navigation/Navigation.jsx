@@ -4,7 +4,7 @@ import Home from "../Home/Home.jsx";
 import Authentication from "../Authentication/Authentication.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navigation.css'
-const Navigation = () => {
+const Navigation = ({ user }) => {
   const [menu, setMenu] = useState(false);
 
   const navigate = useNavigate();
@@ -15,6 +15,13 @@ const Navigation = () => {
   };
 
   const toggleMenu = () => setMenu((prev) => !prev);
+
+  // if (!user) {
+  //   return (
+  //     <>
+  //     </>
+  //   )
+  // } 
 
   return (
     <div className="navigation">

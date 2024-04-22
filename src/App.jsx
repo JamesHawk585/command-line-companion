@@ -26,9 +26,9 @@ function App() {
     fetch("/authorized")
     .then(r => {
       if(r.ok) {
-        console.log(r)
+        r.json().then(user => setUser(user))
       } else {
-        console.log("resp not ok")
+        r.json().then(err => setErrors(err))
       }
     })
   }
@@ -70,6 +70,15 @@ function App() {
   });
 
   const updateUser = (user) => setUser(user);
+
+  if (!user) {
+    return (
+      <>
+      <Navigation updateUser={updateUser} user={user}/>
+      <Authentication updateUser={updateUser}/>
+      </>
+    )
+  }
 
   return (
     <>
