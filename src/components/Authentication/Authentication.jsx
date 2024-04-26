@@ -26,21 +26,26 @@ const Authentication = ({ user, setUser, updateUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const config = {
-      method:"POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(signUp ? userData : {"username": userData.username, password: userData.password })
-    }
-    fetch( signUp ? "/signup": "/login", config)
-    .then((r) => {
-      if (r.ok) {
-        console.log("Response is ok")
-      } else {
-        r.json().then(data => setErrors(data.errors))
-      }
-    })
-  };
+       method: "POST",
+       headers: {
+         "content-type": "application/json"
+       },
+       body: JSON.stringify(signUp ? userData : { "username": userData.username, password: userData.password })
+    };
+    fetch(signUp ? "/signup" : "/login", config)
+       .then((r) => {
+         if (r.ok) {
+           console.log("Response is ok");
+         } else {
+           r.json().then(data => {
+             setTimeout(() => {
+               setErrors([]);
+             }, 5000);
+             setErrors(data.errors);
+           });
+         }
+       }); // This closing parenthesis was missing
+   }; // This closing brace was missing
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
