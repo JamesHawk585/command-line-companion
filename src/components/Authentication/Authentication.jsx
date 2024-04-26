@@ -10,6 +10,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
     last_name: "",
     email: "",
     username: "",
+    password: ""
   });
 
   console.log(userData)
@@ -27,7 +28,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(signUp ? userData : {"username": userData.username})
+      body: JSON.stringify(signUp ? userData : {"username": userData.username, password: userData.password })
     }
     fetch( signUp ? "/signup": "/login", config)
     .then((r) => r.json())
