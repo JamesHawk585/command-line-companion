@@ -43,3 +43,10 @@ form {
     border-radius: 8px;
   }
   
+  .auth-errors {
+    color: red;
+    font-size: 15px;
+    align-items: center;
+    /* text-align: center; */
+  }
+

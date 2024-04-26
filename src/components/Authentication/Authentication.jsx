@@ -13,6 +13,8 @@ const Authentication = ({ user, setUser, updateUser }) => {
     password: ""
   });
 
+  const [errors, setErrors] = useState([])
+
   console.log(userData)
 
   // Currently not doing anything with password and confirm password fields. 
@@ -31,10 +33,12 @@ const Authentication = ({ user, setUser, updateUser }) => {
       body: JSON.stringify(signUp ? userData : {"username": userData.username, password: userData.password })
     }
     fetch( signUp ? "/signup": "/login", config)
-    .then((r) => r.json())
-    .then((user) => {
-      updateUser(user);
-      navigate('/')
+    .then((r) => {
+      if (r.ok) {
+        console.log("Response is ok")
+      } else {
+        r.json().then(data => setErrors(data.errors))
+      }
     })
   };
 
@@ -55,14 +59,14 @@ const Authentication = ({ user, setUser, updateUser }) => {
           value={userData.username}
           onChange={handleChange}
         />
-        {/* <label>Password</label>
+        <label>Password</label>
         <input
           type="password"
           name="password"
           // May need an additional callback function to ensure that the passwords match
-          // value={userData.password}
+          value={userData.password}
           onChange={handleChange}
-        /> */}
+        />
         {signUp && (
           <>
             {/* <label>Confirm Passowrd</label>
@@ -99,7 +103,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
         <input type="submit" value={signUp ? "Sign Up!" : "Log In!"} />
       </form>
       <div className="auth-errors-switch-wrapper">
-        <h2 className="auth-errors">{""}</h2>
+        <h2 className="auth-errors">{errors.map(error => <p key={error /*Use UUID*/}>{error}</p>)}</h2>
         <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
         <button
           id="register-or-signup-toggle-button"
