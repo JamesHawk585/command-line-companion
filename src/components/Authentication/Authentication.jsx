@@ -1,5 +1,5 @@
 import React, { useEffect, useInsertionEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import "./Authentication.css";
 
 const Authentication = ({ user, setUser, updateUser }) => {
@@ -10,14 +10,14 @@ const Authentication = ({ user, setUser, updateUser }) => {
     last_name: "",
     email: "",
     username: "",
-    password: ""
+    password: "",
   });
 
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
-  console.log(userData)
+  console.log(userData);
 
-  // Currently not doing anything with password and confirm password fields. 
+  // Currently not doing anything with password and confirm password fields.
 
   const handleSignUpClick = () => {
     return setSignUp((signUp) => !signUp);
@@ -26,26 +26,31 @@ const Authentication = ({ user, setUser, updateUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const config = {
-       method: "POST",
-       headers: {
-         "content-type": "application/json"
-       },
-       body: JSON.stringify(signUp ? userData : { "username": userData.username, password: userData.password })
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(
+        signUp
+          ? userData
+          : { username: userData.username, password: userData.password }
+      ),
     };
-    fetch(signUp ? "/signup" : "/login", config)
-       .then((r) => {
-         if (r.ok) {
-           console.log("Response is ok");
-         } else {
-           r.json().then(data => {
-             setTimeout(() => {
-               setErrors([]);
-             }, 5000);
-             setErrors(data.errors);
-           });
-         }
-       }); // This closing parenthesis was missing
-   }; // This closing brace was missing
+    fetch(signUp ? "/signup" : "/login", config).then((r) => {
+      if (r.ok) {
+        navigate("/");
+        // console.log("Response is ok")
+        // console.log(r);
+      } else {
+        r.json().then((data) => {
+          setTimeout(() => {
+            setErrors([]);
+          }, 5000);
+          setErrors(data.errors);
+        });
+      }
+    });
+  };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -108,7 +113,11 @@ const Authentication = ({ user, setUser, updateUser }) => {
         <input type="submit" value={signUp ? "Sign Up!" : "Log In!"} />
       </form>
       <div className="auth-errors-switch-wrapper">
-        <h2 className="auth-errors">{errors.map(error => <p key={error /*Use UUID*/}>{error}</p>)}</h2>
+        <h2 className="auth-errors">
+          {errors.map((error) => (
+            <p key={error /*Use UUID*/}>{error}</p>
+          ))}
+        </h2>
         <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
         <button
           id="register-or-signup-toggle-button"
