@@ -15,7 +15,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
 
   const [errors, setErrors] = useState([]);
 
-  console.log(userData);
+  console.log("user in Authentication/jsx", user);
 
   // Currently not doing anything with password and confirm password fields.
 
@@ -38,11 +38,14 @@ const Authentication = ({ user, setUser, updateUser }) => {
     };
     fetch(signUp ? "/signup" : "/login", config).then((r) => {
       if (r.ok) {
+        setUser(r)
+        console.log(user)
         navigate("/");
-        // console.log("Response is ok")
+        console.log("Response: ", r)
         // console.log(r);
       } else {
         r.json().then((data) => {
+          console.log("console.log(data)", data)
           setTimeout(() => {
             setErrors([]);
           }, 5000);
@@ -51,6 +54,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
       }
     });
   };
+
 
   const handleChange = ({ target }) => {
     const { name, value } = target;

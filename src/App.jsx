@@ -73,11 +73,13 @@ function App() {
 
   const updateUser = (user) => setUser(user);
 
+  console.log("user", user)
+
   if (!user) {
     return (
       <>
       <Navigation updateUser={updateUser} user={user}/>
-      <Authentication updateUser={updateUser}/>
+      <Authentication updateUser={updateUser} user={user} setUser={setUser}/>
       </>
     )
   }
