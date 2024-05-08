@@ -11,6 +11,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
     email: "",
     username: "",
     password: "",
+    password_confirmation: "",
   });
 
   const [errors, setErrors] = useState([]);
@@ -83,14 +84,14 @@ const Authentication = ({ user, setUser, updateUser }) => {
         />
         {signUp && (
           <>
-            {/* <label>Confirm Passowrd</label>
+            <label>Confirm Passowrd</label>
             <input
               type="password"
               name="confirmPassword"
               // May need an additional callback function to ensure that the passwords match
               value={userData.password}
               onChange={handleChange}
-            /> */}
+            />
             <label>Email</label>
             <input
               type="text"
