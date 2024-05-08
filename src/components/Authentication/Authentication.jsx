@@ -84,7 +84,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
         />
         {signUp && (
           <>
-            <label>Confirm Passowrd</label>
+            <label>Confirm Password</label>
             <input
               type="password"
               name="confirmPassword"
