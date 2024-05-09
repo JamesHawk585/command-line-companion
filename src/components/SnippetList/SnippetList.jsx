@@ -8,6 +8,12 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited }) =>
     onSnippetEdited(responseSnippetObject)
   }
 
+  // If length of snippets == 0:
+    // Welcome the user and tell them to add a snippet
+  // If length of filteredSnippets == 0:
+    // "Say no snippets found with current search settings"\
+  // If snippets > 0 && filteredSnippets > 0:
+  //  return SnippetCard
 
   const snippetCards = filteredSnippets.map((snippetObj, index) => {
     return (
