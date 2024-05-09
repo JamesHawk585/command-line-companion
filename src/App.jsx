@@ -100,7 +100,7 @@ function App() {
                   filteredSnippets={filteredSnippets}
                   onSnippetEdited={onSnippetEdited}
                   onSnippetDeleted={onSnippetDeleted}
-                  onSnip
+                  snippets={snippets}
                 />
               </div>
             }

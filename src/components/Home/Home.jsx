@@ -8,7 +8,8 @@ const Home = ({
     setSearchTerm,
     filteredSnippets,
     onSnippetEdited,
-    onSnippetDeleted
+    onSnippetDeleted,
+    snippets
  }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const Home = ({
           filteredSnippets={filteredSnippets}
           onSnippetEdited={onSnippetEdited}
           onSnippetDeleted={onSnippetDeleted}
+          snippets={snippets}
         />
       </section>
     </div>

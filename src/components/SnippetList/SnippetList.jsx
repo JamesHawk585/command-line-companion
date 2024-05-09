@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
-const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited }) => {
+const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets }) => {
 
   const passPatchResponseObjectFromChildToParent = (responseSnippetObject) => {
     onSnippetEdited(responseSnippetObject)
@@ -14,6 +14,21 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited }) =>
     // "Say no snippets found with current search settings"\
   // If snippets > 0 && filteredSnippets > 0:
   //  return SnippetCard
+
+  console.log(snippets.length)
+  console.log(filteredSnippets.length)
+
+  if (snippets.length == 0) {
+    return (
+    <h1>Welcome! Please click the add snippet button to get started!</h1>
+    )
+  }
+
+  if (snippets.length > 0 && filteredSnippets.length == 0) {
+    return (
+      <h1>No snippets match search criteria</h1>
+    )
+  }
 
   const snippetCards = filteredSnippets.map((snippetObj, index) => {
     return (
