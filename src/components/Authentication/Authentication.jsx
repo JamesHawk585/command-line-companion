@@ -87,9 +87,9 @@ const Authentication = ({ user, setUser, updateUser }) => {
             <label>Confirm Password</label>
             <input
               type="password"
-              name="confirmPassword"
+              name="password_confirmation"
               // May need an additional callback function to ensure that the passwords match
-              value={userData.password}
+              value={userData.password_confirmation}
               onChange={handleChange}
             />
             <label>Email</label>
