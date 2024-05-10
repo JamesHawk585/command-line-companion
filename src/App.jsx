@@ -73,7 +73,7 @@ function App() {
 
   const updateUser = (user) => setUser(user);
 
-  console.log("user", user)
+  console.log("user.id", user.id)
 
   if (!user) {
     return (

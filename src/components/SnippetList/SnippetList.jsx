@@ -8,16 +8,6 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
     onSnippetEdited(responseSnippetObject)
   }
 
-  // If length of snippets == 0:
-    // Welcome the user and tell them to add a snippet
-  // If length of filteredSnippets == 0:
-    // "Say no snippets found with current search settings"\
-  // If snippets > 0 && filteredSnippets > 0:
-  //  return SnippetCard
-
-  console.log(snippets.length)
-  console.log(filteredSnippets.length)
-
   if (snippets.length == 0) {
     return (
     <h1>Welcome! Please click the add snippet button to get started!</h1>

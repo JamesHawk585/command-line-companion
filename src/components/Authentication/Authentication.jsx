@@ -42,8 +42,6 @@ const Authentication = ({ user, setUser, updateUser }) => {
         setUser(r)
         console.log(user)
         navigate("/");
-        console.log("Response: ", r)
-        // console.log(r);
       } else {
         r.json().then((data) => {
           console.log("console.log(data)", data)
