@@ -17,6 +17,10 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm, currentUserId }) =>
         onSnippetAdded(newSnippetObject)
     }
 
+    console.log(currentUserId)
+
+    const userId = currentUserId
+
 //  Controlled componenet = changing state causes the componenet to re-render. Comes with value={} and onChange={} jsx attributes. 
   return (
       <header className="header">
@@ -26,7 +30,7 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm, currentUserId }) =>
             <button className="add-snippet-button" onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
-        <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted} currentUseid={currentUserId}/>
+        <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted} userId={userId}/>
       </header>
   );
 };

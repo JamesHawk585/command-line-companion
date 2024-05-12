@@ -84,7 +84,7 @@ function App() {
       </>
     )
   } else {
-
+    console.log(user)
     const currentUserId = user.id
     console.log(currentUserId)
   return (

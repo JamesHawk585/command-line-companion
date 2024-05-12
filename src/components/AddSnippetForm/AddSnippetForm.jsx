@@ -3,9 +3,9 @@ import "./AddSnippetForm.css";
 
 
 
-const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, currentUserId }) => {
+const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, userId }) => {
+  console.log(userId)
   const formRef = useRef(null)
-  console.log(currentUserId)
   const onSubmit = (e) => {
     e.preventDefault();
     // const formData = Object.fromEntries(new FormData(e.target));
@@ -13,7 +13,7 @@ const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, currentUserId }) =>
 
     const requestBody = {
       ...formData,
-      userId: currentUserId
+      userId: userId
     }
 
     // 1. Get the user.id from the session object
