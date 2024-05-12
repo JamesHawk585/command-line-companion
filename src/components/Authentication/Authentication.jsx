@@ -2,7 +2,7 @@ import React, { useEffect, useInsertionEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Authentication.css";
 
-const Authentication = ({ user, setUser, updateUser }) => {
+const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
   const [signUp, setSignUp] = useState(false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -40,6 +40,7 @@ const Authentication = ({ user, setUser, updateUser }) => {
     fetch(signUp ? "/signup" : "/login", config).then((r) => {
       if (r.ok) {
         setUser(r)
+        fetchSnippets()
         console.log(user)
         navigate("/");
       } else {

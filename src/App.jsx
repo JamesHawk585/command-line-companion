@@ -16,12 +16,7 @@ function App() {
   const [errors, setErrors] = useState(null)
 
 
-  const fetchSnippets = () => {
-    fetch("/snippets")
-      .then((r) => r.json())
-      .then((data) => setSnippets(data));
-  };
-
+  
   const fetchUser = () => {
     fetch("/authorized")
     .then(r => {
@@ -33,7 +28,14 @@ function App() {
       }
     })
   }
-
+  
+  const fetchSnippets = () => {
+    fetch("/snippets")
+      .then((r) => r.json())
+      .then((data) => setSnippets(data));
+      fetchUser()
+  };
+  
   console.log(user)
 
   useEffect(() => {
@@ -124,6 +126,7 @@ function App() {
                 user={user}
                 setUser={setUser}
                 updateUser={updateUser}
+                fetchSnippets={fetchSnippets}
               />
             }
           />
