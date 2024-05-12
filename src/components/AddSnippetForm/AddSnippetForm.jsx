@@ -8,23 +8,21 @@ const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, userId }) => {
   const formRef = useRef(null)
   const onSubmit = (e) => {
     e.preventDefault();
-    // const formData = Object.fromEntries(new FormData(e.target));
-    const formData = new FormData(e.target)
+    const formData = Object.fromEntries(new FormData(e.target));
+    // const formData = new FormData(e.target)
+
+    // const user_id = userId
 
     const requestBody = {
       ...formData,
-      userId: userId
+      user_id: userId
     }
 
     // 1. Get the user.id from the session object
     // 2. Create a copy of form data. Use the spead operator to add the user.id attribute. 
     // 3. Body of post request will be copyOfFormData. 
 
-    console.log("requestBody ==========>", requestBody)
-
-
-    console.log("currentUserId in AddSnippetForm.jsx ==========>", currentUserId)
-    
+    console.log("requestBody ==========>", requestBody)    
 
     fetch(
       "/snippets",
