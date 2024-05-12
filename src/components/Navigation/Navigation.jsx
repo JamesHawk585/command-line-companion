@@ -5,7 +5,7 @@ import Authentication from "../Authentication/Authentication.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navigation.css'
 
-const Navigation = ({ user, updateUser }) => {
+const Navigation = ({ user, updateUser, fetchUser }) => {
   const [menu, setMenu] = useState(false);
 
   const navigate = useNavigate();
@@ -13,7 +13,11 @@ const Navigation = ({ user, updateUser }) => {
   const handleLogout = () => {
     fetch('/logout', {method: "DELETE"})
     .then(r => {
-      updateUser(null)
+      console.log(r)
+      // updateUser()
+      // fetchUser()
+      // setUser(null)
+      
     })
     navigate("/authentication");
   };

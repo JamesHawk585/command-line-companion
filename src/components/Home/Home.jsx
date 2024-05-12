@@ -10,7 +10,8 @@ const Home = ({
     onSnippetEdited,
     onSnippetDeleted,
     snippets, 
-    currentUserId
+    currentUserId,
+    user
  }) => {
 
 
@@ -24,6 +25,7 @@ const Home = ({
           onSnippetEdited={onSnippetEdited}
           onSnippetDeleted={onSnippetDeleted}
           snippets={snippets}
+          user={user}
         />
       </section>
     </div>

@@ -2,11 +2,17 @@ import React, { useState, useEffect } from "react";
 import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
-const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets }) => {
+const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets, user }) => {
 
   const passPatchResponseObjectFromChildToParent = (responseSnippetObject) => {
     onSnippetEdited(responseSnippetObject)
   }
+
+
+  // const updateUserId = () => {
+  //   const newUserId = getCurrentUserFromSession();
+  //   SetUser(newUserId)
+  // }
 
   if (snippets.length == 0) {
     return (

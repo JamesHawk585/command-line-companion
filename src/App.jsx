@@ -34,6 +34,7 @@ function App() {
     })
   }
 
+  console.log(user)
 
   useEffect(() => {
     fetchSnippets()
@@ -71,7 +72,13 @@ function App() {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  const updateUser = (user) => setUser(user);
+  const updateUser = (user) => {
+    if (user) {
+      setUser(null)
+    } else {
+      fetchUser()
+    };
+  }
 
 
 
@@ -79,7 +86,7 @@ function App() {
   if (!user) {
     return (
       <>
-      <Navigation updateUser={updateUser} user={user}/>
+      <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/>
       <Authentication updateUser={updateUser} user={user} setUser={setUser}/>
       </>
     )
@@ -105,6 +112,7 @@ function App() {
                   onSnippetDeleted={onSnippetDeleted}
                   snippets={snippets}
                   currentUserId={currentUserId}
+                  user={user}
                 />
               </div>
             }
