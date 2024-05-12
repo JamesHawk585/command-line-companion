@@ -73,9 +73,8 @@ function App() {
 
   const updateUser = (user) => setUser(user);
 
-  if (user) {
-    console.log("user.id", user.id)
-  }
+
+
 
   if (!user) {
     return (
@@ -84,8 +83,10 @@ function App() {
       <Authentication updateUser={updateUser} user={user} setUser={setUser}/>
       </>
     )
-  }
+  } else {
 
+    const currentUserId = user.id
+    console.log(currentUserId)
   return (
     <>
       <div className="app">
@@ -103,6 +104,7 @@ function App() {
                   onSnippetEdited={onSnippetEdited}
                   onSnippetDeleted={onSnippetDeleted}
                   snippets={snippets}
+                  currentUserId={currentUserId}
                 />
               </div>
             }
@@ -121,7 +123,7 @@ function App() {
       </div>
     </>
   );
-};
+}};
 
 
 export default App;

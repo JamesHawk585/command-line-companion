@@ -2,14 +2,30 @@ import React, { useRef, useEffect } from "react";
 import "./AddSnippetForm.css";
 
 
-const API = "http://127.0.0.1:5555/snippets";
 
-const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
+const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, currentUserId }) => {
   const formRef = useRef(null)
+  console.log(currentUserId)
   const onSubmit = (e) => {
     e.preventDefault();
-    const formData = Object.fromEntries(new FormData(e.target));
-    console.log(formData)
+    // const formData = Object.fromEntries(new FormData(e.target));
+    const formData = new FormData(e.target)
+
+    const requestBody = {
+      ...formData,
+      userId: currentUserId
+    }
+
+    // 1. Get the user.id from the session object
+    // 2. Create a copy of form data. Use the spead operator to add the user.id attribute. 
+    // 3. Body of post request will be copyOfFormData. 
+
+    console.log("requestBody ==========>", requestBody)
+
+
+    console.log("currentUserId in AddSnippetForm.jsx ==========>", currentUserId)
+    
+
     fetch(
       "/snippets",
       {
@@ -18,7 +34,7 @@ const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
           "accept": "application/json",
           "content-type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(requestBody)
       })
         .then(r => r.json())
         .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject))

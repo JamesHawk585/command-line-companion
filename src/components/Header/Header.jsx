@@ -4,7 +4,7 @@ import '../../App.css';
 import './Header.css'
 
 
-const Header = ({ onSnippetAdded, searchTerm, setSearchTerm }) => {
+const Header = ({ onSnippetAdded, searchTerm, setSearchTerm, currentUserId }) => {
 
   const dialogRef = useRef(null);
 
@@ -26,7 +26,7 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm }) => {
             <button className="add-snippet-button" onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
-        <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted}/>
+        <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted} currentUseid={currentUserId}/>
       </header>
   );
 };
