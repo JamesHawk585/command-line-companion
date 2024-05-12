@@ -35,7 +35,7 @@ function App() {
       .then((data) => setSnippets(data));
       fetchUser()
   };
-  
+
   console.log(user)
 
   useEffect(() => {
@@ -99,7 +99,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <Navigation updateUser={updateUser}/>
+        <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets}/>
         <Routes>
           <Route
             path={"/"}

@@ -5,7 +5,7 @@ import Authentication from "../Authentication/Authentication.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navigation.css'
 
-const Navigation = ({ user, updateUser, fetchUser }) => {
+const Navigation = ({ user, updateUser, fetchUser, fetchSnippets }) => {
   const [menu, setMenu] = useState(false);
 
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const Navigation = ({ user, updateUser, fetchUser }) => {
     fetch('/logout', {method: "DELETE"})
     .then(r => {
       console.log(r)
+      fetchSnippets()
       // updateUser()
       // fetchUser()
       // setUser(null)
