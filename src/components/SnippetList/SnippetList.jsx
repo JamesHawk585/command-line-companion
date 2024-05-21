@@ -16,7 +16,7 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
 
   if (snippets.length == 0) {
     return (
-    <h1>Welcome! Please click the add snippet button to get started!</h1>
+    <h1 id="welcome-message">Welcome! Please click the add snippet button to get started!</h1>
     )
   }
 

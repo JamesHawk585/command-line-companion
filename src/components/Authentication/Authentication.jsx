@@ -14,6 +14,8 @@ const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
     password_confirmation: "",
   });
 
+  console.log(fetchSnippets)
+
   const [errors, setErrors] = useState([]);
 
   console.log("user in Authentication/jsx", user);
@@ -40,7 +42,6 @@ const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
     fetch(signUp ? "/signup" : "/login", config).then((r) => {
       if (r.ok) {
         setUser(r)
-        fetchSnippets()
         console.log(user)
         navigate("/");
       } else {
@@ -54,7 +55,8 @@ const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
       }
     });
   };
-
+  
+  // fetchSnippets()
 
   const handleChange = ({ target }) => {
     const { name, value } = target;

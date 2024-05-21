@@ -9,3 +9,13 @@ h1 {
     align-content: center;
     align-self: center;
 }
+
+#welcome-message {
+    /* color: blue; */
+    text-align: left;
+    /* border: 2rem solid; */
+    font-family: "Splash", cursive;
+    padding: 2rem 2rem 2rem 2rem;
+    margin: 3rem;
+    width: 40ch;
+}
