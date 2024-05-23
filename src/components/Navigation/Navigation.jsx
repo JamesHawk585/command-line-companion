@@ -14,12 +14,12 @@ const Navigation = ({ user, updateUser, fetchUser, fetchSnippets }) => {
     fetch('/logout', {method: "DELETE"})
     .then(r => {
       console.log(r)
-      fetchSnippets()
       // updateUser()
       // fetchUser()
       // setUser(null)
       
     })
+    fetchSnippets()
     navigate("/authentication");
   };
 

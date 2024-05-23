@@ -89,7 +89,7 @@ function App() {
     return (
       <>
       <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/>
-      <Authentication updateUser={updateUser} user={user} setUser={setUser}/>
+      <Authentication updateUser={updateUser} user={user} setUser={setUser} fetchSnippets={fetchSnippets}/>
       </>
     )
   } else {
