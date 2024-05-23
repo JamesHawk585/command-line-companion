@@ -16,11 +16,11 @@ function App() {
   const [errors, setErrors] = useState(null)
 
 
+
   
   const fetchUser = () => {
     fetch("/authorized")
     .then(r => {
-      console.log(r)
       if(r.ok) {
         r.json().then(user => setUser(user))
       } else {
@@ -29,14 +29,14 @@ function App() {
     })
   }
   
-  const fetchSnippets = () => {
+  function fetchSnippets() {
     fetch("/snippets")
       .then((r) => r.json())
       .then((data) => setSnippets(data));
       fetchUser()
   };
 
-  console.log(user)
+  console.log("User in App.jsx =======>", user)
 
   useEffect(() => {
     fetchSnippets()
@@ -93,9 +93,7 @@ function App() {
       </>
     )
   } else {
-    console.log(user)
     const currentUserId = user.id
-    console.log(currentUserId)
   return (
     <>
       <div className="app">
@@ -127,6 +125,7 @@ function App() {
                 setUser={setUser}
                 updateUser={updateUser}
                 fetchSnippets={fetchSnippets}
+                setSnippets={setSnippets}
               />
             }
           />

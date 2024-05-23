@@ -17,7 +17,6 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm, currentUserId }) =>
         onSnippetAdded(newSnippetObject)
     }
 
-    console.log(currentUserId)
 
     const userId = currentUserId
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useInsertionEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Await, useNavigate } from "react-router-dom";
 import "./Authentication.css";
 
-const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
+ 
+const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
   const [signUp, setSignUp] = useState(false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -14,9 +15,20 @@ const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
     password_confirmation: "",
   });
 
+
+
   const [errors, setErrors] = useState([]);
 
-  console.log("user in Authentication/jsx", user);
+  console.log("setSnippets in Authentication.jsx", setSnippets)
+
+  // async function fetchSnippets(setSnippets) {
+  //   fetch("/snippets")
+  //     .then((r) => r.json())
+  //     .then((data) => setSnippets(data));
+  // };
+ 
+
+  // console.log("user in Authentication/jsx", user);
 
   // Currently not doing anything with password and confirm password fields.
 
@@ -40,9 +52,8 @@ const Authentication = ({ user, setUser, updateUser, fetchSnippets }) => {
     fetch(signUp ? "/signup" : "/login", config).then((r) => {
       if (r.ok) {
         setUser(r)
-        fetchSnippets()
-        console.log(user)
         navigate("/");
+        fetchSnippets()
       } else {
         r.json().then((data) => {
           console.log("console.log(data)", data)
