@@ -15,7 +15,7 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
     password_confirmation: "",
   });
 
-  console.log(fetchSnippets)
+
 
   const [errors, setErrors] = useState([]);
 
@@ -52,9 +52,8 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
     fetch(signUp ? "/signup" : "/login", config).then((r) => {
       if (r.ok) {
         setUser(r)
-        fetchSnippets()
-        console.log(user)
         navigate("/");
+        fetchSnippets()
       } else {
         r.json().then((data) => {
           console.log("console.log(data)", data)
@@ -66,8 +65,7 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
       }
     });
   };
-  
-  // fetchSnippets()
+
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
