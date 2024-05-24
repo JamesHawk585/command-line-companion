@@ -97,7 +97,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets}/>
+        <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets} setSnippets={setSnippets}/>
         <Routes>
           <Route
             path={"/"}

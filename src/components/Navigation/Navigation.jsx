@@ -5,7 +5,7 @@ import Authentication from "../Authentication/Authentication.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navigation.css'
 
-const Navigation = ({ user, updateUser, fetchUser, fetchSnippets }) => {
+const Navigation = ({ user, updateUser, fetchUser, fetchSnippets, setSnippets }) => {
   const [menu, setMenu] = useState(false);
 
   const navigate = useNavigate();
@@ -19,7 +19,8 @@ const Navigation = ({ user, updateUser, fetchUser, fetchSnippets }) => {
       // setUser(null)
       
     })
-    fetchSnippets()
+    // fetchSnippets()
+    setSnippets([])
     navigate("/authentication");
   };
 
