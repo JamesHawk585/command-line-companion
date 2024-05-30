@@ -12,6 +12,7 @@
     margin: 40px;
     position: relative;
     border-radius: 16px;
+    font-size: 2em;
 }
 
 .snippetCard:hover {
