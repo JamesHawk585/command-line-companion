@@ -96,6 +96,7 @@ function App() {
     const currentUserId = user.id
   return (
     <>
+    <h1 className="nav-title">Command Line Companion 💻</h1>
       <div className="app">
         <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets} setSnippets={setSnippets}/>
         <Routes>
