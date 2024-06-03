@@ -88,6 +88,7 @@ function App() {
   if (!user) {
     return (
       <>
+      <h1 className="nav-title">Command Line Companion 💻</h1>
       <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/>
       <Authentication updateUser={updateUser} user={user} setUser={setUser} fetchSnippets={fetchSnippets}/>
       </>
