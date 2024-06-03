@@ -1,63 +1,59 @@
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { GiHamburgerMenu } from "react-icons/gi";
+import "./OffCanvasNavBar.css"
 
-function OffcanvasExample() {
+
+function OffCanvasNavBar({ setSnippets }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    fetch('/logout', {method: "DELETE"})
+    .then(r => {
+      console.log(r)
+      
+    })
+    setSnippets([])
+    navigate("/authentication");
+  };
+
   return (
     <>
-      {[false, 'sm', 'md', 'lg', 'xl', 'xxl'].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
-          <Container fluid>
-            <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
-                  <NavDropdown
-                    title="Dropdown"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">
-                      Something else here
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      ))}
+    <div class="menu-and-site-title">
+      <div className="hamburger-menu-wrapper" onClick={handleShow}>
+            <GiHamburgerMenu size={30} />
+          </div>
+      <h1 className="site-title">Command Line Companion 💻</h1>
+    </div>
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Menu</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <ul>
+          <li>
+              <Link to="/" onClick={() => setMenu(!menu)}>Home</Link>
+            </li>
+            <li>
+              <Link to="/authentication" onClick={() => setMenu(!menu)}>Login/Signup</Link>
+            </li>
+            <li className="logout-button" onClick={handleLogout}>
+              {" "}
+              Logout{" "}
+            </li>
+          </ul>
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
   );
 }
 
-export default OffcanvasExample;
+export default OffCanvasNavBar;

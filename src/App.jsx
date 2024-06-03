@@ -2,46 +2,42 @@ import "./App.css";
 import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
+import OffCanvasNavBar from "./components/OffCanvasNavBar/OffCanvasNavBar.jsx";
 import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation.jsx";
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [snippets, setSnippets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
-  const [errors, setErrors] = useState(null)
+  const [errors, setErrors] = useState(null);
 
-
-
-  
   const fetchUser = () => {
-    fetch("/authorized")
-    .then(r => {
-      if(r.ok) {
-        r.json().then(user => setUser(user))
+    fetch("/authorized").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
       } else {
-        r.json().then(err => setErrors(err))
+        r.json().then((err) => setErrors(err));
       }
-    })
-  }
-  
+    });
+  };
+
   function fetchSnippets() {
     fetch("/snippets")
       .then((r) => r.json())
       .then((data) => setSnippets(data));
-      fetchUser()
-  };
+    fetchUser();
+  }
 
-  console.log("User in App.jsx =======>", user)
+  console.log("User in App.jsx =======>", user);
 
   useEffect(() => {
-    fetchSnippets()
-    fetchUser()
-  }, [])
+    fetchSnippets();
+    fetchUser();
+  }, []);
 
   const onSnippetDeleted = async (snippetId, title) => {
     if (window.confirm(`Delete Snippet: "${title}"?`)) {
@@ -55,8 +51,6 @@ function App() {
   const onSnippetAdded = (snippetObj) => {
     return setSnippets([...snippets, snippetObj]);
   };
-
-
 
   const onSnippetEdited = (responseSnippetObject) => {
     setSnippets(
@@ -76,66 +70,71 @@ function App() {
 
   const updateUser = (user) => {
     if (user) {
-      setUser(null)
+      setUser(null);
     } else {
-      fetchUser()
-    };
-  }
-
-
-
+      fetchUser();
+    }
+  };
 
   if (!user) {
     return (
       <>
-      <h1 className="nav-title">Command Line Companion 💻</h1>
-      <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/>
-      <Authentication updateUser={updateUser} user={user} setUser={setUser} fetchSnippets={fetchSnippets}/>
+        {/* <h1 className="site-title">Command Line Companion 💻</h1> */}
+        {/* <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/> */}
+        <OffCanvasNavBar setSnippets={setSnippets} />
+        <Authentication
+          updateUser={updateUser}
+          user={user}
+          setUser={setUser}
+          fetchSnippets={fetchSnippets}
+        />
       </>
-    )
+    );
   } else {
-    const currentUserId = user.id
-  return (
-    <>
-    <h1 className="nav-title">Command Line Companion 💻</h1>
-      <div className="app">
-        <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets} setSnippets={setSnippets}/>
-        <Routes>
-          <Route
-            path={"/"}
-            element={
-              <div>
-                <Home
-                  onSnippetAdded={onSnippetAdded}
-                  searchTerm={searchTerm}
-                  setSearchTerm={setSearchTerm}
-                  filteredSnippets={filteredSnippets}
-                  onSnippetEdited={onSnippetEdited}
-                  onSnippetDeleted={onSnippetDeleted}
-                  snippets={snippets}
-                  currentUserId={currentUserId}
-                  user={user}
-                />
-              </div>
-            }
-          />
-          <Route
-            path={"/authentication"}
-            element={
-              <Authentication
-                user={user}
-                setUser={setUser}
-                updateUser={updateUser}
-                fetchSnippets={fetchSnippets}
-                setSnippets={setSnippets}
-              />
-            }
-          />
-        </Routes>
-      </div>
-    </>
-  );
-}};
+    const currentUserId = user.id;
+    return (
+      <>
+        <div className="app">
+          <h1 className="site-title">Command Line Companion 💻</h1>
+          {/* <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets} setSnippets={setSnippets}/> */}
+          <OffCanvasNavBar setSnippets={setSnippets} />
 
+          <Routes>
+            <Route
+              path={"/"}
+              element={
+                <div>
+                  <Home
+                    onSnippetAdded={onSnippetAdded}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    filteredSnippets={filteredSnippets}
+                    onSnippetEdited={onSnippetEdited}
+                    onSnippetDeleted={onSnippetDeleted}
+                    snippets={snippets}
+                    currentUserId={currentUserId}
+                    user={user}
+                  />
+                </div>
+              }
+            />
+            <Route
+              path={"/authentication"}
+              element={
+                <Authentication
+                  user={user}
+                  setUser={setUser}
+                  updateUser={updateUser}
+                  fetchSnippets={fetchSnippets}
+                  setSnippets={setSnippets}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </>
+    );
+  }
+}
 
 export default App;

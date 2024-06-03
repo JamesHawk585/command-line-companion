@@ -1,0 +1,16 @@
+.menu-and-site-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.hamburger-menu-wrapper {
+    cursor: pointer;
+}
+
+.site-title {
+margin: auto;
+}
+
+

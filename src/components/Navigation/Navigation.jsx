@@ -1,66 +1,66 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Home from "../Home/Home.jsx";
-import Authentication from "../Authentication/Authentication.jsx";
-import { GiHamburgerMenu } from "react-icons/gi";
-import './Navigation.css'
+// import React, { useEffect, useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+// import Home from "../Home/Home.jsx";
+// import Authentication from "../Authentication/Authentication.jsx";
+// import { GiHamburgerMenu } from "react-icons/gi";
+// import './Navigation.css'
 
-const Navigation = ({ user, updateUser, fetchUser, fetchSnippets, setSnippets }) => {
-  const [menu, setMenu] = useState(false);
+// const Navigation = ({ user, updateUser, fetchUser, fetchSnippets, setSnippets }) => {
+//   const [menu, setMenu] = useState(false);
 
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    fetch('/logout', {method: "DELETE"})
-    .then(r => {
-      console.log(r)
-      // updateUser()
-      // fetchUser()
-      // setUser(null)
+//   const handleLogout = () => {
+//     fetch('/logout', {method: "DELETE"})
+//     .then(r => {
+//       console.log(r)
+//       // updateUser()
+//       // fetchUser()
+//       // setUser(null)
       
-    })
-    // fetchSnippets()
-    setSnippets([])
-    navigate("/authentication");
-  };
+//     })
+//     // fetchSnippets()
+//     setSnippets([])
+//     navigate("/authentication");
+//   };
 
-  const toggleMenu = () => setMenu((prev) => !prev);
+//   const toggleMenu = () => setMenu((prev) => !prev);
 
-  // if (!user) {
-  //   return (
-  //     <>
-  //     </>
-  //   )
-  // } 
+//   // if (!user) {
+//   //   return (
+//   //     <>
+//   //     </>
+//   //   )
+//   // } 
 
-  return (
-    <div className="navigation">
-      {/* <h1 className="nav-title">Command Line Companion 💻</h1> */}
-      <section className="nav-menu">
-        {menu ? (
-          <ul>
-            <li className="close-button" onClick={() => setMenu(!menu)}>
-              Close
-            </li>
-            <li>
-              <Link to="/" onClick={() => setMenu(!menu)}>Home</Link>
-            </li>
-            <li>
-              <Link to="/authentication" onClick={() => setMenu(!menu)}>Login/Signup</Link>
-            </li>
-            <li className="logout-button" onClick={handleLogout}>
-              {" "}
-              Logout{" "}
-            </li>
-          </ul>
-        ) : (
-          <div className="hamburger-menu-wrapper" onClick={toggleMenu}>
-            <GiHamburgerMenu size={30} />
-          </div>
-        )}
-      </section>
-    </div>
-  );
-};
+//   return (
+//     <div className="navigation">
+//       {/* <h1 className="site-title">Command Line Companion 💻</h1> */}
+//       <section className="nav-menu">
+//         {menu ? (
+//           <ul>
+//             <li className="close-button" onClick={() => setMenu(!menu)}>
+//               Close
+//             </li>
+//             <li>
+//               <Link to="/" onClick={() => setMenu(!menu)}>Home</Link>
+//             </li>
+//             <li>
+//               <Link to="/authentication" onClick={() => setMenu(!menu)}>Login/Signup</Link>
+//             </li>
+//             <li className="logout-button" onClick={handleLogout}>
+//               {" "}
+//               Logout{" "}
+//             </li>
+//           </ul>
+//         ) : (
+//           <div className="hamburger-menu-wrapper" onClick={toggleMenu}>
+//             <GiHamburgerMenu size={30} />
+//           </div>
+//         )}
+//       </section>
+//     </div>
+//   );
+// };
 
-export default Navigation
+// export default Navigation
