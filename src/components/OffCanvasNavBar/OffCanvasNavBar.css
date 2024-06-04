@@ -43,6 +43,11 @@ a {
     color: whitesmoke;
 }
 
+a:-webkit-any-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 a:visited {
     color: black;
     text-decoration: none;
