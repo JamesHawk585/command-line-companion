@@ -37,15 +37,15 @@ function OffCanvasNavBar({ setSnippets }) {
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header className="close-button" closeButton>
-          <Offcanvas.Title>Menu</Offcanvas.Title>
+          <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ul>
           <li>
-              <Link to="/" onClick={() => setMenu(!menu)}>Home</Link>
+              <Link to="/" >Home</Link>
             </li>
             <li>
-              <Link to="/authentication" onClick={() => setMenu(!menu)}>Login/Signup</Link>
+              <Link to="/authentication" >Login/Signup</Link>
             </li>
             <li className="logout-button">
             <Link to="/authentication" onClick={handleLogout}>Logout</Link>

@@ -13,12 +13,24 @@
     margin: 0 auto;
 }
 .add-snippet-button:hover {
-    background: skyblue;
+    background-color: white;
     color: black;
     border-radius: 4px;
 }
 
 .add-snippet-button {
     border-radius: 4px;
+}
+
+#add-snippet-button {
+    background-color: #313A3C;
+    border: none;
+    color: white;
+}
+
+#add-snippet-button:hover {
+    box-shadow: 0px 0px 11px #000000;
+    background: skyblue;
+    color: black;
 }
 
