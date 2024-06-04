@@ -16,6 +16,7 @@ function OffCanvasNavBar({ setSnippets }) {
 
   const handleLogout = () => {
     fetch('/logout', {method: "DELETE"})
+    setShow(false)
     .then(r => {
       console.log(r)
       
@@ -46,9 +47,8 @@ function OffCanvasNavBar({ setSnippets }) {
             <li>
               <Link to="/authentication" onClick={() => setMenu(!menu)}>Login/Signup</Link>
             </li>
-            <li className="logout-button" onClick={handleLogout}>
-              {" "}
-              Logout{" "}
+            <li className="logout-button">
+            <Link to="/authentication" onClick={handleLogout}>Logout</Link>
             </li>
           </ul>
         </Offcanvas.Body>
