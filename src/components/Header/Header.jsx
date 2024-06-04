@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import AddSnippetForm from "../AddSnippetForm/AddSnippetForm.jsx"
+import BootstrapAddSnippetForm from "../BootstrapAddSnippetForm/BootstrapAddSnippetForm.jsx"
 import '../../App.css';
 import './Header.css'
+
 
 
 const Header = ({ onSnippetAdded, searchTerm, setSearchTerm, currentUserId }) => {
@@ -30,6 +32,7 @@ const Header = ({ onSnippetAdded, searchTerm, setSearchTerm, currentUserId }) =>
           </label>
         </div>
         <AddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted} userId={userId}/>
+        <BootstrapAddSnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted} userId={userId}/>
       </header>
   );
 };

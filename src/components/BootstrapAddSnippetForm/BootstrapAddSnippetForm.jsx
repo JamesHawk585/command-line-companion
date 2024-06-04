@@ -1,13 +1,42 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function Example() {
+function BootstrapAddSnippetForm({ dialogRef, onSnippetFormSubmitted, userId }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  console.log(userId)
+  const formRef = useRef(null)
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target));
+
+    const requestBody = {
+      ...formData,
+      user_id: userId
+    }
+
+
+    console.log("requestBody ==========>", requestBody)    
+
+    fetch(
+      "/snippets",
+      {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(requestBody)
+      })
+        .then(r => r.json())
+        .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject))
+        formRef.current.reset()
+};
 
   return (
     <>
@@ -51,4 +80,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default BootstrapAddSnippetForm;
