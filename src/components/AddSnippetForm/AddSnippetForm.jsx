@@ -48,7 +48,7 @@ const closeModal = (e) => {
 //   The response body of a post request is the newly added object as it appears in the db, with id. 
 
   return (
-    <dialog ref={dialogRef}>
+    <dialog ref={dialogRef} className="add-snippet-modal">
       <form className="form" onSubmit={(e) => onSubmit(e)} ref={formRef}>
         <label className="title-label">
           Title

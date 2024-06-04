@@ -1,6 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+* {
+    font-size: 1em;
+}
 
+
+.h5 {
+    /* background-color: aqua; */
+    /* border: 2px white solid; */
+    font-size: 1em!important;
+}
 
 .roboto-regular {
     font-family: "Roboto", sans-serif;
@@ -60,7 +69,7 @@ a:hover{
 }
 
 .btn-close {
-    color: white;
+    color: white!important;
 }
 
 .offcanvas-header {
@@ -73,6 +82,13 @@ a:hover{
 li {
     text-decoration: none;
 }
+
+
+.close-button offcanvas-header {
+    font-size: 1em;
+}
+
+
 
 
 
