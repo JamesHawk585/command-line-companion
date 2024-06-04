@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { GiHamburgerMenu } from "react-icons/gi";
 import "./OffCanvasNavBar.css"
-
+import darkModeImage from "../../images/7148715_dark_mode_night_moon_icon (1).png"
 
 function OffCanvasNavBar({ setSnippets }) {
   const [show, setShow] = useState(false);
@@ -31,10 +31,11 @@ function OffCanvasNavBar({ setSnippets }) {
             <GiHamburgerMenu size={30} />
           </div>
       <h1 className="site-title">Command Line Companion 💻</h1>
+      <img src={darkModeImage} alt="dark mode"/>
     </div>
 
       <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
+        <Offcanvas.Header className="close-button" closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>

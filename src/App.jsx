@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.jsx";
 import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
@@ -79,7 +79,6 @@ function App() {
   if (!user) {
     return (
       <>
-        {/* <h1 className="site-title">Command Line Companion 💻</h1> */}
         {/* <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/> */}
         <OffCanvasNavBar setSnippets={setSnippets} />
         <Authentication
@@ -95,7 +94,6 @@ function App() {
     return (
       <>
         <div className="app">
-          <h1 className="site-title">Command Line Companion 💻</h1>
           {/* <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets} setSnippets={setSnippets}/> */}
           <OffCanvasNavBar setSnippets={setSnippets} />
 
