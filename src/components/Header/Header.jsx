@@ -114,23 +114,15 @@ const Header = ({
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="title"
-                  placeholder="New Snippet Title"
-                  autoFocus
-                />
+                <Form.Label>Code</Form.Label>
+                <Form.Control as="textarea" rows={3} />
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="title"
-                  placeholder="New Snippet Title"
-                  autoFocus
-                />
+                <Form.Label>Explanation</Form.Label>
+                <Form.Control as="textarea" rows={3}/>
               </Form.Group>
             </Form>
           </Modal.Body>

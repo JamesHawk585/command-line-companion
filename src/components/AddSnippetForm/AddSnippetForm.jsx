@@ -39,8 +39,6 @@ const closeModal = (e) => {
   dialogRef.current.close();
 } 
 
-//   The response body of a post request is the newly added object as it appears in the db, with id. 
-
   return (
     <dialog ref={dialogRef} className="add-snippet-modal">
       <form className="form" onSubmit={(e) => onSubmit(e)} ref={formRef}>
@@ -48,10 +46,6 @@ const closeModal = (e) => {
           Title
           <input name="title" />
         </label>
-        {/* <label className="tag-label">
-          Tags
-          <input className="tags" name="tags" />
-        </label> */}
         <label>
           Language
           <select name="language_select">
