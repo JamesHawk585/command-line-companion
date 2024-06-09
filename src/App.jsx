@@ -43,7 +43,6 @@ const fetchUser = () => {
     fetchUser();
   }
 
-  console.log("User in App.jsx =======>", user);
 
   useEffect(() => {
     fetchSnippets();
@@ -87,8 +86,6 @@ const fetchUser = () => {
       // setErrors(null)
     }
   };
-
-  console.error(errors)
 
   if (!user) {
     return (

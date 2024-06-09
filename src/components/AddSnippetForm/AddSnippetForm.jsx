@@ -4,7 +4,6 @@ import "./AddSnippetForm.css";
 
 
 const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, userId }) => {
-  console.log(userId)
   const formRef = useRef(null)
   const onSubmit = (e) => {
     e.preventDefault();
@@ -14,9 +13,7 @@ const AddSnippetForm = ({ dialogRef, onSnippetFormSubmitted, userId }) => {
       ...formData,
       user_id: userId
     }
-
-
-    console.log("requestBody ==========>", requestBody)    
+ 
 
     fetch(
       "/snippets",

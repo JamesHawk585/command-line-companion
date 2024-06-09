@@ -9,7 +9,6 @@ function BootstrapAddSnippetForm({ dialogRef, onSnippetFormSubmitted, userId }) 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(userId)
   const formRef = useRef(null)
   const onSubmit = (e) => {
     e.preventDefault();

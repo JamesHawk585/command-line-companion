@@ -19,7 +19,6 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
 
   const [errors, setErrors] = useState([]);
 
-  console.log("setSnippets in Authentication.jsx", setSnippets)
 
   // async function fetchSnippets(setSnippets) {
   //   fetch("/snippets")

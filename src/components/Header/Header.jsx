@@ -17,8 +17,23 @@ const Header = ({
 }) => {
   const dialogRef = useRef(null);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [newSnippetObject, setNewSnippetObject] = useState({
+    title: "",
+    languageSelect: "",
+    code: "",
+    explanation: "",
+  });
+
+  // const newSnippetObject = Object.fromEntries(new FormData(e.target));
+  console.log(newSnippetObject);
+
   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const handleSubmit = () => {
+    return "Hit handle submit!";
+  };
 
   const onAddButtonClick = () => {
     handleShow();
@@ -26,7 +41,9 @@ const Header = ({
 
   const onSnippetFormSubmitted = (newSnippetObject) => {
     dialogRef.current.close();
+    console.log(newSnippetObject);
     onSnippetAdded(newSnippetObject);
+    setSelectedLanguage("");
   };
 
   const userId = currentUserId;
@@ -60,7 +77,7 @@ const Header = ({
         />
         <BootstrapAddSnippetForm
           dialogRef={dialogRef}
-          onSnippetFormSubmitted={onSnippetFormSubmitted}
+          // onSnippetFormSubmitted={() => onSnippetFormSubmitted(newSnippetObject)}
           userId={userId}
         />
       </header>
@@ -71,7 +88,7 @@ const Header = ({
             <Modal.Title>New Snippet</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
@@ -80,32 +97,90 @@ const Header = ({
                 <Form.Control
                   type="title"
                   placeholder="Log 'Hello world' to the console."
-                  autoFocus
+                  value={newSnippetObject.title}
+                  onChange={(e) =>
+                    setNewSnippetObject({
+                      ...newSnippetObject,
+                      title: e.target.value,
+                    })
+                  }
                 />
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
               >
-                <Form.Label>Language Select</Form.Label>
+                <Form.Label>Choose a Language</Form.Label>
                 <Dropdown>
-                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                    Choose a Language
+                  <Dropdown.Toggle
+                    variant="secondary"
+                    id="dropdown-basic"
+                    placeholder="Select a Language"
+                  >
+                    {selectedLanguage === ""
+                      ? "Please choose a Language"
+                      : selectedLanguage}
                   </Dropdown.Toggle>
-
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/javascript">JavaScript</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                    Python
+                    <Dropdown.Item
+                      href="#/javascript"
+                      onClick={() => {
+                        setSelectedLanguage("JavaScript");
+                        setNewSnippetObject({
+                          ...newSnippetObject,
+                          languageSelect: "JavaScript",
+                        });
+                      }}
+                    >
+                      JavaScript
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                    HTML
+                    <Dropdown.Item
+                      href="#/python"
+                      onClick={() => {
+                        setSelectedLanguage("Python");
+                        setNewSnippetObject({
+                          ...newSnippetObject,
+                          languageSelect: "Python",
+                        });
+                      }}
+                    >
+                      Python
                     </Dropdown.Item>
-                    <Dropdown.Item>
-                    CSS
+                    <Dropdown.Item
+                      href="#/html"
+                      onClick={() => {
+                        setSelectedLanguage("HTML");
+                        setNewSnippetObject({
+                          ...newSnippetObject,
+                          languageSelect: "HTML",
+                        });
+                      }}
+                    >
+                      HTML
                     </Dropdown.Item>
-                    <Dropdown.Item>
-                    CLI
+                    <Dropdown.Item
+                      href="#/css"
+                      onClick={() => {
+                        setSelectedLanguage("CSS");
+                        setNewSnippetObject({
+                          ...newSnippetObject,
+                          languageSelect: "CSS",
+                        });
+                      }}
+                    >
+                      CSS
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="#/cli"
+                      onClick={() => {
+                        setSelectedLanguage("CLI");
+                        setNewSnippetObject({
+                          ...newSnippetObject,
+                          languageSelect: "CLI",
+                        });
+                      }}
+                    >
+                      CLI
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -115,14 +190,22 @@ const Header = ({
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Code</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Control 
+                as="textarea" 
+                rows={3} 
+                value={newSnippetObject.code}
+                onChange={(e) => setNewSnippetObject({...newSnippetObject, code: e.target.value})}
+                />
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Explanation</Form.Label>
-                <Form.Control as="textarea" rows={3}/>
+                <Form.Control as="textarea" rows={3} 
+                value={newSnippetObject.explanation}
+                onChange={(e) => setNewSnippetObject({...newSnippetObject, explanation: e.target.value})}
+                />
               </Form.Group>
             </Form>
           </Modal.Body>

@@ -27,7 +27,7 @@ function OffCanvasNavBar({ setSnippets }) {
 
   return (
     <>
-    <div class="menu-and-site-title">
+    <div className="menu-and-site-title">
       <div className="hamburger-menu-wrapper" onClick={handleShow}>
             <GiHamburgerMenu size={30} />
           </div>
