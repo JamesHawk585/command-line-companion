@@ -16,12 +16,12 @@ function OffCanvasNavBar({ setSnippets }) {
 
   const handleLogout = () => {
     fetch('/logout', {method: "DELETE"})
-    setShow(false)
     .then(r => {
       console.log(r)
       
     })
     setSnippets([])
+    setShow(false)
     navigate("/authentication");
   };
 

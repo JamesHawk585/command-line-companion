@@ -1,4 +1,4 @@
-import "./App.jsx";
+import "./";
 import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
@@ -15,15 +15,26 @@ function App() {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
 
-  const fetchUser = () => {
-    fetch("/authorized").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      } else {
-        r.json().then((err) => setErrors(err));
+const fetchUser = () => {
+  fetch('/authorized').then(async (r) => {
+    if (r.ok) {
+      const responseUser = await r.json();
+      setUser(responseUser)
+    } else {
+      try {
+        const err = await r.json();
+        setErrors(err);
+      } catch (error) {
+        console.error("Failed to fetch user", error)
+        setErrors({message: "An error occued while fetching user in App.jsx"})
       }
-    });
-  };
+    }
+  })
+}
+
+
+
+
 
   function fetchSnippets() {
     fetch("/snippets")
@@ -73,8 +84,11 @@ function App() {
       setUser(null);
     } else {
       fetchUser();
+      // setErrors(null)
     }
   };
+
+  console.error(errors)
 
   if (!user) {
     return (
