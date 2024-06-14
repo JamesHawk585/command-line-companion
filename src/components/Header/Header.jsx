@@ -38,6 +38,8 @@ const Header = ({
     handleShow();
   };
 
+  console.log("%c ======> We are getting the snippet object. Now we need to persist to the db using the handleSubmit() function", "font: 3em; color: skyblue;")
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e);
@@ -64,6 +66,12 @@ const Header = ({
       .catch((error) => {
         console.log(error);
       });
+      setNewSnippetObject({
+        title: "",
+        languageSelect: "",
+        code: "",
+        explanation: ""
+      })
   };
 
   const handleChange = (e) => {
@@ -128,65 +136,6 @@ const Header = ({
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label>Choose a Language</Form.Label>
-                {/* <Dropdown>
-                  <Dropdown.Toggle
-                    variant="secondary"
-                    id="dropdown-basic"
-                    placeholder="Select a Language"
-                    name="languageSelect"
-                    value={newSnippetObject.languageSelect}
-                    onChange={() => {
-                      handleChange()
-                    }}
-                  >
-                    {selectedLanguage === ""
-                      ? "Please choose a Language"
-                      : selectedLanguage}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item
-                      href="#/javascript"
-                      onClick={() => {
-                        setSelectedLanguage("JavaScript");
-                        Dropdown.current.props.onChange({ target: {name: "languageSelect", value: "JavaScript"}})
-                      }}
-                    >
-                      JavaScript
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      href="#/python"
-                      onClick={() => {
-                        setSelectedLanguage("Python");
-                      }}
-                    >
-                      Python
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      href="#/html"
-                      onClick={() => {
-                        setSelectedLanguage("HTML");
-                      }}
-                    >
-                      HTML
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      href="#/css"
-                      onClick={() => {
-                        setSelectedLanguage("CSS");
-                      }}
-                    >
-                      CSS
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      href="#/cli"
-                      onClick={() => {
-                        setSelectedLanguage("CLI");
-                      }}
-                    >
-                      CLI
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown> */}
                 <Form.Control
                   as="select"
                   name="selectedLanguage"
