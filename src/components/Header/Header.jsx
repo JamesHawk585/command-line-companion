@@ -28,56 +28,56 @@ const Header = ({
     explanation: "",
   });
 
-  console.log(newSnippetObject)
-
+  console.log(newSnippetObject);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
 
   const onAddButtonClick = () => {
     handleShow();
   };
 
+  const handleSubmit = () => {
+    e.preventDefault();
+    console.log(e);
+    const config = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(/*newSnippetObject*/),
+    };
 
-    const handleSubmit = () => {
-      e.preventDefault()
-      console.log(e)
-      const config = {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(/*newSnippetObject*/),
-      };
-
-      fetch("/snippets", config)
+    fetch("/snippets", config)
       .then((response) => {
         if (!response.ok) {
-          throw new Error ('Network response was not ok');
-        } 
+          throw new Error("Network response was not ok");
+        }
         return response.json();
       })
       .then((data) => {
-        console.log(data)
+        console.log(data);
         onSnippetAdded(data);
         setSelectedLanguage("");
       })
       .catch((error) => {
-        console.log(error)
-      })
-    };
+        console.log(error);
+      });
+  };
 
-    const handleChange = (e) => {
-      console.log(e.target.value)
-      console.log(e)
-      // setNewSnippetObject(prevState => ({...prevState, [e.target.value]: e.target.value}));
-      const newSnippetCopy = {...newSnippetObject}
-      setNewSnippetObject({...newSnippetCopy, [e.target.name]: [e.target.value] })
-      console.log(newSnippetCopy)
-      // console.log(newSnippetObject)
-    };
-
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    console.log(e.target.name);
+    console.log(e);
+    // setNewSnippetObject(prevState => ({...prevState, [e.target.value]: e.target.value}));
+    const newSnippetCopy = { ...newSnippetObject };
+    setNewSnippetObject({
+      ...newSnippetCopy,
+      [e.target.name]: [e.target.value],
+    });
+    console.log(newSnippetCopy);
+    // console.log(newSnippetObject)
+  };
 
   const userId = currentUserId;
 
@@ -102,14 +102,8 @@ const Header = ({
             </Button>
           </label>
         </div>
-        <AddSnippetForm
-          dialogRef={dialogRef}
-          userId={userId}
-        />
-        <BootstrapAddSnippetForm
-          dialogRef={dialogRef}
-          userId={userId}
-        />
+        <AddSnippetForm dialogRef={dialogRef} userId={userId} />
+        <BootstrapAddSnippetForm dialogRef={dialogRef} userId={userId} />
       </header>
       {show && (
         <Modal show={show} onHide={handleClose}>
@@ -119,7 +113,6 @@ const Header = ({
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
-
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
@@ -197,6 +190,7 @@ const Header = ({
               >
                 <Form.Label>Code</Form.Label>
                 <Form.Control
+                  name="code"
                   as="textarea"
                   rows={3}
                   value={newSnippetObject.code}
@@ -209,6 +203,7 @@ const Header = ({
               >
                 <Form.Label>Explanation</Form.Label>
                 <Form.Control
+                  name="explanation"
                   as="textarea"
                   rows={3}
                   value={newSnippetObject.explanation}
