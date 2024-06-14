@@ -66,14 +66,12 @@ const Header = ({
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.name);
     console.log(e);
     // setNewSnippetObject(prevState => ({...prevState, [e.target.value]: e.target.value}));
     const newSnippetCopy = { ...newSnippetObject };
     setNewSnippetObject({
       ...newSnippetCopy,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
     console.log(newSnippetCopy);
     // console.log(newSnippetObject)
