@@ -21,9 +21,10 @@ const Header = ({
   const dialogRef = useRef(null);
   const [show, setShow] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("");
+  const dropdownRef = useRef(null);
   const [newSnippetObject, setNewSnippetObject] = useState({
     title: "",
-    languageSelect: "",
+    selectedLanguage,
     code: "",
     explanation: "",
   });
@@ -37,7 +38,7 @@ const Header = ({
     handleShow();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e);
     const config = {
@@ -67,7 +68,6 @@ const Header = ({
 
   const handleChange = (e) => {
     console.log(e);
-    // setNewSnippetObject(prevState => ({...prevState, [e.target.value]: e.target.value}));
     const newSnippetCopy = { ...newSnippetObject };
     setNewSnippetObject({
       ...newSnippetCopy,
@@ -128,11 +128,16 @@ const Header = ({
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label>Choose a Language</Form.Label>
-                <Dropdown>
+                {/* <Dropdown>
                   <Dropdown.Toggle
                     variant="secondary"
                     id="dropdown-basic"
                     placeholder="Select a Language"
+                    name="languageSelect"
+                    value={newSnippetObject.languageSelect}
+                    onChange={() => {
+                      handleChange()
+                    }}
                   >
                     {selectedLanguage === ""
                       ? "Please choose a Language"
@@ -143,6 +148,7 @@ const Header = ({
                       href="#/javascript"
                       onClick={() => {
                         setSelectedLanguage("JavaScript");
+                        Dropdown.current.props.onChange({ target: {name: "languageSelect", value: "JavaScript"}})
                       }}
                     >
                       JavaScript
@@ -180,7 +186,21 @@ const Header = ({
                       CLI
                     </Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
+                <Form.Control
+                  as="select"
+                  name="selectedLanguage"
+                  value={newSnippetObject.selectedLanguage}
+                  onChange={handleChange}
+                >
+                  <option value="">{newSnippetObject.selectedLanguage === "" ? "Please choose a language" : selectedLanguage}</option>
+                  <option value="JavaScript">JavaScript</option>
+                  <option value="Python">Python</option>
+                  <option value="CSS">CSS</option>
+                  <option value="HTML">HTML</option>
+                  <option value="CLI">CLI</option>
+
+                </Form.Control>
               </Form.Group>
               <Form.Group
                 className="mb-3"
