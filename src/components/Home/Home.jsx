@@ -11,14 +11,15 @@ const Home = ({
     onSnippetDeleted,
     snippets, 
     currentUserId,
-    user
+    setSnippets,
+    user,
  }) => {
 
 
   return (
     <>
     <div className="app">
-      <Header onSnippetAdded={onSnippetAdded} searchTerm={searchTerm} setSearchTerm={setSearchTerm} currentUserId={currentUserId}/>
+      <Header snippets={snippets} setSnippets={setSnippets} onSnippetAdded={onSnippetAdded} searchTerm={searchTerm} setSearchTerm={setSearchTerm} currentUserId={currentUserId}/>
       <section className="snippetCardContainer">
         <SnippetList
           filteredSnippets={filteredSnippets}

@@ -122,6 +122,7 @@ const fetchUser = () => {
                     onSnippetDeleted={onSnippetDeleted}
                     snippets={snippets}
                     currentUserId={currentUserId}
+                    setSnippets={setSnippets}
                     user={user}
                   />
                 </div>

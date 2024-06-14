@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState, prevState } from "react";
 import AddSnippetForm from "../AddSnippetForm/AddSnippetForm.jsx";
 import BootstrapAddSnippetForm from "../BootstrapAddSnippetForm/BootstrapAddSnippetForm.jsx";
 import "../../App.css";
@@ -8,12 +8,15 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import CloseButton from "react-bootstrap/CloseButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import SnippetList from "../SnippetList/SnippetList.jsx";
 
 const Header = ({
   onSnippetAdded,
   searchTerm,
   setSearchTerm,
   currentUserId,
+  snippets,
+  setSnippets,
 }) => {
   const dialogRef = useRef(null);
   const [show, setShow] = useState(false);
@@ -25,30 +28,59 @@ const Header = ({
     explanation: "",
   });
 
-  // const newSnippetObject = Object.fromEntries(new FormData(e.target));
-  console.log(newSnippetObject);
+  console.log(newSnippetObject)
+
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const handleSubmit = () => {
-    return "Hit handle submit!";
-  };
 
   const onAddButtonClick = () => {
     handleShow();
   };
 
-  const onSnippetFormSubmitted = (newSnippetObject) => {
-    dialogRef.current.close();
-    console.log(newSnippetObject);
-    onSnippetAdded(newSnippetObject);
-    setSelectedLanguage("");
-  };
+
+    const handleSubmit = () => {
+      e.preventDefault()
+      console.log(e)
+      const config = {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(/*newSnippetObject*/),
+      };
+
+      fetch("/snippets", config)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error ('Network response was not ok');
+        } 
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data)
+        onSnippetAdded(data);
+        setSelectedLanguage("");
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    };
+
+    const handleChange = (e) => {
+      console.log(e.target.value)
+      console.log(e)
+      // setNewSnippetObject(prevState => ({...prevState, [e.target.value]: e.target.value}));
+      const newSnippetCopy = {...newSnippetObject}
+      setNewSnippetObject({...newSnippetCopy, [e.target.name]: [e.target.value] })
+      console.log(newSnippetCopy)
+      // console.log(newSnippetObject)
+    };
+
 
   const userId = currentUserId;
 
-  //  Controlled componenet = changing state causes the componenet to re-render. Comes with value={} and onChange={} jsx attributes.
   return (
     <>
       <header className="header">
@@ -72,12 +104,10 @@ const Header = ({
         </div>
         <AddSnippetForm
           dialogRef={dialogRef}
-          onSnippetFormSubmitted={onSnippetFormSubmitted}
           userId={userId}
         />
         <BootstrapAddSnippetForm
           dialogRef={dialogRef}
-          // onSnippetFormSubmitted={() => onSnippetFormSubmitted(newSnippetObject)}
           userId={userId}
         />
       </header>
@@ -89,21 +119,17 @@ const Header = ({
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
+
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Title</Form.Label>
                 <Form.Control
-                  type="title"
+                  name="title"
                   placeholder="Log 'Hello world' to the console."
                   value={newSnippetObject.title}
-                  onChange={(e) =>
-                    setNewSnippetObject({
-                      ...newSnippetObject,
-                      title: e.target.value,
-                    })
-                  }
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group
@@ -126,10 +152,6 @@ const Header = ({
                       href="#/javascript"
                       onClick={() => {
                         setSelectedLanguage("JavaScript");
-                        setNewSnippetObject({
-                          ...newSnippetObject,
-                          languageSelect: "JavaScript",
-                        });
                       }}
                     >
                       JavaScript
@@ -138,10 +160,6 @@ const Header = ({
                       href="#/python"
                       onClick={() => {
                         setSelectedLanguage("Python");
-                        setNewSnippetObject({
-                          ...newSnippetObject,
-                          languageSelect: "Python",
-                        });
                       }}
                     >
                       Python
@@ -150,10 +168,6 @@ const Header = ({
                       href="#/html"
                       onClick={() => {
                         setSelectedLanguage("HTML");
-                        setNewSnippetObject({
-                          ...newSnippetObject,
-                          languageSelect: "HTML",
-                        });
                       }}
                     >
                       HTML
@@ -162,10 +176,6 @@ const Header = ({
                       href="#/css"
                       onClick={() => {
                         setSelectedLanguage("CSS");
-                        setNewSnippetObject({
-                          ...newSnippetObject,
-                          languageSelect: "CSS",
-                        });
                       }}
                     >
                       CSS
@@ -174,10 +184,6 @@ const Header = ({
                       href="#/cli"
                       onClick={() => {
                         setSelectedLanguage("CLI");
-                        setNewSnippetObject({
-                          ...newSnippetObject,
-                          languageSelect: "CLI",
-                        });
                       }}
                     >
                       CLI
@@ -190,11 +196,11 @@ const Header = ({
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Code</Form.Label>
-                <Form.Control 
-                as="textarea" 
-                rows={3} 
-                value={newSnippetObject.code}
-                onChange={(e) => setNewSnippetObject({...newSnippetObject, code: e.target.value})}
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={newSnippetObject.code}
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group
@@ -202,9 +208,11 @@ const Header = ({
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Explanation</Form.Label>
-                <Form.Control as="textarea" rows={3} 
-                value={newSnippetObject.explanation}
-                onChange={(e) => setNewSnippetObject({...newSnippetObject, explanation: e.target.value})}
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={newSnippetObject.explanation}
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Form>
