@@ -74,6 +74,8 @@ const fetchUser = () => {
     );
   };
 
+  console.table(snippets)
+
   const filteredSnippets = snippets.filter((snippet) => {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
