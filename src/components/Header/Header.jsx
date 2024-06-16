@@ -24,7 +24,7 @@ const Header = ({
   const dropdownRef = useRef(null);
   const [newSnippetObject, setNewSnippetObject] = useState({
     title: "",
-    selectedLanguage,
+    language_select: selectedLanguage,
     code: "",
     explanation: "",
   });
@@ -48,30 +48,28 @@ const Header = ({
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(/*newSnippetObject*/),
+      body: JSON.stringify(newSnippetObject),
     };
 
     fetch("/snippets", config)
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+        if (response.ok) {
+          response.json();
         }
-        return response.json();
       })
       .then((data) => {
-        console.log(data);
+        console.log("data returned from the network call", data);
         onSnippetAdded(data);
-        setSelectedLanguage("");
+        setNewSnippetObject({
+          title: "",
+          language_select: "",
+          code: "",
+          explanation: ""
+        })
       })
       .catch((error) => {
         console.log(error);
       });
-      setNewSnippetObject({
-        title: "",
-        languageSelect: "",
-        code: "",
-        explanation: ""
-      })
   };
 
   const handleChange = (e) => {
@@ -142,7 +140,7 @@ const Header = ({
                   value={newSnippetObject.selectedLanguage}
                   onChange={handleChange}
                 >
-                  <option value="">{newSnippetObject.selectedLanguage === "" ? "Please choose a language" : selectedLanguage}</option>
+                  <option value="">{newSnippetObject.selected_language === "" ? "Please choose a language" : selectedLanguage}</option>
                   <option value="JavaScript">JavaScript</option>
                   <option value="Python">Python</option>
                   <option value="CSS">CSS</option>
@@ -183,7 +181,7 @@ const Header = ({
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={handleSubmit}>
               Save Changes
             </Button>
           </Modal.Footer>

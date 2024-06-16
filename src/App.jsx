@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { GiKoala } from "react-icons/gi";
 
 function App() {
   const [snippets, setSnippets] = useState([]);
@@ -15,26 +16,24 @@ function App() {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
 
-const fetchUser = () => {
-  fetch('/authorized').then(async (r) => {
-    if (r.ok) {
-      const responseUser = await r.json();
-      setUser(responseUser)
-    } else {
-      try {
-        const err = await r.json();
-        setErrors(err);
-      } catch (error) {
-        console.error("Failed to fetch user", error)
-        setErrors({message: "An error occued while fetching user in App.jsx"})
+  const fetchUser = () => {
+    fetch("/authorized").then(async (r) => {
+      if (r.ok) {
+        const responseUser = await r.json();
+        setUser(responseUser);
+      } else {
+        try {
+          const err = await r.json();
+          setErrors(err);
+        } catch (error) {
+          console.error("Failed to fetch user", error);
+          setErrors({
+            message: "An error occued while fetching user in App.jsx",
+          });
+        }
       }
-    }
-  })
-}
-
-
-
-
+    });
+  };
 
   function fetchSnippets() {
     fetch("/snippets")
@@ -42,7 +41,6 @@ const fetchUser = () => {
       .then((data) => setSnippets(data));
     fetchUser();
   }
-
 
   useEffect(() => {
     fetchSnippets();
@@ -59,6 +57,7 @@ const fetchUser = () => {
   };
 
   const onSnippetAdded = (snippetObj) => {
+    console.log(snippetObj)
     return setSnippets([...snippets, snippetObj]);
   };
 
@@ -74,11 +73,15 @@ const fetchUser = () => {
     );
   };
 
-  console.table(snippets)
+  console.table(snippets);
 
+  console.log("%c newSnippetObject is making it into the db. language_select attribute is missing. It's not null, undefined, or an empty string. There just isn't a value there. This may be related to the backend error 'Can not serialize type:Snippet'.")
+  
   const filteredSnippets = snippets.filter((snippet) => {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
+  
+  // console.table(filteredSnippets);
 
   const updateUser = (user) => {
     if (user) {
