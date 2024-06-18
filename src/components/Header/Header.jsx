@@ -53,7 +53,7 @@ const Header = ({
     fetch("/snippets", config)
       .then((response) => {
         if (response.ok) {
-          response.json();
+          return response.json();
         }
       })
       .then((data) => {

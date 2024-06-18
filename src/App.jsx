@@ -56,9 +56,9 @@ function App() {
     }
   };
 
-  const onSnippetAdded = (snippetObj) => {
-    console.log(snippetObj)
-    return setSnippets([...snippets, snippetObj]);
+  const onSnippetAdded = (data) => {
+    console.log(data)
+    return setSnippets([...snippets, data]);
   };
 
   const onSnippetEdited = (responseSnippetObject) => {
