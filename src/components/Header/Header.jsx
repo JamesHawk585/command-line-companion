@@ -20,11 +20,10 @@ const Header = ({
 }) => {
   const dialogRef = useRef(null);
   const [show, setShow] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("");
   const dropdownRef = useRef(null);
   const [newSnippetObject, setNewSnippetObject] = useState({
     title: "",
-    language_select: selectedLanguage,
+    language_select: "",
     code: "",
     explanation: "",
   });
@@ -136,11 +135,11 @@ const Header = ({
                 <Form.Label>Choose a Language</Form.Label>
                 <Form.Control
                   as="select"
-                  name="selectedLanguage"
-                  value={newSnippetObject.selectedLanguage}
+                  name="language_select"
+                  value={newSnippetObject.language_select}
                   onChange={handleChange}
                 >
-                  <option value="">{newSnippetObject.selected_language === "" ? "Please choose a language" : selectedLanguage}</option>
+                  <option value="">{newSnippetObject.language_select === "" ? "Please choose a language" : newSnippetObject.language_select}</option>
                   <option value="JavaScript">JavaScript</option>
                   <option value="Python">Python</option>
                   <option value="CSS">CSS</option>
