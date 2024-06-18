@@ -40,6 +40,7 @@ const Header = ({
   console.log("%c ======> We are getting the snippet object. Now we need to persist to the db using the handleSubmit() function", "font: 3em; color: orange;")
 
   const handleSubmit = (e) => {
+    handleClose()
     e.preventDefault();
     console.log(e);
     const config = {
