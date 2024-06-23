@@ -1,6 +1,5 @@
 .snippetCardContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    display: flex;
 }
 
 h1 {
@@ -15,6 +14,7 @@ h1 {
     text-align: left;
     /* border: 2rem solid; */
     font-family: "Splash", cursive;
+    border: 2px dotted red;
     padding: 2rem 2rem 2rem 2rem;
     margin: 3rem;
     width: 40ch;
