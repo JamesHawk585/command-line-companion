@@ -3,6 +3,7 @@ import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
 import OffCanvasNavBar from "./components/OffCanvasNavBar/OffCanvasNavBar.jsx";
+import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -144,6 +145,11 @@ function App() {
                   setSnippets={setSnippets}
                 />
               }
+            />
+            <Route
+            path={"/UserProfile"}
+            element={<UserProfile/>}
+            
             />
           </Routes>
         </div>

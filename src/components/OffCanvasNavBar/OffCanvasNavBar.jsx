@@ -5,6 +5,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { GiHamburgerMenu } from "react-icons/gi";
 import "./OffCanvasNavBar.css"
 import darkModeImage from "../../images/7148715_dark_mode_night_moon_icon (1).png"
+import UserProfile from "../UserProfile/UserProfile.jsx"
 
 function OffCanvasNavBar({ setSnippets }) {
   const [show, setShow] = useState(false);
@@ -24,6 +25,10 @@ function OffCanvasNavBar({ setSnippets }) {
     setShow(false)
     navigate("/authentication");
   };
+
+  const handleUserProfile = () => {
+    navigate("/UserProfile")
+  }
 
   return (
     <>
@@ -45,7 +50,7 @@ function OffCanvasNavBar({ setSnippets }) {
               <Link to="/" >Home</Link>
             </li>
             <li>
-              <Link to="/authentication" >Login/Signup</Link>
+              <Link to="/UserProfile" onClick={handleUserProfile}>Profile</Link>
             </li>
             <li className="logout-button">
             <Link to="/authentication" onClick={handleLogout}>Logout</Link>
