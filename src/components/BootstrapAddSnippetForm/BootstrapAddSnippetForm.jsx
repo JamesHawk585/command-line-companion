@@ -40,7 +40,7 @@ function BootstrapAddSnippetForm({ dialogRef, onSnippetFormSubmitted, userId }) 
   return (
     <>
 
-    
+{/*     
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
@@ -72,7 +72,7 @@ function BootstrapAddSnippetForm({ dialogRef, onSnippetFormSubmitted, userId }) 
             Save Changes
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

@@ -1,52 +1,77 @@
-import React, { useRef } from 'react'
-import './SnippetCard.css'
-import EditSnippetForm from '../EditSnippetForm/EditSnippetForm';
+import React, { useRef, useState } from "react";
+import "./SnippetCard.css";
+import EditSnippetForm from "../EditSnippetForm/EditSnippetForm";
+import BootstrapEditSnippetForm from "../BootstrapEditSnippetForm/BootstrapEditSnippetForm.jsx";
 
-const SnippetCard = ({  
-    title,
-    tags,
-    languageSelect,
-    code,
-    onSnippetDeleted,
-    snippetId, 
-    explanation,
-    passPatchResponseObjectFromChildToParent
+const SnippetCard = ({
+  title,
+  tags,
+  languageSelect,
+  code,
+  onSnippetDeleted,
+  snippetId,
+  explanation,
+  passPatchResponseObjectFromChildToParent,
 }) => {
+  const [show, setShow] = useState(false);
 
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
-  const editRef = useRef(null)
+  const editRef = useRef(null);
 
   const handleEditSnippet = (e) => {
     e.preventDefault();
-    editRef.current.showModal();
-  }
+    // handleShow()
+  };
 
   const handleDeleteSnippet = (e, title) => {
     e.preventDefault();
     onSnippetDeleted(snippetId, title);
-  }
+  };
 
   const onSnippetFormEdited = (responseSnippetObject, e) => {
-    e.preventDefault()
-    editRef.current.close()
+    e.preventDefault();
+    editRef.current.close();
     passPatchResponseObjectFromChildToParent(responseSnippetObject);
-  }
-
+  };
 
   return (
-  <>
-    <div className='snippetCard'>
+    <>
+      <div className="snippetCard">
         <h1>{title}</h1>
         <h3>{tags}</h3>
         <h3>{languageSelect}</h3>
         <h3>{code}</h3>
         <h3>{explanation}</h3>
-        <button className="edit-snippet-button" onClick={(e) => handleEditSnippet(e)}>Edit</button>
-        <button className="delete-snippet-button" onClick={(e) => handleDeleteSnippet(e, title)}>Delete</button>
-    </div>
-    <EditSnippetForm editRef={editRef} onSnippetFormEdited={onSnippetFormEdited} snippetId={snippetId} title={title} languageSelect={languageSelect} code={code} explanation={explanation}/>
+        <button
+          className="edit-snippet-button"
+          onClick={(e) => handleEditSnippet(e)}
+        >
+          Edit
+        </button>
+        <button
+          className="delete-snippet-button"
+          onClick={(e) => handleDeleteSnippet(e, title)}
+        >
+          Delete
+        </button>
+      </div>
+      {show &&
+      <BootstrapEditSnippetForm
+        editRef={editRef}
+        onSnippetFormEdited={onSnippetFormEdited}
+        snippetId={snippetId}
+        title={title}
+        languageSelect={languageSelect}
+        code={code}
+        explanation={explanation}
+        show={show}
+        setShow={setShow}
+      />
+    }
     </>
-  )
-}
+  );
+};
 
-export default SnippetCard
+export default SnippetCard;

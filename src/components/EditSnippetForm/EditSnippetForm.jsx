@@ -21,7 +21,6 @@ const onSubmitEditForm = (e) => {
     // .then(responseSnippetObject => console.log(responseSnippetObject))
     .then(responseSnippetObject => onSnippetFormEdited(responseSnippetObject, e))
     formRef.current.reset()
-
 };
 
 const closeEditModal = (e) => {

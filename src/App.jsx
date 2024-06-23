@@ -58,7 +58,7 @@ function App() {
   };
 
   const onSnippetAdded = (data) => {
-    console.log(data)
+    console.log(data);
     return setSnippets([...snippets, data]);
   };
 
@@ -74,27 +74,27 @@ function App() {
     );
   };
 
-
-  
   const filteredSnippets = snippets.filter((snippet) => {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
-  
+
   // console.table(filteredSnippets);
 
   const updateUser = (handleClose) => {
-    handleClose()
-    console.log("Inside updateUser")
-    console.log(user)
-    console.log(typeof(user))
-    if (typeof(user) === Object) {
+    handleClose();
+    console.log("Inside updateUser");
+    console.log(user);
+    console.log(typeof user);
+    if (typeof user === Object) {
       setUser(null);
-      console.log("Hit the setUsers(null) in updateUser")
+      console.log("Hit the setUsers(null) in updateUser");
     } else {
       fetchUser();
       // setErrors(null)
     }
   };
+
+  console.log(user)
 
   if (!user) {
     return (
@@ -113,7 +113,13 @@ function App() {
     return (
       <>
         <div className="app">
-          <OffCanvasNavBar setSnippets={setSnippets} user={user} updateUser={updateUser} fetchUser={fetchUser} setUser={setUser}/>
+          <OffCanvasNavBar
+            setSnippets={setSnippets}
+            user={user}
+            updateUser={updateUser}
+            fetchUser={fetchUser}
+            setUser={setUser}
+          />
 
           <Routes>
             <Route
@@ -148,9 +154,8 @@ function App() {
               }
             />
             <Route
-            path={"/UserProfile"}
-            element={<UserProfile/>}
-            
+              path={"/UserProfile"}
+              element={<UserProfile user={user} />}
             />
           </Routes>
         </div>
