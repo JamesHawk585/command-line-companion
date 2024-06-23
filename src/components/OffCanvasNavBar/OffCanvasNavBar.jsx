@@ -7,7 +7,7 @@ import "./OffCanvasNavBar.css";
 import darkModeImage from "../../images/7148715_dark_mode_night_moon_icon (1).png";
 import UserProfile from "../UserProfile/UserProfile.jsx";
 
-function OffCanvasNavBar({ setSnippets, user, updateUser }) {
+function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,13 +18,18 @@ function OffCanvasNavBar({ setSnippets, user, updateUser }) {
   console.log(user);
 
   const handleLogout = () => {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      console.log(r);
-    });
-    setSnippets([]);
     setShow(false);
-    updateUser();
-    navigate("/authentication");
+    setUser(undefined)
+    fetch("/logout", { method: "DELETE" })
+      .then((r) => {
+        console.log(r);
+      }).then(() => {
+      })
+      .finally(() => {
+        // Once the fetch operation is complete, clear snippets and navigate
+        setSnippets([]);
+        navigate("/authentication");
+      });
   };
 
   const handleUserProfile = () => {
@@ -40,7 +45,6 @@ function OffCanvasNavBar({ setSnippets, user, updateUser }) {
           <div className="hamburger-menu-wrapper" onClick={handleShow}>
             <GiHamburgerMenu size={30} />
           </div>
-
         )}
 
         {/* <div className="hamburger-menu-wrapper" onClick={handleShow}>

@@ -82,7 +82,8 @@ function App() {
   
   // console.table(filteredSnippets);
 
-  const updateUser = () => {
+  const updateUser = (handleClose) => {
+    handleClose()
     console.log("Inside updateUser")
     console.log(user)
     console.log(typeof(user))
@@ -98,7 +99,6 @@ function App() {
   if (!user) {
     return (
       <>
-        {/* <Navigation updateUser={updateUser} user={user} fetchUser={fetchUser}/> */}
         <OffCanvasNavBar setSnippets={setSnippets} />
         <Authentication
           updateUser={updateUser}
@@ -113,7 +113,7 @@ function App() {
     return (
       <>
         <div className="app">
-          <OffCanvasNavBar setSnippets={setSnippets} user={user} updateUser={updateUser}/>
+          <OffCanvasNavBar setSnippets={setSnippets} user={user} updateUser={updateUser} fetchUser={fetchUser} setUser={setUser}/>
 
           <Routes>
             <Route
