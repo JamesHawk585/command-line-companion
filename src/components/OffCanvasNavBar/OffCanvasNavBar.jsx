@@ -32,15 +32,15 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
       });
   };
 
-  const handleUserProfile = () => {
-    navigate("/UserProfile");
-  };
+  // const handleUserProfile = () => {
+  //   navigate("/UserProfile");
+  // };
 
   return (
     <>
       <div className="menu-and-site-title">
         {user === undefined ? (
-          <div></div>
+          <div id="hamburger-menu-placeholder"></div>
         ) : (
           <div className="hamburger-menu-wrapper" onClick={handleShow}>
             <GiHamburgerMenu size={30} />
@@ -62,10 +62,10 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
         <Offcanvas.Body>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={handleClose}>Home</Link>
             </li>
             <li>
-              <Link to="/UserProfile" onClick={handleUserProfile}>
+              <Link to="/UserProfile" onClick={handleClose}>
                 Profile
               </Link>
             </li>

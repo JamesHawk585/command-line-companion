@@ -4,6 +4,12 @@
     font-size: 1em;
 }
 
+#hamburger-menu-placeholder {
+    /* padding-left: 30px; */
+    height: 30px;
+    width: 30px;
+}
+
 
 .h5 {
     /* background-color: aqua; */
