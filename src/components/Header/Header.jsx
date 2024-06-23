@@ -28,7 +28,6 @@ const Header = ({
     explanation: "",
   });
 
-  console.log(newSnippetObject);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);

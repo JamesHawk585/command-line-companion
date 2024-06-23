@@ -74,9 +74,7 @@ function App() {
     );
   };
 
-  console.table(snippets);
 
-  console.log("%c newSnippetObject is making it into the db. language_select attribute is missing. It's not null, undefined, or an empty string. There just isn't a value there. This may be related to the backend error 'Can not serialize type:Snippet'.")
   
   const filteredSnippets = snippets.filter((snippet) => {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -84,9 +82,13 @@ function App() {
   
   // console.table(filteredSnippets);
 
-  const updateUser = (user) => {
-    if (user) {
+  const updateUser = () => {
+    console.log("Inside updateUser")
+    console.log(user)
+    console.log(typeof(user))
+    if (typeof(user) === Object) {
       setUser(null);
+      console.log("Hit the setUsers(null) in updateUser")
     } else {
       fetchUser();
       // setErrors(null)
@@ -111,8 +113,7 @@ function App() {
     return (
       <>
         <div className="app">
-          {/* <Navigation updateUser={updateUser} fetchSnippets={fetchSnippets} setSnippets={setSnippets}/> */}
-          <OffCanvasNavBar setSnippets={setSnippets} />
+          <OffCanvasNavBar setSnippets={setSnippets} user={user} updateUser={updateUser}/>
 
           <Routes>
             <Route
