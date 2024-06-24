@@ -16,17 +16,38 @@ function BootstrapEditSnippetForm({
   setShow,
 }) {
   const formRef = useRef(null);
+  const [editedSnippetObject, setEditedSnippetObject] = useState({
+    title: "",
+    language_select: "",
+    code: "",
+    explanation: "",
+  })
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSubmit = () => {
-    onSubmitEditForm()
-  }
+  
+const handleChange = (e) => {
+  const editedSnippetCopy = { ...editedSnippetObject }
+  setEditedSnippetObject({
+    ...editedSnippetCopy,
+    [e.target.name]: e.target.value,
+  });
+  console.log(editedSnippetCopy)
 
-  const onSubmitEditForm = (e) => {
+
+}
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e)
+    console.log(e.target)
+    console.log(e.target.value)
     const formData = Object.fromEntries(new FormData(e.target));
+    
+    // Getting an empty string from e.target.value  
+    
     console.log(formData);
     fetch(`/snippets/${snippetId}`, {
       method: "PATCH",
@@ -43,10 +64,10 @@ function BootstrapEditSnippetForm({
     formRef.current.reset();
   };
 
-  const closeEditModal = (e) => {
-    e.preventDefault();
-    editRef.current.close();
-  };
+  // const closeEditModal = (e) => {
+  //   e.preventDefault();
+  //   editRef.current.close();
+  // };
 
 
     return (
@@ -58,7 +79,7 @@ function BootstrapEditSnippetForm({
               <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Form onSubmit={onSubmitEditForm}>
+              <Form onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
@@ -67,7 +88,8 @@ function BootstrapEditSnippetForm({
                   <Form.Control
                     name="title"
                     placeholder="Log 'Hello world' to the console."
-                    defaultValue={title}
+                    value={editedSnippetObject.title}
+                    onChange={(e) => handleChange(e)}
 
                   />
                 </Form.Group>
@@ -78,8 +100,9 @@ function BootstrapEditSnippetForm({
                   <Form.Label>Choose a Language</Form.Label>
                   <Form.Control
                     as="select"
-                    name="language_select"
-                    deafultValue={languageSelect}
+                    name="languageSelect"
+                    value={editedSnippetObject.language_select}
+                    onChange={(e) => handleChange(e)}
                   >
                     <option defaultValue="">{languageSelect === "" ? "Please choose a language" : languageSelect}</option>
                     <option value="JavaScript">JavaScript</option>
@@ -99,7 +122,8 @@ function BootstrapEditSnippetForm({
                     name="code"
                     as="textarea"
                     rows={3}
-                    defaultValue={code}
+                    value={editedSnippetObject.code}
+                    onChange={(e) => handleChange(e)}
                   />
                 </Form.Group>
                 <Form.Group
@@ -111,16 +135,17 @@ function BootstrapEditSnippetForm({
                     name="explanation"
                     as="textarea"
                     rows={3}
-                    defaultValue={explanation}
+                    value={editedSnippetObject.explanation}
+                    onChange={(e) => handleChange(e)}
                   />
                 </Form.Group>
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+              <Button variant="secondary" onClick={handleClose} type="close">
                 Close
               </Button>
-              <Button variant="primary" onClick={handleSubmit}>
+              <Button variant="primary" type="submit" onClick={handleClose}>
                 Save Changes
               </Button>
             </Modal.Footer>

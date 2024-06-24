@@ -5,10 +5,7 @@ import OffCanvasNavBar from "./../OffCanvasNavBar/OffCanvasNavBar.jsx";
 const UserProfile = ({ user }) => {
 
   const {username, first_name, last_name, email} = user
-
-  console.log(user)
-
-
+  
   return (
     <div>
       <ul>
@@ -16,6 +13,7 @@ const UserProfile = ({ user }) => {
         <li><strong>First Name:</strong> {first_name}</li>
         <li><strong>Last Name: </strong>{last_name}</li>
         <li><strong>Email: </strong>{email}</li>
+        <li><strong>Snippet Count: </strong></li>
       </ul>
     </div>
   )

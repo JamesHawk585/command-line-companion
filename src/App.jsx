@@ -16,6 +16,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
 
+
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
       if (r.ok) {

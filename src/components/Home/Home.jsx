@@ -15,6 +15,9 @@ const Home = ({
     user,
  }) => {
 
+  console.log("%cconsole css styling example", "color: green");
+
+
 
   return (
     <>
