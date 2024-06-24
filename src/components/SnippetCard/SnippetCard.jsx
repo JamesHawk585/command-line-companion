@@ -22,7 +22,11 @@ const SnippetCard = ({
 
   const handleEditSnippet = (e) => {
     e.preventDefault();
-    // handleShow()
+    handleShow()
+
+
+
+
   };
 
   const handleDeleteSnippet = (e, title) => {

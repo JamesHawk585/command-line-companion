@@ -20,7 +20,7 @@ function BootstrapEditSnippetForm({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleChange = () => {
+  const handleSubmit = () => {
     onSubmitEditForm()
   }
 
@@ -67,8 +67,8 @@ function BootstrapEditSnippetForm({
                   <Form.Control
                     name="title"
                     placeholder="Log 'Hello world' to the console."
-                    value={newSnippetObject.title}
-                    onChange={handleChange}
+                    defaultValue={title}
+
                   />
                 </Form.Group>
                 <Form.Group
@@ -79,16 +79,15 @@ function BootstrapEditSnippetForm({
                   <Form.Control
                     as="select"
                     name="language_select"
-                    value={newSnippetObject.language_select}
-                    onChange={handleChange}
+                    deafultValue={languageSelect}
                   >
-                    <option value="">{newSnippetObject.language_select === "" ? "Please choose a language" : newSnippetObject.language_select}</option>
+                    <option defaultValue="">{languageSelect === "" ? "Please choose a language" : languageSelect}</option>
                     <option value="JavaScript">JavaScript</option>
                     <option value="Python">Python</option>
                     <option value="CSS">CSS</option>
                     <option value="HTML">HTML</option>
                     <option value="CLI">CLI</option>
-  
+
                   </Form.Control>
                 </Form.Group>
                 <Form.Group
@@ -100,8 +99,7 @@ function BootstrapEditSnippetForm({
                     name="code"
                     as="textarea"
                     rows={3}
-                    value={newSnippetObject.code}
-                    onChange={handleChange}
+                    defaultValue={code}
                   />
                 </Form.Group>
                 <Form.Group
@@ -113,8 +111,7 @@ function BootstrapEditSnippetForm({
                     name="explanation"
                     as="textarea"
                     rows={3}
-                    value={newSnippetObject.explanation}
-                    onChange={handleChange}
+                    defaultValue={explanation}
                   />
                 </Form.Group>
               </Form>
