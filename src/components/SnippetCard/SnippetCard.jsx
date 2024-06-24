@@ -42,7 +42,7 @@ const SnippetCard = ({
         <h1>{title}</h1>
         <h3>{tags}</h3>
         <h3>{languageSelect}</h3>
-        <h3>{code}</h3>
+        <h3 className="code-snippet">{code}</h3>
         <h3>{explanation}</h3>
         <button
           className="edit-snippet-button"

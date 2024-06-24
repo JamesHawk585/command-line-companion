@@ -15,6 +15,13 @@
     font-size: 2em;
 }
 
+.code-snippet {
+        white-space: pre-wrap; /* Preserves whitespace and line breaks */
+        font-family: monospace; /* Optional: Makes the text appear more like code */
+        /* border: 1px solid #ccc; Optional: Adds a border around the snippet */
+        padding: 10px;
+}
+
 .snippetCard:hover {
     box-shadow: 0px 0px 11px #000000;
     background: skyblue;
