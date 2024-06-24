@@ -17,10 +17,10 @@ function BootstrapEditSnippetForm({
 }) {
   // const formRef = useRef(null);
   const [editedSnippetObject, setEditedSnippetObject] = useState({
-    title: "",
-    language_select: "",
-    code: "",
-    explanation: "",
+    title: title,
+    language_select: languageSelect,
+    code: code,
+    explanation: explanation,
   });
 
   const handleClose = () => setShow(false);
