@@ -6,7 +6,7 @@ import CloseButton from "react-bootstrap/CloseButton";
 
 function BootstrapEditSnippetForm({
   editRef,
-  onSnippetEdited,
+  onSnippetFormEdited,
   snippetId,
   title,
   languageSelect,
@@ -26,7 +26,8 @@ function BootstrapEditSnippetForm({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleChange = (e) => {
+  const handleChange = (e, onSnippetFormEdited) => {
+    console.log(snippetId);
     const editedSnippetCopy = { ...editedSnippetObject };
     setEditedSnippetObject({
       ...editedSnippetCopy,
@@ -39,7 +40,8 @@ function BootstrapEditSnippetForm({
   const handleEditedSnippetObjectSubmit = (e) => {
     e.preventDefault();
 
-    console.log(editedSnippetObject);
+    handleClose()
+
     fetch(`/snippets/${snippetId}`, {
       method: "PATCH",
       headers: {
@@ -48,12 +50,9 @@ function BootstrapEditSnippetForm({
       body: JSON.stringify(editedSnippetObject),
     })
       .then((r) => r.json())
-      .then((responseSnippetObject) => console.log(responseSnippetObject))
-      .then(
-        (responseSnippetObject) => onSnippetEdited(responseSnippetObject)
-        // onSnippetFormEdited(responseSnippetObject, e)
-      );
-  };
+      .then((responseSnippetObject) => onSnippetFormEdited(responseSnippetObject, e)
+    
+  )};
 
   // const closeEditModal = (e) => {
   //   e.preventDefault();
@@ -134,7 +133,7 @@ function BootstrapEditSnippetForm({
 
                 {/* Form submission did not work because the submit button was outside of the form. The from was confined to the modal body. The modal footer contained the submit button. Try to find a workaround for styling purposes? */}
 
-                <Button variant="secondary" onClick={handleClose} type="close">
+                <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
                 <Button variant="primary" type="submit">

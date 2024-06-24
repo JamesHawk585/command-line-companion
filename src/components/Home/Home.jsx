@@ -17,7 +17,9 @@ const Home = ({
 
   console.log("%cconsole css styling example", "color: green");
 
-
+  const passPatchResponseObjectFromSnippetListToHome = (responseSnippetObject) => {
+    onSnippetEdited(responseSnippetObject)
+  }
 
   return (
     <>
@@ -26,7 +28,7 @@ const Home = ({
       <section className="snippetCardContainer">
         <SnippetList
           filteredSnippets={filteredSnippets}
-          onSnippetEdited={onSnippetEdited}
+          passPatchResponseObjectFromSnippetListToHome={passPatchResponseObjectFromSnippetListToHome}
           onSnippetDeleted={onSnippetDeleted}
           snippets={snippets}
           user={user}

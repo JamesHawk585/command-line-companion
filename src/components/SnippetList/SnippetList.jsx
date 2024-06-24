@@ -3,11 +3,12 @@ import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
 
-const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets, user }) => {
+const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets, user,passPatchResponseObjectFromSnippetListToHome }) => {
 
-  const passPatchResponseObjectFromChildToParent = (responseSnippetObject) => {
-    onSnippetEdited(responseSnippetObject)
+  const passPatchResponseObjectFromSnippetCardToSnippetList = (responseSnippetObject) => {
+    passPatchResponseObjectFromSnippetListToHome(responseSnippetObject)
   }
+
 
 
   // const updateUserId = () => {
@@ -39,7 +40,7 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
           onSnippetDeleted={onSnippetDeleted}
           onSnippetEdited={onSnippetEdited}
           explanation={snippetObj.explanation}
-          passPatchResponseObjectFromChildToParent={passPatchResponseObjectFromChildToParent}
+          passPatchResponseObjectFromSnippetCardToSnippetList ={passPatchResponseObjectFromSnippetCardToSnippetList }
         />
     );
   });

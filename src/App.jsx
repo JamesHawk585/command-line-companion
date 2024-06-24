@@ -63,6 +63,7 @@ function App() {
   };
 
   const onSnippetEdited = (responseSnippetObject) => {
+    console.log(responseSnippetObject)
     setSnippets(
       snippets.map((snippet) => {
         if (snippet.id === responseSnippetObject.id) {
