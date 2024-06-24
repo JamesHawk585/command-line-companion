@@ -7,7 +7,6 @@ import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation/Navigation.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GiKoala } from "react-icons/gi";
 
