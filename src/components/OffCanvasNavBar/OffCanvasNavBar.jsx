@@ -32,6 +32,10 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
       });
   };
 
+  const handleDarkModeClick = () => {
+    console.log("Dark mode engaged!!!!🌒")
+  }
+
   // const handleUserProfile = () => {
   //   navigate("/UserProfile");
   // };
@@ -52,7 +56,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
         </div> */}
 
         <h1 className="site-title">Command Line Companion 💻</h1>
-        <img src={darkModeImage} alt="dark mode" />
+        <img src={darkModeImage} alt="dark mode" onClick={handleDarkModeClick}/>
       </div>
 
       <Offcanvas show={show} onHide={handleClose}>
