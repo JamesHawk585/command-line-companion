@@ -9,6 +9,7 @@ const SnippetCard = ({
   languageSelect,
   code,
   onSnippetDeleted,
+  onSnippetEdited,
   snippetId,
   explanation,
   passPatchResponseObjectFromChildToParent,
@@ -34,11 +35,11 @@ const SnippetCard = ({
     onSnippetDeleted(snippetId, title);
   };
 
-  const onSnippetFormEdited = (responseSnippetObject, e) => {
-    e.preventDefault();
-    editRef.current.close();
-    passPatchResponseObjectFromChildToParent(responseSnippetObject);
-  };
+  // const onSnippetFormEdited = (responseSnippetObject, e) => {
+  //   e.preventDefault();
+  //   editRef.current.close();
+  //   passPatchResponseObjectFromChildToParent(responseSnippetObject);
+  // };
 
   return (
     <>
@@ -64,7 +65,7 @@ const SnippetCard = ({
       {show &&
       <BootstrapEditSnippetForm
         editRef={editRef}
-        onSnippetFormEdited={onSnippetFormEdited}
+        // onSnippetFormEdited={onSnippetFormEdited}
         snippetId={snippetId}
         title={title}
         languageSelect={languageSelect}
@@ -72,6 +73,7 @@ const SnippetCard = ({
         explanation={explanation}
         show={show}
         setShow={setShow}
+        onSnippetEdited={onSnippetEdited}
       />
     }
     </>

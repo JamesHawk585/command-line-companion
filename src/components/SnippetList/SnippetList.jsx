@@ -37,6 +37,7 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
           languageSelect={snippetObj.language_select}
           code={snippetObj.code}
           onSnippetDeleted={onSnippetDeleted}
+          onSnippetEdited={onSnippetEdited}
           explanation={snippetObj.explanation}
           passPatchResponseObjectFromChildToParent={passPatchResponseObjectFromChildToParent}
         />
