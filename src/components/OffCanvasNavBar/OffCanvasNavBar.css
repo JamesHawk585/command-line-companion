@@ -17,6 +17,16 @@
     font-size: 1em!important;
 }
 
+.darkModeIcon {
+    height: 48px;
+    width: 48px;
+}
+
+.lightModeIcon {
+    height: 48px;
+    width: 48px;
+}
+
 .roboto-regular {
     font-family: "Roboto", sans-serif;
     font-weight: 400;

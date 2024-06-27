@@ -62,7 +62,7 @@ function BootstrapEditSnippetForm({
   return (
     <>
       {show && (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} className="editSnippetModal">
           <Modal.Header>
             <CloseButton aria-label="Hide" variant="white" />
             <Modal.Title>{title}</Modal.Title>

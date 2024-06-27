@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiFalloutShelter, GiHamburgerMenu } from "react-icons/gi";
 import "./OffCanvasNavBar.css";
-import darkModeImage from "../../images/7148715_dark_mode_night_moon_icon (1).png";
+import darkModeIcon from "../../images/7148715_dark_mode_night_moon_icon (1).png";
+import lightModeIcon from "../../images/sunny-day (3).png";
 import UserProfile from "../UserProfile/UserProfile.jsx";
 
 function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) {
   const [show, setShow] = useState(false);
+  const [darkMode, setDarkMode] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,11 +36,8 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
 
   const handleDarkModeClick = () => {
     console.log("Dark mode engaged!!!!🌒")
+    setDarkMode(!darkMode)
   }
-
-  // const handleUserProfile = () => {
-  //   navigate("/UserProfile");
-  // };
 
   return (
     <>
@@ -51,14 +50,15 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
           </div>
         )}
 
-        {/* <div className="hamburger-menu-wrapper" onClick={handleShow}>
-          <GiHamburgerMenu size={30} />
-        </div> */}
-
         <h1 className="site-title">Command Line Companion 💻</h1>
-        <img src={darkModeImage} alt="dark mode" onClick={handleDarkModeClick}/>
-      </div>
 
+        {darkMode === true ? (
+          <img src={lightModeIcon} alt="light mode" onClick={handleDarkModeClick} className="lightModeIcon"/>
+        ) : (
+          <img src={darkModeIcon} alt="dark mode" onClick={handleDarkModeClick} className="darkModeIcon"/>
+        )}
+
+      </div>
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header className="close-button" closeButton>
           <Offcanvas.Title></Offcanvas.Title>
