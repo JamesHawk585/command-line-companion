@@ -8,7 +8,7 @@ import darkModeIcon from "../../images/7148715_dark_mode_night_moon_icon (1).png
 import lightModeIcon from "../../images/sunny-day (3).png";
 import UserProfile from "../UserProfile/UserProfile.jsx";
 
-function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) {
+function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp }) {
   const [show, setShow] = useState(false);
   const [darkMode, setDarkMode] = useState(false)
 
@@ -37,6 +37,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
   const handleDarkModeClick = () => {
     console.log("Dark mode engaged!!!!🌒")
     setDarkMode(!darkMode)
+    passDarkModeValueFromOffCanvasNavBarToApp(darkMode)
   }
 
   return (
@@ -46,7 +47,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser }) 
           <div id="hamburger-menu-placeholder"></div>
         ) : (
           <div className="hamburger-menu-wrapper" onClick={handleShow}>
-            <GiHamburgerMenu size={30} />
+            <GiHamburgerMenu size={48} />
           </div>
         )}
 

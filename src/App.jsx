@@ -95,7 +95,12 @@ function App() {
     }
   };
 
+  const passDarkModeValueFromOffCanvasNavBarToApp = (darkMode) => {
+    console.log("Dark mode in App.jsx!!! 🌙")
+  }
+
   console.log(user)
+  console.log("%cdarkMode stateful value is being passed from OffCanvasNavbar to App.jsx. Each descendant component of App will need access to darkMode, as each component has it's own stylesheet. Consider passing darkMode down with useContext.", " color: orange")
 
   if (!user) {
     return (
@@ -120,6 +125,7 @@ function App() {
             updateUser={updateUser}
             fetchUser={fetchUser}
             setUser={setUser}
+            passDarkModeValueFromOffCanvasNavBarToApp={passDarkModeValueFromOffCanvasNavBarToApp}
           />
 
           <Routes>
