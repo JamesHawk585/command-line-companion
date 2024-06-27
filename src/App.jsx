@@ -16,7 +16,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
 
-
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
       if (r.ok) {
@@ -63,7 +62,7 @@ function App() {
   };
 
   const onSnippetEdited = (responseSnippetObject) => {
-    console.log(responseSnippetObject)
+    console.log(responseSnippetObject);
     setSnippets(
       snippets.map((snippet) => {
         if (snippet.id === responseSnippetObject.id) {
@@ -96,16 +95,24 @@ function App() {
   };
 
   const passDarkModeValueFromOffCanvasNavBarToApp = (darkMode) => {
-    console.log("Dark mode in App.jsx!!! 🌙")
-  }
+    console.log("Dark mode in App.jsx!!! 🌙");
+  };
 
-  console.log(user)
-  console.log("%cdarkMode stateful value is being passed from OffCanvasNavbar to App.jsx. Each descendant component of App will need access to darkMode, as each component has it's own stylesheet. Consider passing darkMode down with useContext.", " color: orange")
+  console.log(user);
+  console.log(
+    "%cdarkMode stateful value is being passed from OffCanvasNavbar to App.jsx. Each descendant component of App will need access to darkMode, as each component has it's own stylesheet. Consider passing darkMode down with useContext.",
+    " color: orange"
+  );
 
   if (!user) {
     return (
       <>
-        <OffCanvasNavBar setSnippets={setSnippets} />
+        <OffCanvasNavBar
+          setSnippets={setSnippets}
+          passDarkModeValueFromOffCanvasNavBarToApp={
+            passDarkModeValueFromOffCanvasNavBarToApp
+          }
+        />
         <Authentication
           updateUser={updateUser}
           user={user}
@@ -125,7 +132,9 @@ function App() {
             updateUser={updateUser}
             fetchUser={fetchUser}
             setUser={setUser}
-            passDarkModeValueFromOffCanvasNavBarToApp={passDarkModeValueFromOffCanvasNavBarToApp}
+            passDarkModeValueFromOffCanvasNavBarToApp={
+              passDarkModeValueFromOffCanvasNavBarToApp
+            }
           />
 
           <Routes>
