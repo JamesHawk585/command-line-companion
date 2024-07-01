@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext, createContext } from 'react'
 import Header from'../Header/Header.jsx'
 import SnippetList from '../SnippetList/SnippetList.jsx'
+
 
 const Home = ({ 
     onSnippetAdded,
@@ -20,6 +21,7 @@ const Home = ({
   const passPatchResponseObjectFromSnippetListToHome = (responseSnippetObject) => {
     onSnippetEdited(responseSnippetObject)
   }
+
 
   return (
     <>

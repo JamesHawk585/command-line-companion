@@ -2,8 +2,13 @@ import React, { useEffect, useInsertionEffect, useState } from "react";
 import { Await, useNavigate } from "react-router-dom";
 import "./Authentication.css";
 
- 
-const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
+const Authentication = ({
+  user,
+  setUser,
+  setSnippets,
+  fetchSnippets,
+  darkMode,
+}) => {
   const [signUp, setSignUp] = useState(false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -15,17 +20,15 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
     password_confirmation: "",
   });
 
-
+  console.log("darkMode in Authentication.jsx", darkMode);
 
   const [errors, setErrors] = useState([]);
-
 
   // async function fetchSnippets(setSnippets) {
   //   fetch("/snippets")
   //     .then((r) => r.json())
   //     .then((data) => setSnippets(data));
   // };
- 
 
   // console.log("user in Authentication/jsx", user);
 
@@ -50,12 +53,12 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
     };
     fetch(signUp ? "/signup" : "/login", config).then((r) => {
       if (r.ok) {
-        setUser(r)
+        setUser(r);
         navigate("/");
-        fetchSnippets()
+        fetchSnippets();
       } else {
         r.json().then((data) => {
-          console.log("console.log(data)", data)
+          console.log("console.log(data)", data);
           setTimeout(() => {
             setErrors([]);
           }, 5000);
@@ -65,7 +68,6 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
     });
   };
 
-
   const handleChange = ({ target }) => {
     const { name, value } = target;
     const userDataCopy = { ...userData };
@@ -73,10 +75,21 @@ const Authentication = ({ user, setUser, setSnippets, fetchSnippets }) => {
     setUserData(userDataCopy);
   };
 
+  console.log(darkMode)
+
+  // Why is darkMode always evaluating to false? 
+
+  const getClassNameSuffix = (darkMode) => (darkMode ? "-dark" : "");
+
+  console.log(getClassNameSuffix(darkMode))
+
+    // {}`auth-form ${darkMode} : ''
+
+
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Username</label>
+      <form onSubmit={(e) => handleSubmit(e)} className={`form${getClassNameSuffix(darkMode)}`}>
+        <label className={`username-label${getClassNameSuffix(darkMode)}`}>Username</label>
         <input
           type="text"
           name="username"

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, createContext } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiFalloutShelter, GiHamburgerMenu } from "react-icons/gi";
@@ -7,17 +7,16 @@ import "./OffCanvasNavBar.css";
 import darkModeIcon from "../../images/7148715_dark_mode_night_moon_icon (1).png";
 import lightModeIcon from "../../images/sunny-day (3).png";
 import UserProfile from "../UserProfile/UserProfile.jsx";
+import ThemeContext from "/home/jph94880/development/code/projects/command-line-companion/client/src/App.jsx"
 
-function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp }) {
+function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp, darkMode, setDarkMode }) {
   const [show, setShow] = useState(false);
-  const [darkMode, setDarkMode] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
 
-  console.log(user);
 
   const handleLogout = () => {
     setShow(false);
@@ -35,9 +34,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
   };
 
   const handleDarkModeClick = () => {
-    console.log("Dark mode engaged!!!!🌒")
     setDarkMode(!darkMode)
-    passDarkModeValueFromOffCanvasNavBarToApp(darkMode)
   }
 
   return (

@@ -5,7 +5,7 @@ import Authentication from "./components/Authentication/Authentication.jsx";
 import OffCanvasNavBar from "./components/OffCanvasNavBar/OffCanvasNavBar.jsx";
 import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import Home from "./components/Home/Home.jsx";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GiKoala } from "react-icons/gi";
@@ -15,6 +15,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
@@ -94,88 +95,80 @@ function App() {
     }
   };
 
-  const passDarkModeValueFromOffCanvasNavBarToApp = (darkMode) => {
-    console.log("Dark mode in App.jsx!!! 🌙");
-  };
-
-  console.log(user);
-  console.log(
-    "%cdarkMode stateful value is being passed from OffCanvasNavbar to App.jsx. Each descendant component of App will need access to darkMode, as each component has it's own stylesheet. Consider passing darkMode down with useContext.",
-    " color: orange"
-  );
-
   if (!user) {
     return (
-      <>
-        <OffCanvasNavBar
-          setSnippets={setSnippets}
-          passDarkModeValueFromOffCanvasNavBarToApp={
-            passDarkModeValueFromOffCanvasNavBarToApp
-          }
-        />
-        <Authentication
-          updateUser={updateUser}
-          user={user}
-          setUser={setUser}
-          fetchSnippets={fetchSnippets}
-        />
-      </>
+        <>
+          <OffCanvasNavBar
+            setSnippets={setSnippets}
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
+          <Authentication
+            updateUser={updateUser}
+            user={user}
+            setUser={setUser}
+            fetchSnippets={fetchSnippets}
+            darkMode={darkMode}
+          />
+        </>
     );
   } else {
     const currentUserId = user.id;
     return (
-      <>
-        <div className="app">
-          <OffCanvasNavBar
-            setSnippets={setSnippets}
-            user={user}
-            updateUser={updateUser}
-            fetchUser={fetchUser}
-            setUser={setUser}
-            passDarkModeValueFromOffCanvasNavBarToApp={
-              passDarkModeValueFromOffCanvasNavBarToApp
-            }
-          />
+        <>
+          <div className="app">
+            <OffCanvasNavBar
+              setSnippets={setSnippets}
+              user={user}
+              updateUser={updateUser}
+              fetchUser={fetchUser}
+              setUser={setUser}
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+            />
 
-          <Routes>
-            <Route
-              path={"/"}
-              element={
-                <div>
-                  <Home
-                    onSnippetAdded={onSnippetAdded}
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
-                    filteredSnippets={filteredSnippets}
-                    onSnippetEdited={onSnippetEdited}
-                    onSnippetDeleted={onSnippetDeleted}
-                    snippets={snippets}
-                    currentUserId={currentUserId}
-                    setSnippets={setSnippets}
+            <Routes>
+              <Route
+                path={"/"}
+                element={
+                  <div>
+                    <Home
+                      onSnippetAdded={onSnippetAdded}
+                      searchTerm={searchTerm}
+                      setSearchTerm={setSearchTerm}
+                      filteredSnippets={filteredSnippets}
+                      onSnippetEdited={onSnippetEdited}
+                      onSnippetDeleted={onSnippetDeleted}
+                      snippets={snippets}
+                      currentUserId={currentUserId}
+                      setSnippets={setSnippets}
+                      user={user}
+                      darkMode={darkMode}
+                    />
+                  </div>
+                }
+              />
+              <Route
+                path={"/authentication"}
+                element={
+                  <Authentication
                     user={user}
+                    setUser={setUser}
+                    updateUser={updateUser}
+                    fetchSnippets={fetchSnippets}
+                    setSnippets={setSnippets}
+                    darkMode={darkMode}
                   />
-                </div>
-              }
-            />
-            <Route
-              path={"/authentication"}
-              element={
-                <Authentication
-                  user={user}
-                  setUser={setUser}
-                  updateUser={updateUser}
-                  fetchSnippets={fetchSnippets}
-                  setSnippets={setSnippets}
-                />
-              }
-            />
-            <Route
-              path={"/UserProfile"}
-              element={<UserProfile user={user} />}
-            />
-          </Routes>
-        </div>
-      </>
+                }
+              />
+              <Route
+                path={"/UserProfile"}
+                element={<UserProfile user={user}
+                darkMode={darkMode} />}
+              />
+            </Routes>
+          </div>
+        </>
     );
   }
 }
