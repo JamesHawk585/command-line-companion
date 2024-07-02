@@ -7,7 +7,8 @@ const Authentication = ({
   setUser,
   setSnippets,
   fetchSnippets,
-  darkMode,
+  lightMode,
+  getClassNameSuffix
 }) => {
   const [signUp, setSignUp] = useState(false);
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Authentication = ({
     password_confirmation: "",
   });
 
-  console.log("darkMode in Authentication.jsx", darkMode);
+  console.log("lightMode in Authentication.jsx", lightMode);
 
   const [errors, setErrors] = useState([]);
 
@@ -75,21 +76,19 @@ const Authentication = ({
     setUserData(userDataCopy);
   };
 
-  console.log(darkMode)
+  console.log("lightMode in Authentication.jsx: ", lightMode)
 
-  // Why is darkMode always evaluating to false? 
+  // Why is lightMode always evaluating to false? 
 
-  const getClassNameSuffix = (darkMode) => (darkMode ? "-dark" : "");
 
-  console.log(getClassNameSuffix(darkMode))
 
-    // {}`auth-form ${darkMode} : ''
+  console.log(getClassNameSuffix(lightMode))
 
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)} className={`form${getClassNameSuffix(darkMode)}`}>
-        <label className={`username-label${getClassNameSuffix(darkMode)}`}>Username</label>
+      <form onSubmit={(e) => handleSubmit(e)} className={`form${getClassNameSuffix(lightMode)}`}>
+        <label className={`username-label${getClassNameSuffix(lightMode)}`}>Username</label>
         <input
           type="text"
           name="username"

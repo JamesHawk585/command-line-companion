@@ -9,7 +9,7 @@ import lightModeIcon from "../../images/sunny-day (3).png";
 import UserProfile from "../UserProfile/UserProfile.jsx";
 import ThemeContext from "/home/jph94880/development/code/projects/command-line-companion/client/src/App.jsx"
 
-function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp, darkMode, setDarkMode }) {
+function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp, lightMode, setLightMode, getClassNameSuffix }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,6 +17,8 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
 
   const navigate = useNavigate();
 
+  
+  console.log("lightMode in OffCanvasNavBar.jsx: ", lightMode)
 
   const handleLogout = () => {
     setShow(false);
@@ -34,12 +36,20 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
   };
 
   const handleDarkModeClick = () => {
-    setDarkMode(!darkMode)
+    setLightMode(!lightMode)
   }
+
+  const setThemeIcon = () => {
+    if (lightMode === true) {
+      return lightModeIcon
+    } else if (lightMode === false) {
+      return darkModeIcon
+    }
+  }
+
 
   return (
     <>
-    {darkMode === true? (
       <div className="menu-and-site-title">
         {user === undefined? (
           <div id="hamburger-menu-placeholder"></div>
@@ -75,44 +85,6 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
           </Offcanvas.Body>
         </Offcanvas>
       </div>
-    ) : (
-
-      <div className="menu-and-site-title-dark">
-        {user === undefined? (
-          <div id="hamburger-menu-placeholder-dark"></div>
-        ) : (
-          <div className="hamburger-menu-wrapper-dark" onClick={handleShow}>
-            <GiHamburgerMenu size={48} />
-          </div>
-        )}
-        <h1 className="site-title-dark">Command Line Companion 💻</h1>
-        
-        <img src={darkModeIcon} alt="dark mode" onClick={handleDarkModeClick} className="darkModeIcon"/>
-
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header className="close-button-dark" closeButton>
-            <Offcanvas.Title></Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body className="offcanvas-body-dark">
-            <ul>
-              <li>
-                <Link to="/" onClick={handleClose} className="home-link-dark">Home</Link>
-              </li>
-              <li>
-                <Link to="/UserProfile" onClick={handleClose} className="profile-link-dark">
-                  Profile
-                </Link>
-              </li>
-              <li className="logout-button-dark">
-                <Link to="/authentication" onClick={handleLogout} className="logout-link-dark">
-                  Logout
-                </Link>
-              </li>
-            </ul>
-          </Offcanvas.Body>
-        </Offcanvas>
-      </div>
-    )}
   </>
   )
 }

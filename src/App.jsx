@@ -15,7 +15,9 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const [lightMode, setLightMode] = useState(false);
+
+  console.log("lightMode in App.jsx: ", lightMode)
 
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
@@ -79,6 +81,8 @@ function App() {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  const getClassNameSuffix = (lightMode) => (lightMode ? "-light" : "-dark");
+
   // console.table(filteredSnippets);
 
   const updateUser = (handleClose) => {
@@ -100,15 +104,17 @@ function App() {
         <>
           <OffCanvasNavBar
             setSnippets={setSnippets}
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
+            lightMode={lightMode}
+            setLightMode={setLightMode}
+            getClassNameSuffix={getClassNameSuffix}
           />
           <Authentication
             updateUser={updateUser}
             user={user}
             setUser={setUser}
             fetchSnippets={fetchSnippets}
-            darkMode={darkMode}
+            lightMode={lightMode}
+            getClassNameSuffix={getClassNameSuffix}
           />
         </>
     );
@@ -123,8 +129,9 @@ function App() {
               updateUser={updateUser}
               fetchUser={fetchUser}
               setUser={setUser}
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
+              lightMode={lightMode}
+              setLightMode={setLightMode}
+              getClassNameSuffix={getClassNameSuffix}
             />
 
             <Routes>
@@ -143,7 +150,8 @@ function App() {
                       currentUserId={currentUserId}
                       setSnippets={setSnippets}
                       user={user}
-                      darkMode={darkMode}
+                      lightMode={lightMode}
+                      getClassNameSuffix={getClassNameSuffix}
                     />
                   </div>
                 }
@@ -157,14 +165,15 @@ function App() {
                     updateUser={updateUser}
                     fetchSnippets={fetchSnippets}
                     setSnippets={setSnippets}
-                    darkMode={darkMode}
+                    lightMode={lightMode}
+                    getClassNameSuffix={getClassNameSuffix}
                   />
                 }
               />
               <Route
                 path={"/UserProfile"}
                 element={<UserProfile user={user}
-                darkMode={darkMode} />}
+                lightMode={lightMode} />}
               />
             </Routes>
           </div>
