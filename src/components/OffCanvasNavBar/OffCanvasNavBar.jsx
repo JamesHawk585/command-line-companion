@@ -60,7 +60,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
         )}
         <h1 className="site-title">Command Line Companion 💻</h1>
         
-        <img src={lightModeIcon} alt="light mode" onClick={handleDarkModeClick} className="lightModeIcon"/>
+        <img src={setThemeIcon()} alt="light mode" onClick={handleDarkModeClick} className="lightModeIcon"/>
 
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header className="close-button" closeButton>
