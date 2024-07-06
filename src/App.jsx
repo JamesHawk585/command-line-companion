@@ -81,7 +81,15 @@ function App() {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  const getClassNameSuffix = (lightMode) => (lightMode ? "-light" : "-dark");
+  console.log(lightMode)
+
+  const getClassNameSuffix = (lightMode) => (lightMode ? "" : "-dark");
+
+  // function getClassNameSuffix(lightMode) {
+  //   if (lightMode === false) {
+  //     return "-dark"
+  //   } 
+  // }
 
   // console.table(filteredSnippets);
 

@@ -13,6 +13,8 @@ const SnippetCard = ({
   snippetId,
   explanation,
   passPatchResponseObjectFromSnippetCardToSnippetList,
+  getClassNameSuffix,
+  lightMode
 }) => {
   const [show, setShow] = useState(false);
 
@@ -36,9 +38,11 @@ const SnippetCard = ({
     passPatchResponseObjectFromSnippetCardToSnippetList(responseSnippetObject);
   };
 
+console.log(getClassNameSuffix(lightMode))
+  
   return (
     <>
-      <div className="snippetCard">
+      <div className={`snippet-card${getClassNameSuffix(lightMode)}`}>
         <h1>{title}</h1>
         <h3>{tags}</h3>
         <h3>{languageSelect}</h3>

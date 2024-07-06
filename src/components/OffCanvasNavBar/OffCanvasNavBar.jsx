@@ -17,6 +17,8 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
 
   const navigate = useNavigate();
 
+  console.log(getClassNameSuffix)
+
   
   console.log("lightMode in OffCanvasNavBar.jsx: ", lightMode)
 
@@ -35,7 +37,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
       });
   };
 
-  const handleDarkModeClick = () => {
+  const handleLightModeClick = () => {
     setLightMode(!lightMode)
   }
 
@@ -47,32 +49,39 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
     }
   }
 
+  const setThemeIconClassName = (lightMode) => (lightMode ? "lightModeIcon" : "darkModeIcon") 
+
+  console.log("getClassNameSuffix():", getClassNameSuffix(lightMode))
 
   return (
     <>
-      <div className="menu-and-site-title">
+      <div className={`menu-and-site-title${getClassNameSuffix(lightMode)}`}>
         {user === undefined? (
           <div id="hamburger-menu-placeholder"></div>
         ) : (
-          <div className="hamburger-menu-wrapper" onClick={handleShow}>
+          <div className={`hamburger-menu-wrapper${getClassNameSuffix(lightMode)}`} onClick={handleShow}>
             <GiHamburgerMenu size={48} />
           </div>
         )}
-        <h1 className="site-title">Command Line Companion 💻</h1>
+        <h1 className={`hamburger-menu-wrapper${getClassNameSuffix(lightMode)}`}>Command Line Companion 💻</h1>
         
-        <img src={setThemeIcon()} alt="light mode" onClick={handleDarkModeClick} className="lightModeIcon"/>
+        
+        <img src={setThemeIcon()} alt="theme icon" onClick={handleLightModeClick} className={setThemeIconClassName(lightMode)}/>
 
         <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header className="close-button" closeButton>
+          <Offcanvas.Header className={`offcanvas-header${getClassNameSuffix(lightMode)}`} closeButton>
+
+
+            
             <Offcanvas.Title></Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
+          </Offcanvas.Header >
+          <Offcanvas.Body className={`offcanvas-body${getClassNameSuffix(lightMode)}`}>
             <ul>
               <li>
-                <Link to="/" onClick={handleClose}>Home</Link>
+                <Link to="/" onClick={handleClose} className={`home-link${getClassNameSuffix(lightMode)}`}>Home</Link>
               </li>
               <li>
-                <Link to="/UserProfile" onClick={handleClose}>
+                <Link to="/UserProfile" onClick={handleClose} className={`user-profile-link${getClassNameSuffix(lightMode)}`}>
                   Profile
                 </Link>
               </li>

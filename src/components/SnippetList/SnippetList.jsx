@@ -3,18 +3,11 @@ import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
 
-const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets, user,passPatchResponseObjectFromSnippetListToHome }) => {
+const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snippets, user,passPatchResponseObjectFromSnippetListToHome, getClassNameSuffix, lightMode }) => {
 
   const passPatchResponseObjectFromSnippetCardToSnippetList = (responseSnippetObject) => {
     passPatchResponseObjectFromSnippetListToHome(responseSnippetObject)
   }
-
-
-
-  // const updateUserId = () => {
-  //   const newUserId = getCurrentUserFromSession();
-  //   SetUser(newUserId)
-  // }
 
   if (snippets.length == 0) {
     return (
@@ -30,6 +23,8 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
 
   const snippetCards = filteredSnippets.map((snippetObj, index) => {
     return (
+      <>
+      <div className="snippet-card-container">
         <SnippetCard
           key={index}
           snippetId={snippetObj.id}
@@ -40,8 +35,12 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
           onSnippetDeleted={onSnippetDeleted}
           onSnippetEdited={onSnippetEdited}
           explanation={snippetObj.explanation}
+          getClassNameSuffix={getClassNameSuffix}
+          lightMode={lightMode}
           passPatchResponseObjectFromSnippetCardToSnippetList ={passPatchResponseObjectFromSnippetCardToSnippetList }
         />
+        </div>
+        </>
     );
   });
 

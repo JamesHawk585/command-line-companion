@@ -2,3 +2,20 @@ h1 {
     justify-content: center;
 }
 
+body-dark {
+ background-color: #313A3C;
+}
+
+body{
+    color: #313A3C;
+}
+
+.snippet-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    /* border: blue dotted 2px; */
+    margin: 1.5em;
+    padding: 1.5em;
+    /* justify-content: center; */
+}

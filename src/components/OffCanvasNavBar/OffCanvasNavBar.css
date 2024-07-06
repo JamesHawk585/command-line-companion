@@ -17,10 +17,10 @@
     font-size: 1em!important;
 }
 
-.darkModeIcon {
+/* .darkModeIcon {
     height: 48px;
     width: 48px;
-}
+} */
 
 .lightModeIcon {
     height: 48px;
@@ -48,7 +48,6 @@
 
 .hamburger-menu-wrapper {
     height: 48px;
-    width: 48px;
 }
 
 .site-title {
@@ -105,6 +104,8 @@ li {
     font-size: 1em;
 }
 
+
+
 /* ------------------------------------------------------------------------ */
 /* Dark Mode */
 
@@ -121,7 +122,7 @@ li {
 }
 
 .darkModeIcon {
-    -webkit-filter: invert(100%); /* Safari 6.0 - 9.0 */
+    -webkit-filter: invert(100%);
     filter: invert(100%);
 }
 
@@ -131,10 +132,7 @@ li {
 }
 
 
-.darkModeIcon-dark {
-    height: 48px;
-    width: 48px;
-}
+
 
 .lightModeIcon-dark {
     height: 48px;
@@ -148,7 +146,7 @@ li {
   }
 
   .offcanvas-body-dark {
-    background-color: whitesmoke;
+    background-color:lightgray;
     color: black;
   }
 
@@ -179,7 +177,7 @@ li {
 
 .hamburger-menu-wrapper-dark {
     height: 48px;
-    width: 48px;
+    /* width: 48px; */
 }
 
 .site-title-dark {
@@ -221,10 +219,14 @@ a:hover{
 }
 
 .offcanvas-header-dark {
-    background-color: darkblue;
-    color: white;
+    background-color: lightgray;
+    color: black;
     /* font-size: 2rem; */
     font-size: 2em;
+}
+
+.user-profile-link-dark {
+    color: black;
 }
 
 
