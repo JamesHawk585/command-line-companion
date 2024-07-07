@@ -145,9 +145,9 @@ const Authentication = ({
             <p key={error /*Use UUID*/}>{error}</p>
           ))}
         </h2>
-        <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
+        <h2 className={`user-registration-prompt-h2${getClassNameSuffix(lightMode)}`}>{signUp ? "Already a member?" : "Not a member?"}</h2>
         <button
-          id="register-or-signup-toggle-button"
+          id={`register-or-signup-toggle-button${getClassNameSuffix(lightMode)}`}
           onClick={handleSignUpClick}
         >
           {signUp ? "Log In!" : "Register Now!"}
