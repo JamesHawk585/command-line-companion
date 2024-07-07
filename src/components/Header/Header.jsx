@@ -84,11 +84,13 @@ const Header = ({
     // console.log(newSnippetObject)
   };
 
+
   const userId = currentUserId;
 
   return (
     <>
-      <header className="header">
+    {/* className="header" */}
+      <header className={`header${getClassNameSuffix(lightMode)}`}>
         <div id="search-bar-div">
           <label>
             🔎{" "}
@@ -100,7 +102,7 @@ const Header = ({
             ></input>
             <Button
               variant="primary"
-              id="add-snippet-button"
+              id={`add-snippet-button${getClassNameSuffix(lightMode)}`}
               onClick={onAddButtonClick}
             >
               Add Snippet

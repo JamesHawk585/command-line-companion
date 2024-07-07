@@ -13,13 +13,6 @@
     margin: 0 auto;
 }
 
-.header-dark {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    background-color: #313A3C;
-}
-
 .add-snippet-button:hover {
     background-color: white;
     color: black;
@@ -42,3 +35,23 @@
     color: black;
 }
 
+/* -------------------------------Dark Mode---------------------------- */
+
+.header-dark {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #313A3C;
+}
+
+#add-snippet-button-dark {
+    background-color: lightgray;
+    border: none;
+    color: black
+}
+
+#add-snippet-button-dark:hover {
+    background-color: skyblue;
+    border: none;
+    color: black
+}

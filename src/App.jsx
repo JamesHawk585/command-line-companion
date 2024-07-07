@@ -107,14 +107,25 @@ function App() {
     }
   };
 
+  const htmlElement = document.getElementsByTagName('html')[0]
+  const setHTMLLightMode = () => {
+    if (lightMode == true) {
+      htmlElement.style.backgroundColor = '#313a3c'
+    } else if (lightMode === false) {
+      htmlElement.style.backgroundColor = 'white'
+    }
+  }
+
   if (!user) {
     return (
-        <>
+      <>
+      <div className={`app${getClassNameSuffix(lightMode)}`}>
           <OffCanvasNavBar
             setSnippets={setSnippets}
             lightMode={lightMode}
             setLightMode={setLightMode}
             getClassNameSuffix={getClassNameSuffix}
+            setHTMLLightMode={setHTMLLightMode}
           />
           <Authentication
             updateUser={updateUser}
@@ -123,14 +134,16 @@ function App() {
             fetchSnippets={fetchSnippets}
             lightMode={lightMode}
             getClassNameSuffix={getClassNameSuffix}
+            setHTMLLightMode={setHTMLLightMode}
           />
+        </div>
         </>
     );
   } else {
     const currentUserId = user.id;
     return (
         <>
-          <div className="app">
+          <div className={`app${getClassNameSuffix(lightMode)}`}>
             <OffCanvasNavBar
               setSnippets={setSnippets}
               user={user}
@@ -140,6 +153,7 @@ function App() {
               lightMode={lightMode}
               setLightMode={setLightMode}
               getClassNameSuffix={getClassNameSuffix}
+              setHTMLLightMode={setHTMLLightMode}
             />
 
             <Routes>
@@ -160,6 +174,7 @@ function App() {
                       user={user}
                       lightMode={lightMode}
                       getClassNameSuffix={getClassNameSuffix}
+                      setHTMLLightMode={setHTMLLightMode}
                     />
                   </div>
                 }
@@ -175,13 +190,16 @@ function App() {
                     setSnippets={setSnippets}
                     lightMode={lightMode}
                     getClassNameSuffix={getClassNameSuffix}
+                    setHTMLLightMode={setHTMLLightMode}
                   />
                 }
               />
               <Route
                 path={"/UserProfile"}
                 element={<UserProfile user={user}
-                lightMode={lightMode} />}
+                lightMode={lightMode}
+                getClassNameSuffix={getClassNameSuffix} />}
+                setHTMLLightMode={setHTMLLightMode}
               />
             </Routes>
           </div>

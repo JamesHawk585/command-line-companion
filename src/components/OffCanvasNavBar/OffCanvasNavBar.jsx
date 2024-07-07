@@ -9,18 +9,12 @@ import lightModeIcon from "../../images/sunny-day (3).png";
 import UserProfile from "../UserProfile/UserProfile.jsx";
 import ThemeContext from "/home/jph94880/development/code/projects/command-line-companion/client/src/App.jsx"
 
-function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp, lightMode, setLightMode, getClassNameSuffix }) {
+function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp, lightMode, setLightMode, getClassNameSuffix, setHTMLLightMode }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const navigate = useNavigate();
-
-  console.log(getClassNameSuffix)
-
-  
-  console.log("lightMode in OffCanvasNavBar.jsx: ", lightMode)
 
   const handleLogout = () => {
     setShow(false);
@@ -37,7 +31,11 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
       });
   };
 
-  const handleLightModeClick = () => {
+
+  console.log(setHTMLLightMode)
+  const handleLightModeClick = (event) => {
+    console.log(setHTMLLightMode)
+    setHTMLLightMode()
     setLightMode(!lightMode)
   }
 

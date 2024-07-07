@@ -19,6 +19,7 @@ const Home = ({
  }) => {
 
   console.log("%cconsole css styling example", "color: green");
+  console.log(getClassNameSuffix(lightMode))
 
   const passPatchResponseObjectFromSnippetListToHome = (responseSnippetObject) => {
     onSnippetEdited(responseSnippetObject)
@@ -28,7 +29,7 @@ const Home = ({
   return (
     <>
     <div className="app">
-      <Header snippets={snippets} setSnippets={setSnippets} onSnippetAdded={onSnippetAdded} searchTerm={searchTerm} setSearchTerm={setSearchTerm} currentUserId={currentUserId}/>
+      <Header snippets={snippets} setSnippets={setSnippets} onSnippetAdded={onSnippetAdded} searchTerm={searchTerm} setSearchTerm={setSearchTerm} currentUserId={currentUserId} lightMode={lightMode} getClassNameSuffix={getClassNameSuffix}/>
       <section className={`snippet-card-container${getClassNameSuffix(lightMode)}`}>
         
         <SnippetList

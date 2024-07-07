@@ -2,14 +2,6 @@ h1 {
     justify-content: center;
 }
 
-body-dark {
- background-color: #313A3C;
-}
-
-body{
-    color: #313A3C;
-}
-
 .snippet-card-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

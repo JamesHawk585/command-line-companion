@@ -1,13 +1,15 @@
 import React from 'react'
 import { Await, useNavigate } from "react-router-dom";
 import OffCanvasNavBar from "./../OffCanvasNavBar/OffCanvasNavBar.jsx";
+import "./UserProfile.css"
 
-const UserProfile = ({ user }) => {
+
+const UserProfile = ({ user, lightMode, getClassNameSuffix }) => {
 
   const {username, first_name, last_name, email} = user
   
   return (
-    <div>
+    <div className={`user-info${getClassNameSuffix(lightMode)}`}>
       <ul>
         <li><strong>Username:</strong> {username}</li>
         <li><strong>First Name:</strong> {first_name}</li>
