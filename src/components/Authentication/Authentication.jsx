@@ -94,6 +94,7 @@ const Authentication = ({
           name="username"
           value={userData.username}
           onChange={handleChange}
+          className={`username-input${getClassNameSuffix(lightMode)}`}
         />
         <label>Password</label>
         <input

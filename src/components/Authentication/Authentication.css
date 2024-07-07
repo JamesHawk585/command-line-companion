@@ -1,4 +1,22 @@
-form {
+/* form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    font-family: Arial;
+    font-size: 30px;
+  } */
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    font-family: Arial;
+    font-size: 30px;
+  }
+
+  .form-dark {
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -49,8 +67,10 @@ form {
   
   .auth-errors {
     color: red;
-    font-size: 15px;
+    font-size: 2em;
     align-items: center;
     /* text-align: center; */
   }
+
+
 
