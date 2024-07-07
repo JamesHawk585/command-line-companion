@@ -55,7 +55,7 @@ console.log(getClassNameSuffix(lightMode))
           Edit
         </button>
         <button
-          className="delete-snippet-button"
+          className={`delete-snippet-button${getClassNameSuffix(lightMode)}`}
           onClick={(e) => handleDeleteSnippet(e, title)}
         >
           Delete

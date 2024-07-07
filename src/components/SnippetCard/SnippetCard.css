@@ -1,26 +1,99 @@
 .snippet-card {
-    width: 25vw;
-    height: 40vw;
-    color: #fff;
-    background-color: #313A3C;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-    padding: 20px;
-    transition: all 0.3s ease-in;
-    margin: 40px;
-    position: relative;
-    border-radius: 16px;
-    font-size: 2em;
-    overflow-wrap: break-word;
-    word-break: break-all;
+  width: 25vw;
+  height: 40vw;
+  color: #fff;
+  background-color: #313a3c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s ease-in;
+  margin: 40px;
+  position: relative;
+  border-radius: 16px;
+  font-size: 2em;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
+.code-snippet {
+  white-space: pre-wrap; /* Preserves whitespace and line breaks */
+  font-family: monospace; /* Optional: Makes the text appear more like code */
+  /* border: 1px solid #ccc; Optional: Adds a border around the snippet */
+  padding: 10px;
+}
+
+.snippet-card:hover {
+  box-shadow: 0px 0px 11px #000000;
+  background: skyblue;
+  color: black;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.delete-snippet-button {
+  display: flex;
+  align-self: end;
+  position: absolute;
+  bottom: 15px;
+  border-radius: 8px;
+}
+
+.delete-snippet-button:hover {
+  background: #313a3c;
+  color: white;
+  display: flex;
+  align-self: end;
+  position: absolute;
+  bottom: 15px;
+  border-radius: 8px;
+}
+
+.edit-snippet-button {
+  display: flex;
+  align-self: start;
+  position: absolute;
+  bottom: 15px;
+  border-radius: 8px;
+}
+
+.edit-snippet-button:hover {
+  background: #313a3c;
+  color: white;
+  display: flex;
+  align-self: end;
+  position: absolute;
+  bottom: 15px;
+  border-radius: 8px;
+}
+
+/* -------------------------------Dark Mode------------------------------------ */
+
 .snippet-card-dark {
+  width: 25vw;
+  height: 40vw;
+  color: #313a3c;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s ease-in;
+  margin: 40px;
+  position: relative;
+  border-radius: 16px;
+  font-size: 2em;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+
+.snippet-card-dark:hover {
     width: 25vw;
     height: 40vw;
-    color:#313A3C;
+    color: #313a3c;
     background-color: skyblue;
     display: flex;
     flex-direction: column;
@@ -34,67 +107,23 @@
     font-size: 2em;
     overflow-wrap: break-word;
     word-break: break-all;
+  }
+
+.delete-snippet-button-dark {
+  display: flex;
+  align-self: end;
+  position: absolute;
+  bottom: 15px;
+  border-radius: 8px;
 }
 
-
-
-.code-snippet {
-        white-space: pre-wrap; /* Preserves whitespace and line breaks */
-        font-family: monospace; /* Optional: Makes the text appear more like code */
-        /* border: 1px solid #ccc; Optional: Adds a border around the snippet */
-        padding: 10px;
-        
-}
-
-.snippet-card:hover {
-    box-shadow: 0px 0px 11px #000000;
-    background: skyblue;
-    color: black;
-    overflow-wrap: break-word;
-    word-break: break-all;
-}
-
-.snippet-card-dark:hover {
-    box-shadow: 0px 0px 11px #000000;
-    background: lightgray;
-    color: black;
-    overflow-wrap: break-word;
-    word-break: break-all;
-}
-
-.delete-snippet-button {
-    display: flex;
-    align-self: end;
-    position: absolute;
-    bottom: 15px;
-    border-radius: 8px; 
-}
-
-.delete-snippet-button:hover {
-    background: #313A3C;;
-    color: white;    
+.delete-snippet-button-dark:hover {
     display: flex;
     align-self: end;
     position: absolute;
     bottom: 15px;
     border-radius: 8px;
-}
-
-.edit-snippet-button {
-    display: flex;
-    align-self: start;
-    position: absolute;
-    bottom: 15px;
-    border-radius: 8px;
-}
-
-.edit-snippet-button:hover {
-    background: #313A3C;
-    color: white;    
-    display: flex;
-    align-self: end;
-    position: absolute;
-    bottom: 15px;
-    border-radius: 8px;
-}
-
+    background-color:#313a3c;
+    color: #fff
+  }
+  

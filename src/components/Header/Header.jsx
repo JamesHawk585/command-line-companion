@@ -17,6 +17,8 @@ const Header = ({
   currentUserId,
   snippets,
   setSnippets,
+  lightMode,
+  getClassNameSuffix
 }) => {
   const dialogRef = useRef(null);
   const [show, setShow] = useState(false);
