@@ -137,7 +137,7 @@ const Authentication = ({
             />
           </>
         )}
-        <input type="submit" value={signUp ? "Sign Up!" : "Log In!"} />
+        <input type="submit" className={`login-or-signup-toggle-button${getClassNameSuffix(lightMode)}`} value={signUp ? "Sign Up!" : "Log In!"} />
       </form>
       <div className="auth-errors-switch-wrapper">
         <h2 className="auth-errors">

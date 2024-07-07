@@ -11,13 +11,13 @@ const SnippetList = ({ filteredSnippets, onSnippetDeleted, onSnippetEdited, snip
 
   if (snippets.length == 0) {
     return (
-    <h1 id="welcome-message">Welcome! Please click the add snippet button to get started!</h1>
+    <h1 id={`welcome-message${getClassNameSuffix(lightMode)}`}>Welcome! Please click the add snippet button to get started!</h1>
     )
   }
 
   if (snippets.length > 0 && filteredSnippets.length == 0) {
     return (
-      <h1>No snippets match search criteria</h1>
+      <h1 className={`no-snipetsmatch-search-criteria-h1${getClassNameSuffix(lightMode)}`}>No snippets match search criteria</h1>
     )
   }
 

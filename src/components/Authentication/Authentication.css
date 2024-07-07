@@ -13,7 +13,18 @@
   color: aqua;
 }
 
-input[type="submit"] {
+/* input[type="submit"] {
+  background-color: #313A3C;
+  color: white;
+  height: 40px;
+  font-family: Arial;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+} */
+
+.login-or-signup-toggle-button {
   background-color: #313A3C;
   color: white;
   height: 40px;
@@ -76,7 +87,7 @@ input[type="submit"]:hover {
   border-radius: 8px;
 }
 
-#register-or-signup-toggle-button-dark{
+#register-or-signup-toggle-button-dark {
   /* background-color: #313A3C; */
   color: white;
   border-radius: 8px;
@@ -92,3 +103,13 @@ input[type="submit"]:hover {
   color: white;
 }
 
+.login-or-signup-toggle-button-dark {
+  background-color: lightgray;
+  height: 40px;
+  font-family: Arial;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: center;
+}

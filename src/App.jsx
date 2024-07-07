@@ -15,7 +15,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
-  const [lightMode, setLightMode] = useState(false);
+  const [lightMode, setLightMode] = useState(true);
 
   console.log("lightMode in App.jsx: ", lightMode)
 
