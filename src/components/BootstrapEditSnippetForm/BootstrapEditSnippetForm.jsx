@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import CloseButton from "react-bootstrap/CloseButton";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function BootstrapEditSnippetForm({
   editRef,
@@ -14,6 +16,8 @@ function BootstrapEditSnippetForm({
   explanation,
   show,
   setShow,
+  getClassNameSuffix,
+  lightMode
 }) {
   // const formRef = useRef(null);
   const [editedSnippetObject, setEditedSnippetObject] = useState({
@@ -62,7 +66,8 @@ function BootstrapEditSnippetForm({
   return (
     <>
       {show && (
-        <Modal show={show} onHide={handleClose} className="editSnippetModal">
+        <Modal show={show} onHide={handleClose} className={`edit-snippet-modal${getClassNameSuffix(lightMode)}`} size="xl">
+          
           <Modal.Header>
             <CloseButton aria-label="Hide" variant="white" />
             <Modal.Title>{title}</Modal.Title>
@@ -129,14 +134,11 @@ function BootstrapEditSnippetForm({
                   value={editedSnippetObject.explanation}
                   onChange={(e) => handleChange(e)}
                 />
-                {/* <Modal.Footer> */}
-
-                {/* Form submission did not work because the submit button was outside of the form. The from was confined to the modal body. The modal footer contained the submit button. Try to find a workaround for styling purposes? */}
-
-                <Button variant="secondary" onClick={handleClose}>
+              
+                <Button variant="dark" onClick={handleClose} className={`close-edit-snippet-modal-button${getClassNameSuffix(lightMode)}`}>
                   Close
                 </Button>
-                <Button variant="primary" type="submit">
+                <Button variant="dark" type="submit" className={`save-changes-edit-snippet-modal-button${getClassNameSuffix(lightMode)}`} >
                   Save Changes
                 </Button>
               </Form.Group>

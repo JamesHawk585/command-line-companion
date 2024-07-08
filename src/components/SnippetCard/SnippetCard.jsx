@@ -73,6 +73,8 @@ console.log(getClassNameSuffix(lightMode))
         show={show}
         setShow={setShow}
         onSnippetEdited={onSnippetEdited}
+        getClassNameSuffix={getClassNameSuffix}
+        lightMode={lightMode}
       />
     }
     </>

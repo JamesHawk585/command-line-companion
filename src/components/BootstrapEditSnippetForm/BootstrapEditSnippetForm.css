@@ -1,4 +1,13 @@
-.editSnippetModal {
-    width: 120%;
-    height: 120%;
+.edit-snippet-modal {
+    width: 500%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-edit-snippet-modal-button, .save-changes-edit-snippet-modal-button {
+    background-color: #313a3c;
+}
+
+.edit-snippet-modal {
+    background-color: aquamarine;
 }

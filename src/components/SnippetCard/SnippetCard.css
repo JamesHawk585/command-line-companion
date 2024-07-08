@@ -73,7 +73,7 @@
 .snippet-card-dark {
   width: 25vw;
   height: 40vw;
-  color: #313a3c;
+  color: black;
   background-color: lightgray;
   display: flex;
   flex-direction: column;

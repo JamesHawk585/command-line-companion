@@ -29,4 +29,4 @@ function UserProfileBootstrap({ user, lightMode, getClassNameSuffix }) {
   );
 }
 
-export default KitchenSinkExample;
+export default UserProfileBootstrap;
