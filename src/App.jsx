@@ -3,6 +3,7 @@ import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
 import OffCanvasNavBar from "./components/OffCanvasNavBar/OffCanvasNavBar.jsx";
+import BootstrapUserProfile from "./components/UserProfile/BootstrapUserProfile.jsx"
 import UserProfile from "./components/UserProfile/UserProfile.jsx";
 import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect, createContext } from "react";
@@ -196,7 +197,7 @@ function App() {
               />
               <Route
                 path={"/UserProfile"}
-                element={<UserProfile user={user}
+                element={<BootstrapUserProfile user={user}
                 lightMode={lightMode}
                 getClassNameSuffix={getClassNameSuffix} />}
                 setHTMLLightMode={setHTMLLightMode}

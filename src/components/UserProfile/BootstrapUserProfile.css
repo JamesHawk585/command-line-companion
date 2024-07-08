@@ -1,0 +1,30 @@
+.user-profile-card {
+    background-color: lightgray;
+    min-width: 30vw;
+    align-self: center;
+}
+
+.edit-profile-button {
+    background-color: #313A3C;
+    color: white;
+    border-radius: 8px;
+}
+
+.edit-profile-button:hover {
+    background-color: skyblue;
+    color: black;
+    border-radius: 8px;
+}
+
+.delete-account-button {
+    background-color: #313A3C;
+    color: white;
+    border-radius: 8px;
+}
+
+.delete-account-button:hover {
+    background-color: skyblue;
+    color: white;
+    border-radius: 8px;
+}
+
