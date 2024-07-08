@@ -1,6 +1,6 @@
 .user-profile-card {
     background-color: lightgray;
-    min-width: 30vw;
+    /* min-width: 30vw; */
     align-self: center;
 }
 
@@ -26,5 +26,10 @@
     background-color: skyblue;
     color: white;
     border-radius: 8px;
+}
+
+.user-profile-picture {
+    border-radius: 50%;
+    /* max-height: 50vh; */
 }
 
