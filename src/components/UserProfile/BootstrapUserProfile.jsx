@@ -3,6 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import "./BootstrapUserProfile.css";
 import MugShot from "../../images/mugshot.png";
 import EditUserProfile from '../EditUserProfile/EditUserProfile';
+import Form from 'react-bootstrap/Form';
 import React, { useState, useEffect, createContext } from "react";
 
 function BootstrapUserProfile({ user, lightMode, getClassNameSuffix }) {
@@ -11,6 +12,10 @@ function BootstrapUserProfile({ user, lightMode, getClassNameSuffix }) {
 console.log(editProfile)
 
     const {username, first_name, last_name, email} = user
+
+    const toggleEditUserForm = () => {
+      editProfile ? setEditProfile(true) : setEditProfile(false)
+    }
 
     const editUserProfile = () => {
       setEditProfile(true)
@@ -21,11 +26,14 @@ console.log(editProfile)
       console.log("Delete user!")
     }
 
+    const changePassword = () => {
+      console.log("Chnaging password!")
+    }
 
   return (
     <>
     {editProfile ? (
-      <EditUserProfile/>
+      <EditUserProfile lightMode={lightMode} getClassNameSuffix={getClassNameSuffix} editProfile={editProfile} setEditProfile={setEditProfile} toggleEditUserForm={toggleEditUserForm}/>
     ) : (
     <Card className={`user-profile-card${getClassNameSuffix(lightMode)}`}>
       <Card.Img variant="top" src={MugShot} className='user-profile-picture'/>
@@ -43,7 +51,9 @@ console.log(editProfile)
       </ListGroup>
       <Card.Body>
         <button onClick={ () => editUserProfile()} className={`edit-profile-button${getClassNameSuffix(lightMode)}`}>Edit Profile</button>
+        <button onClick={() => changePassword()} className={`change-password-button${getClassNameSuffix(lightMode)}`}>Change Password</button>
         <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Delete Account</button>
+        <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Upload Image</button>
       </Card.Body>
     </Card>
     )}
