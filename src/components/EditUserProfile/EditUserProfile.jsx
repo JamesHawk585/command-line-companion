@@ -24,6 +24,9 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
         setEditProfile(false)
       } 
 
+      const getButtonVariantByLightMode = (lightMode) => lightMode ? "dark" : "light"
+      
+
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -73,8 +76,8 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
-      <Button type="submit" variant='dark'>Submit</Button>
-      <Button variant="dark" onClick={() => backToBootstrapUserProfile()}>Back to Profile</Button>
+      <Button type="submit" variant={getButtonVariantByLightMode(lightMode)} size="lg" className='edit-user-profile-submit-button'>Submit</Button>
+      <Button variant={getButtonVariantByLightMode(lightMode)} size="lg" className='back-to-profile-button' onClick={() => backToBootstrapUserProfile()}>Back to Profile</Button>
     </Form>
   )
 }

@@ -4,8 +4,13 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15vh;
-    width: 17vw;
+    /* margin-top: 15vh; */
+    width: 50vw;
+}
+
+.user-profile-card button {
+    margin: .25em;
+    height: 2em;
 }
 
 .change-password-button {
@@ -53,21 +58,31 @@
 }
 
 .user-profile-picture {
-    border-radius: 50%;
-    max-height: 30vh;
+    /* border-radius: 50%; */
+    border-radius: 2%;
+    display: block;
+    /* max-height: 30vh; */
+    height: 30em;
+    width: 25em;
+    margin-top: 1em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profile-card-username {
+    text-align: center;
 }
 
 /* ----------------Dark Mode-------------- */
 
 .user-profile-card-dark {
+    display: block;
     background-color: lightgray;
+    width: 50vw;
     /* min-width: 30vw; */
     display: block;
     margin-left: auto;
-    margin-right: auto;
-    margin-top: 15vh;
-    width: 17vw;
-}
+    margin-right: auto;}
 
 .change-password-button-dark {
     background-color: #313A3C;
@@ -111,4 +126,9 @@
     background-color: skyblue;
     color: black;
     border-radius: 8px;
+}
+
+.user-profile-card-dark button {
+    margin: .25em;
+    height: 2em;
 }

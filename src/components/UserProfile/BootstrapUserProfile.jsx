@@ -38,7 +38,7 @@ console.log(editProfile)
     <Card className={`user-profile-card${getClassNameSuffix(lightMode)}`}>
       <Card.Img variant="top" src={MugShot} className='user-profile-picture'/>
       <Card.Body>
-        <Card.Title><h1>{username}</h1></Card.Title>
+        <Card.Title><h1 className='profile-card-username'>{username}</h1></Card.Title>
         {/* <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
