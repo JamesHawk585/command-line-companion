@@ -70,7 +70,7 @@ function BootstrapEditSnippetForm({
           
           <Modal.Header>
             <CloseButton aria-label="Hide" variant="white" />
-            <Modal.Title>{title}</Modal.Title>
+            <Modal.Title>Edit "<em>{title}</em>"?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={(e) => handleEditedSnippetObjectSubmit(e)}>
@@ -146,7 +146,7 @@ function BootstrapEditSnippetForm({
               
                 <Button variant="dark" onClick={handleClose} className={`close-edit-snippet-modal-button${getClassNameSuffix(lightMode)}`}>
                   Close
-                </Button>
+                </Button >
                 <Button variant="dark" type="submit" className={`save-changes-edit-snippet-modal-button${getClassNameSuffix(lightMode)}`} >
                   Save Changes
                 </Button>
