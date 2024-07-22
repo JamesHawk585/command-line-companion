@@ -9,10 +9,10 @@
   border-radius: 8px;
   padding: 20px;
   /* transition: all 0.3s ease-in; */
-  margin: 40px;
+  /* margin: 40px; */
   position: relative;
   border-radius: 16px;
-  font-size: 2em;
+  /* font-size: 1em; */
   overflow-wrap: break-word;
   word-break: break-all;
   overflow: hidden;
@@ -82,10 +82,10 @@
   border-radius: 8px;
   padding: 20px;
   /* transition: all 0.3s ease-in; */
-  margin: 40px;
+  /* margin: 40px; */
   position: relative;
   border-radius: 16px;
-  font-size: 2em;
+  /* font-size: 1em; */
   overflow-wrap: break-word;
   word-break: break-all;
   overflow: hidden;
@@ -103,10 +103,10 @@
     border-radius: 8px;
     padding: 20px;
     /* transition: all 0.3s ease-in; */
-    margin: 40px;
+    /* margin: 40px; */
     position: relative;
     border-radius: 16px;
-    font-size: 2em;
+    /* font-size: 2em; */
     overflow-wrap: break-word;
     word-break: break-all;
   }

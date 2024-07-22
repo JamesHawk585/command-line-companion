@@ -185,10 +185,10 @@ const Header = ({
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="dark" onClick={handleClose}>
+            <Button variant="dark" onClick={handleClose} >
               Close
             </Button>
-            <Button variant="dark" onClick={handleSubmit}>
+            <Button variant="dark" onClick={handleSubmit} >
               Save Changes
             </Button>
           </Modal.Footer>

@@ -35,6 +35,10 @@
     color: black;
 }
 
+.save-changes-edit-snippet-modal-button btn btn-dark {
+    margin: 1.75rem;
+}
+
 /* -------------------------------Dark Mode---------------------------- */
 
 .header-dark {
