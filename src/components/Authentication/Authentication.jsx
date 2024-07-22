@@ -21,9 +21,10 @@ const Authentication = ({
     password_confirmation: "",
   });
 
-  console.log("lightMode in Authentication.jsx", lightMode);
 
   const [errors, setErrors] = useState([]);
+
+  console.log(errors)
 
   // async function fetchSnippets(setSnippets) {
   //   fetch("/snippets")
@@ -31,7 +32,6 @@ const Authentication = ({
   //     .then((data) => setSnippets(data));
   // };
 
-  // console.log("user in Authentication/jsx", user);
 
   // Currently not doing anything with password and confirm password fields.
 
@@ -59,7 +59,6 @@ const Authentication = ({
         fetchSnippets();
       } else {
         r.json().then((data) => {
-          console.log("console.log(data)", data);
           setTimeout(() => {
             setErrors([]);
           }, 5000);
@@ -76,13 +75,9 @@ const Authentication = ({
     setUserData(userDataCopy);
   };
 
-  console.log("lightMode in Authentication.jsx: ", lightMode)
-
   // Why is lightMode always evaluating to false? 
 
 
-
-  console.log(getClassNameSuffix(lightMode))
 
 
   return (

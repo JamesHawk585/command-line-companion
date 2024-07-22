@@ -32,9 +32,7 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
   };
 
 
-  console.log(setHTMLLightMode)
   const handleLightModeClick = (event) => {
-    console.log(setHTMLLightMode)
     setHTMLLightMode()
     setLightMode(!lightMode)
   }
@@ -48,8 +46,6 @@ function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,pas
   }
 
   const setThemeIconClassName = (lightMode) => (lightMode ? "lightModeIcon" : "darkModeIcon") 
-
-  console.log("getClassNameSuffix():", getClassNameSuffix(lightMode))
 
   return (
     <>

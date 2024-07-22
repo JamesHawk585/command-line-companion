@@ -18,8 +18,6 @@ function App() {
   const [errors, setErrors] = useState(null);
   const [lightMode, setLightMode] = useState(true);
 
-  console.log("lightMode in App.jsx: ", lightMode)
-
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
       if (r.ok) {
@@ -61,12 +59,10 @@ function App() {
   };
 
   const onSnippetAdded = (data) => {
-    console.log(data);
     return setSnippets([...snippets, data]);
   };
 
   const onSnippetEdited = (responseSnippetObject) => {
-    console.log(responseSnippetObject);
     setSnippets(
       snippets.map((snippet) => {
         if (snippet.id === responseSnippetObject.id) {
@@ -81,8 +77,6 @@ function App() {
   const filteredSnippets = snippets.filter((snippet) => {
     return snippet.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
-
-  console.log(lightMode)
 
   const getClassNameSuffix = (lightMode) => (lightMode ? "" : "-dark");
 

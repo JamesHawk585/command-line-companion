@@ -113,7 +113,7 @@ const Header = ({
         <BootstrapAddSnippetForm dialogRef={dialogRef} userId={userId} />
       </header>
       {show && (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} size="xl">
           <Modal.Header>
             <CloseButton aria-label="Hide" variant="white" />
             <Modal.Title>New Snippet</Modal.Title>
