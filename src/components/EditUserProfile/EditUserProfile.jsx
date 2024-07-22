@@ -72,8 +72,11 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
           <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Email</h2></Form.Label>
           <Form.Control type="text" placeholder="email" required />
           <Form.Control.Feedback type="invalid">
-            Please provide a valid city.
           </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="6" controlId="formFile" className="mb-3" style={{width: '50%'}}>
+        <Form.Label><h2>Profile Photo</h2></Form.Label>
+        <Form.Control type="file" />
         </Form.Group>
       </Row>
       <Button type="submit" variant={getButtonVariantByLightMode(lightMode)} size="lg" className='edit-user-profile-submit-button'>Submit</Button>
