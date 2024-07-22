@@ -130,6 +130,7 @@ const Header = ({
                   placeholder="Log 'Hello world' to the console."
                   value={newSnippetObject.title}
                   onChange={handleChange}
+                  style={{ width: '69em' }}
                 />
               </Form.Group>
               <Form.Group
@@ -142,6 +143,7 @@ const Header = ({
                   name="language_select"
                   value={newSnippetObject.language_select}
                   onChange={handleChange}
+                  style={{ width: '69em' }}
                 >
                   <option value="">{newSnippetObject.language_select === "" ? "Please choose a language" : newSnippetObject.language_select}</option>
                   <option value="JavaScript">JavaScript</option>
@@ -163,6 +165,7 @@ const Header = ({
                   rows={3}
                   value={newSnippetObject.code}
                   onChange={handleChange}
+                  style={{ width: '69em' }}
                 />
               </Form.Group>
               <Form.Group
@@ -176,6 +179,7 @@ const Header = ({
                   rows={3}
                   value={newSnippetObject.explanation}
                   onChange={handleChange}
+                  style={{ width: '69em' }}
                 />
               </Form.Group>
             </Form>
