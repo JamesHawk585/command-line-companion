@@ -37,7 +37,6 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
             required
             type="text"
             placeholder="First name"
-            defaultValue="Mark"
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
@@ -47,14 +46,12 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
             required
             type="text"
             placeholder="Last name"
-            defaultValue="Otto"
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustomUsername">
           <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Username</h2></Form.Label>
           <InputGroup hasValidation>
-            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
             <Form.Control
               type="text"
               placeholder="Username"
@@ -75,11 +72,11 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="6" controlId="formFile" className="mb-3" style={{width: '50%'}}>
-        <Form.Label><h2>Profile Photo</h2></Form.Label>
+        <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Profile Photo</h2></Form.Label>
         <Form.Control type="file" />
         </Form.Group>
       </Row>
-      <Button type="submit" variant={getButtonVariantByLightMode(lightMode)} size="lg" className='edit-user-profile-submit-button'>Submit</Button>
+      <Button type="submit" variant={getButtonVariantByLightMode(lightMode)} size="lg" className='edit-user-profile-submit-button'>Change Password</Button>
       <Button variant={getButtonVariantByLightMode(lightMode)} size="lg" className='back-to-profile-button' onClick={() => backToBootstrapUserProfile()}>Back to Profile</Button>
     </Form>
   )

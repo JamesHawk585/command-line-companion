@@ -48,12 +48,12 @@ console.log(editProfile)
         <ListGroup.Item><h2>{first_name}</h2></ListGroup.Item>
         <ListGroup.Item><h2>{last_name}</h2></ListGroup.Item>
         <ListGroup.Item><h2>{email}</h2></ListGroup.Item>
+        <ListGroup.Item><h2><em>Snippet count goes here</em></h2></ListGroup.Item>
       </ListGroup>
       <Card.Body>
         <button onClick={ () => editUserProfile()} className={`edit-profile-button${getClassNameSuffix(lightMode)}`}>Edit Profile</button>
         <button onClick={() => changePassword()} className={`change-password-button${getClassNameSuffix(lightMode)}`}>Change Password</button>
         <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Delete Account</button>
-        <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Upload Image</button>
       </Card.Body>
     </Card>
     )}

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import "./SnippetCard.css";
-import EditSnippetForm from "../EditSnippetForm/EditSnippetForm";
 import BootstrapEditSnippetForm from "../BootstrapEditSnippetForm/BootstrapEditSnippetForm.jsx";
 
 const SnippetCard = ({
