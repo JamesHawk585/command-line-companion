@@ -84,6 +84,8 @@ function BootstrapEditSnippetForm({
                   placeholder="Log 'Hello world' to the console."
                   value={editedSnippetObject.title}
                   onChange={(e) => handleChange(e)}
+                  size="xl"
+                  style={{ width: '69em' }}
                 />
               </Form.Group>
               <Form.Group
@@ -96,8 +98,11 @@ function BootstrapEditSnippetForm({
                   name="language_select"
                   value={editedSnippetObject.language_select}
                   onChange={(e) => handleChange(e)}
+                  className="form-control"
+                  style={{ width: '69em' }}
                 >
-                  <option defaultValue="">
+                  <option defaultValue="" className="form-control"
+                    style={{ width: '69em' }}>
                     {languageSelect === ""
                       ? "Please choose a language"
                       : languageSelect}
@@ -120,7 +125,9 @@ function BootstrapEditSnippetForm({
                   rows={3}
                   value={editedSnippetObject.code}
                   onChange={(e) => handleChange(e)}
-                />
+                  className="form-control cutom-form-input"
+                  style={{ width: '69em' }}
+                  />
               </Form.Group>
               <Form.Group
                 className="mb-3"
@@ -133,6 +140,8 @@ function BootstrapEditSnippetForm({
                   rows={3}
                   value={editedSnippetObject.explanation}
                   onChange={(e) => handleChange(e)}
+                  className="form-control"
+                  style={{ width: '69em' }}
                 />
               
                 <Button variant="dark" onClick={handleClose} className={`close-edit-snippet-modal-button${getClassNameSuffix(lightMode)}`}>
