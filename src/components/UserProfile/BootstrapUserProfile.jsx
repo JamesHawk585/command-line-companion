@@ -33,6 +33,14 @@ console.log(editProfile)
   return (
     <>
     {editProfile ? (
+
+
+
+      // consider using client side routing here instead of a stateful boolean to toggle between components. 
+
+
+
+
       <EditUserProfile lightMode={lightMode} getClassNameSuffix={getClassNameSuffix} editProfile={editProfile} setEditProfile={setEditProfile} toggleEditUserForm={toggleEditUserForm}/>
     ) : (
     <Card className={`user-profile-card${getClassNameSuffix(lightMode)}`}>
@@ -52,8 +60,7 @@ console.log(editProfile)
       </ListGroup>
       <Card.Body>
         <button onClick={ () => editUserProfile()} className={`edit-profile-button${getClassNameSuffix(lightMode)}`}>Edit Profile</button>
-        <button onClick={() => changePassword()} className={`change-password-button${getClassNameSuffix(lightMode)}`}>Change Password</button>
-        <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Delete Account</button>
+        <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Delete Profile</button>
       </Card.Body>
     </Card>
     )}

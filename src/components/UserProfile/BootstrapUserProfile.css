@@ -25,6 +25,17 @@
     border-radius: 8px;
 }
 
+.back-to-profile-button {
+    background-color: #313A3C;
+    color: white;
+    border-radius: 8px; 
+}
+.edit-user-profile-submit-button {
+    background-color: #313A3C;
+    color: white;
+    border-radius: 8px;
+}
+
 .edit-profile-button {
     background-color: #313A3C;
     color: white;

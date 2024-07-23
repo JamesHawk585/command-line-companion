@@ -78,7 +78,7 @@ function BootstrapEditSnippetForm({
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Title</Form.Label>
+                <Form.Label><h4>Title</h4></Form.Label>
                 <Form.Control
                   name="title"
                   placeholder="Log 'Hello world' to the console."
@@ -92,7 +92,7 @@ function BootstrapEditSnippetForm({
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
               >
-                <Form.Label>Choose a Language</Form.Label>
+                <Form.Label><h4>Choose a Language</h4></Form.Label>
                 <Form.Control
                   as="select"
                   name="language_select"
@@ -118,7 +118,7 @@ function BootstrapEditSnippetForm({
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Code</Form.Label>
+                <Form.Label><h4>Code</h4></Form.Label>
                 <Form.Control
                   name="code"
                   as="textarea"
@@ -133,7 +133,7 @@ function BootstrapEditSnippetForm({
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Explanation</Form.Label>
+                <Form.Label><h4>Explanation</h4></Form.Label>
                 <Form.Control
                   name="explanation"
                   as="textarea"
