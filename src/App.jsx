@@ -195,7 +195,11 @@ function App() {
                 lightMode={lightMode}
                 getClassNameSuffix={getClassNameSuffix} />}
                 setHTMLLightMode={setHTMLLightMode}
-              />
+              />\
+
+              {/* Add additional route here */}
+
+              
             </Routes>
           </div>
         </>
