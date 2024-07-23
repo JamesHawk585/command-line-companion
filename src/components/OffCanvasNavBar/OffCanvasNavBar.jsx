@@ -6,8 +6,6 @@ import { GiFalloutShelter, GiHamburgerMenu } from "react-icons/gi";
 import "./OffCanvasNavBar.css";
 import darkModeIcon from "../../images/7148715_dark_mode_night_moon_icon (1).png";
 import lightModeIcon from "../../images/sunny-day (3).png";
-import UserProfile from "../UserProfile/UserProfile.jsx";
-import ThemeContext from "/home/jph94880/development/code/projects/command-line-companion/client/src/App.jsx"
 
 function OffCanvasNavBar({ setSnippets, user, updateUser, fetchUser, setUser,passDarkModeValueFromOffCanvasNavBarToApp, lightMode, setLightMode, getClassNameSuffix, setHTMLLightMode }) {
   const [show, setShow] = useState(false);

@@ -1,10 +1,10 @@
 import "./";
 import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
+import EditProfilePasswordConfirm from "./components/EditProfilePasswordConfirm/EditProfilePasswordConfirm.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
 import OffCanvasNavBar from "./components/OffCanvasNavBar/OffCanvasNavBar.jsx";
-import BootstrapUserProfile from "./components/UserProfile/BootstrapUserProfile.jsx"
-import UserProfile from "./components/UserProfile/UserProfile.jsx";
+import BootstrapUserProfile from "./components/UserProfile/BootstrapUserProfile.jsx";
 import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -83,7 +83,7 @@ function App() {
   // function getClassNameSuffix(lightMode) {
   //   if (lightMode === false) {
   //     return "-dark"
-  //   } 
+  //   }
   // }
 
   // console.table(filteredSnippets);
@@ -102,19 +102,19 @@ function App() {
     }
   };
 
-  const htmlElement = document.getElementsByTagName('html')[0]
+  const htmlElement = document.getElementsByTagName("html")[0];
   const setHTMLLightMode = () => {
     if (lightMode == true) {
-      htmlElement.style.backgroundColor = '#313a3c'
+      htmlElement.style.backgroundColor = "#313a3c";
     } else if (lightMode === false) {
-      htmlElement.style.backgroundColor = 'white'
+      htmlElement.style.backgroundColor = "white";
     }
-  }
+  };
 
   if (!user) {
     return (
       <>
-      <div className={`app${getClassNameSuffix(lightMode)}`}>
+        <div className={`app${getClassNameSuffix(lightMode)}`}>
           <OffCanvasNavBar
             setSnippets={setSnippets}
             lightMode={lightMode}
@@ -132,77 +132,83 @@ function App() {
             setHTMLLightMode={setHTMLLightMode}
           />
         </div>
-        </>
+      </>
     );
   } else {
     const currentUserId = user.id;
     return (
-        <>
-          <div className={`app${getClassNameSuffix(lightMode)}`}>
-            <OffCanvasNavBar
-              setSnippets={setSnippets}
-              user={user}
-              updateUser={updateUser}
-              fetchUser={fetchUser}
-              setUser={setUser}
-              lightMode={lightMode}
-              setLightMode={setLightMode}
-              getClassNameSuffix={getClassNameSuffix}
-              setHTMLLightMode={setHTMLLightMode}
-            />
+      <>
+        <div className={`app${getClassNameSuffix(lightMode)}`}>
+          <OffCanvasNavBar
+            setSnippets={setSnippets}
+            user={user}
+            updateUser={updateUser}
+            fetchUser={fetchUser}
+            setUser={setUser}
+            lightMode={lightMode}
+            setLightMode={setLightMode}
+            getClassNameSuffix={getClassNameSuffix}
+            setHTMLLightMode={setHTMLLightMode}
+          />
 
-            <Routes>
-              <Route
-                path={"/"}
-                element={
-                  <div>
-                    <Home
-                      onSnippetAdded={onSnippetAdded}
-                      searchTerm={searchTerm}
-                      setSearchTerm={setSearchTerm}
-                      filteredSnippets={filteredSnippets}
-                      onSnippetEdited={onSnippetEdited}
-                      onSnippetDeleted={onSnippetDeleted}
-                      snippets={snippets}
-                      currentUserId={currentUserId}
-                      setSnippets={setSnippets}
-                      user={user}
-                      lightMode={lightMode}
-                      getClassNameSuffix={getClassNameSuffix}
-                      setHTMLLightMode={setHTMLLightMode}
-                    />
-                  </div>
-                }
-              />
-              <Route
-                path={"/authentication"}
-                element={
-                  <Authentication
-                    user={user}
-                    setUser={setUser}
-                    updateUser={updateUser}
-                    fetchSnippets={fetchSnippets}
+          <Routes>
+            <Route
+              path={"/"}
+              element={
+                <div>
+                  <Home
+                    onSnippetAdded={onSnippetAdded}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    filteredSnippets={filteredSnippets}
+                    onSnippetEdited={onSnippetEdited}
+                    onSnippetDeleted={onSnippetDeleted}
+                    snippets={snippets}
+                    currentUserId={currentUserId}
                     setSnippets={setSnippets}
+                    user={user}
                     lightMode={lightMode}
                     getClassNameSuffix={getClassNameSuffix}
                     setHTMLLightMode={setHTMLLightMode}
                   />
-                }
-              />
-              <Route
-                path={"/UserProfile"}
-                element={<BootstrapUserProfile user={user}
-                lightMode={lightMode}
-                getClassNameSuffix={getClassNameSuffix} />}
-                setHTMLLightMode={setHTMLLightMode}
-              />\
-
-              {/* Add additional route here */}
-
-              
-            </Routes>
-          </div>
-        </>
+                </div>
+              }
+            />
+            <Route
+              path={"/authentication"}
+              element={
+                <Authentication
+                  user={user}
+                  setUser={setUser}
+                  updateUser={updateUser}
+                  fetchSnippets={fetchSnippets}
+                  setSnippets={setSnippets}
+                  lightMode={lightMode}
+                  getClassNameSuffix={getClassNameSuffix}
+                  setHTMLLightMode={setHTMLLightMode}
+                />
+              }
+            />
+            <Route
+              path={"/UserProfile"}
+              element={
+                <BootstrapUserProfile
+                  user={user}
+                  lightMode={lightMode}
+                  getClassNameSuffix={getClassNameSuffix}
+                  setHTMLLightMode={setHTMLLightMode}
+                />
+              }
+            />
+            <Route
+              path={"/EditProfilePasswordConfirm"}
+              element={
+                <EditProfilePasswordConfirm lightMode={lightMode} user={user} />
+              }
+            />
+          </Routes>
+        </div>
+      </>
     );
   }
 }
