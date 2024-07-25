@@ -1,13 +1,19 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
-function Example() {
+function EditProfilePasswordConfirm() {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+
+
 
   return (
     <>
@@ -51,4 +57,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default EditProfilePasswordConfirm;

@@ -9,6 +9,7 @@ import Home from "./components/Home/Home.jsx";
 import React, { useState, useEffect, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import EditUserProfile from "./components/EditUserProfile/EditUserProfile.jsx";
 import { GiKoala } from "react-icons/gi";
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState(null);
   const [lightMode, setLightMode] = useState(true);
+
+  console.log(snippets)
+
+  console.log("%cNavigate to UserProfile.jsx", "color: lightblue")
 
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
@@ -197,13 +202,18 @@ function App() {
                   lightMode={lightMode}
                   getClassNameSuffix={getClassNameSuffix}
                   setHTMLLightMode={setHTMLLightMode}
+                  snippets={snippets}
                 />
               }
             />
             <Route
-              path={"/EditProfilePasswordConfirm"}
+              path={"/EditUserProfile"}
               element={
-                <EditProfilePasswordConfirm lightMode={lightMode} user={user} />
+                <EditUserProfile
+                  lightMode={lightMode}
+                  user={user}
+                  getClassNameSuffix={getClassNameSuffix}
+                />
               }
             />
           </Routes>

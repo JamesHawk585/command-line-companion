@@ -5,21 +5,20 @@ import MugShot from "../../images/mugshot.png";
 import EditUserProfile from '../EditUserProfile/EditUserProfile';
 import Form from 'react-bootstrap/Form';
 import React, { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-function BootstrapUserProfile({ user, lightMode, getClassNameSuffix }) {
+function BootstrapUserProfile({ user, lightMode, getClassNameSuffix, snippets }) {
   const [editProfile, setEditProfile] = useState(false)
+  const navigate = useNavigate()
 
 console.log(editProfile)
 
     const {username, first_name, last_name, email} = user
 
-    const toggleEditUserForm = () => {
-      editProfile ? setEditProfile(true) : setEditProfile(false)
-    }
+
 
     const editUserProfile = () => {
-      setEditProfile(true)
-      console.log("edit user profile details!")
+      navigate("/EditUserProfile")
     }
 
     const deleteUser = () => {
@@ -32,17 +31,6 @@ console.log(editProfile)
 
   return (
     <>
-    {editProfile ? (
-
-
-
-      // consider using client side routing here instead of a stateful boolean to toggle between components. 
-
-
-
-
-      <EditUserProfile lightMode={lightMode} getClassNameSuffix={getClassNameSuffix} editProfile={editProfile} setEditProfile={setEditProfile} toggleEditUserForm={toggleEditUserForm}/>
-    ) : (
     <Card className={`user-profile-card${getClassNameSuffix(lightMode)}`}>
       <Card.Img variant="top" src={MugShot} className='user-profile-picture'/>
       <Card.Body>
@@ -56,14 +44,13 @@ console.log(editProfile)
         <ListGroup.Item><h2>{first_name}</h2></ListGroup.Item>
         <ListGroup.Item><h2>{last_name}</h2></ListGroup.Item>
         <ListGroup.Item><h2>{email}</h2></ListGroup.Item>
-        <ListGroup.Item><h2><em>Snippet count goes here</em></h2></ListGroup.Item>
+        <ListGroup.Item><h2>Snippet Count: {snippets.length}</h2></ListGroup.Item>
       </ListGroup>
       <Card.Body>
         <button onClick={ () => editUserProfile()} className={`edit-profile-button${getClassNameSuffix(lightMode)}`}>Edit Profile</button>
         <button onClick={() => deleteUser()} className={`delete-account-button${getClassNameSuffix(lightMode)}`}>Delete Profile</button>
       </Card.Body>
     </Card>
-    )}
     </>
   );
 }

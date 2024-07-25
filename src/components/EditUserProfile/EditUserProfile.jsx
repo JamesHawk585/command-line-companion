@@ -1,57 +1,81 @@
-import React, {useState} from 'react'
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
-import './EditUserProfile.css'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Row from "react-bootstrap/Row";
+import "./EditUserProfile.css";
 
-const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getClassNameSuffix, lightMode}) => {
-    const [validated, setValidated] = useState(false);
-    const [confirmButtonClicked, setConfrimButtonClicked] = useState(false)
+const EditUserProfile = ({
+  editProfile,
+  setEditProfile,
+  toggleEditUserForm,
+  getClassNameSuffix,
+  lightMode,
+}) => {
+  const [validated, setValidated] = useState(false);
+  const [confirmButtonClicked, setConfrimButtonClicked] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+  };
 
 
-    const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        setValidated(true);
-      };
+  console.log("%cWe are using client side routing to navigate to the EditUSerProfile route when the user clicks 'Edit Profile'. EditUserProfile will be a parent component to three two modal components. Delete account button will remain on the UserProfile component.", "color: orange");
 
+  const navigateToEditProfilePasswordConfirm = () => {
+    navigate("/EditProfilePasswordConfirm");
+  };
 
-      function backToBootstrapUserProfile() {
-        setEditProfile(false)
-      } 
+  function backToBootstrapUserProfile() {
+    navigate("/UserProfile")
+  }
 
-      const getButtonVariantByLightMode = (lightMode) => lightMode ? "dark" : "light"
-      
-
+  const getButtonVariantByLightMode = (lightMode) =>
+    lightMode ? "dark" : "light";
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label><h2 className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}>First name</h2></Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="First name"
-          />
+          <Form.Label>
+            <h2
+              className={`edit-user-profile-form-h2-labels${getClassNameSuffix(
+                lightMode
+              )}`}
+            >
+              First name
+            </h2>
+          </Form.Label>
+          <Form.Control required type="text" placeholder="First name" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Last name</h2></Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Last name"
-          />
+          <Form.Label
+            className={`edit-user-profile-form-h2-labels${getClassNameSuffix(
+              lightMode
+            )}`}
+          >
+            <h2>Last name</h2>
+          </Form.Label>
+          <Form.Control required type="text" placeholder="Last name" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-          <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Username</h2></Form.Label>
+          <Form.Label
+            className={`edit-user-profile-form-h2-labels${getClassNameSuffix(
+              lightMode
+            )}`}
+          >
+            <h2>Username</h2>
+          </Form.Label>
           <InputGroup hasValidation>
             <Form.Control
               type="text"
@@ -67,21 +91,58 @@ const EditUserProfile = ({editProfile, setEditProfile, toggleEditUserForm, getCl
       </Row>
       <Row className="mb-3">
         <Form.Group as={Col} md="6" controlId="validationCustom03">
-          <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Email</h2></Form.Label>
+          <Form.Label
+            className={`edit-user-profile-form-h2-labels${getClassNameSuffix(
+              lightMode
+            )}`}
+          >
+            <h2>Email</h2>
+          </Form.Label>
           <Form.Control type="text" placeholder="email" required />
-          <Form.Control.Feedback type="invalid">
-          </Form.Control.Feedback> 
+          <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="6" controlId="formFile" className="mb-3" style={{width: '50%'}}>
-        <Form.Label className={`edit-user-profile-form-h2-labels${getClassNameSuffix(lightMode)}`}><h2>Profile Photo</h2></Form.Label>
-        <Form.Control type="file" />
+        <Form.Group
+          as={Col}
+          md="6"
+          controlId="formFile"
+          className="mb-3"
+          style={{ width: "50%" }}
+        >
+          <Form.Label
+            className={`edit-user-profile-form-h2-labels${getClassNameSuffix(
+              lightMode
+            )}`}
+          >
+            <h2>Profile Photo</h2>
+          </Form.Label>
+          <Form.Control type="file" />
         </Form.Group>
       </Row>
-      <Button variant={getButtonVariantByLightMode(lightMode)} size="lg" className='edit-user-profile-submit-button'>Submit</Button>
-      <Button variant={getButtonVariantByLightMode(lightMode)} size="lg" className='change-password-button'>Change Password</Button>
-      <Button variant={getButtonVariantByLightMode(lightMode)} size="lg" className='back-to-profile-button' onClick={() => backToBootstrapUserProfile()}>Back to Profile</Button>
+      <Button
+        variant={getButtonVariantByLightMode(lightMode)}
+        size="lg"
+        className="edit-user-profile-submit-button"
+        onClick={() => navigateToEditProfilePasswordConfirm()}
+      >
+        Submit
+      </Button>
+      <Button
+        variant={getButtonVariantByLightMode(lightMode)}
+        size="lg"
+        className="change-password-button"
+      >
+        Change Password
+      </Button>
+      <Button
+        variant={getButtonVariantByLightMode(lightMode)}
+        size="lg"
+        className="back-to-profile-button"
+        onClick={() => backToBootstrapUserProfile()}
+      >
+        Back to Profile
+      </Button>
     </Form>
-  )
-}
+  );
+};
 
-export default EditUserProfile
+export default EditUserProfile;
