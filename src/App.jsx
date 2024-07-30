@@ -1,7 +1,7 @@
 import "./";
 import Header from "./components/Header/Header.jsx";
 import SnippetList from "./components/SnippetList/SnippetList.jsx";
-import EditProfilePasswordConfirm from "./components/EditProfilePasswordConfirm/EditProfilePasswordConfirm.jsx";
+import EditProfilePasswordConfirm from "./components/ChangePassword/ChangePassword.jsx";
 import Authentication from "./components/Authentication/Authentication.jsx";
 import OffCanvasNavBar from "./components/OffCanvasNavBar/OffCanvasNavBar.jsx";
 import BootstrapUserProfile from "./components/UserProfile/BootstrapUserProfile.jsx";
@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EditUserProfile from "./components/EditUserProfile/EditUserProfile.jsx";
 import { GiKoala } from "react-icons/gi";
+import ChangePassword from "./components/ChangePassword/ChangePassword.jsx";
 
 function App() {
   const [snippets, setSnippets] = useState([]);
@@ -19,9 +20,9 @@ function App() {
   const [errors, setErrors] = useState(null);
   const [lightMode, setLightMode] = useState(true);
 
-  console.log(snippets)
+  console.log(snippets);
 
-  console.log("%cNavigate to UserProfile.jsx", "color: lightblue")
+  console.log("%cNavigate to UserProfile.jsx", "color: lightblue");
 
   const fetchUser = () => {
     fetch("/authorized").then(async (r) => {
@@ -210,6 +211,16 @@ function App() {
               path={"/EditUserProfile"}
               element={
                 <EditUserProfile
+                  lightMode={lightMode}
+                  user={user}
+                  getClassNameSuffix={getClassNameSuffix}
+                />
+              }
+            />
+            <Route
+              path={"/ChangePassword"}
+              element={
+                <ChangePassword
                   lightMode={lightMode}
                   user={user}
                   getClassNameSuffix={getClassNameSuffix}

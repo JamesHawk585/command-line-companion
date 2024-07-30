@@ -17,21 +17,28 @@ const EditUserProfile = ({
   const [validated, setValidated] = useState(false);
   const [confirmButtonClicked, setConfrimButtonClicked] = useState(false);
   const navigate = useNavigate();
+  const [editedUserProfileObject, setEditedUserProfileObject] = useState({
+    first_name: "",
+    last_name: "", 
+    username: "",
+    email: "",
+  })
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
+  console.log(editedUserProfileObject)
+
+  const handleChange = () => {
+    
+  }
+
+  const handleSubmit = () => {
+    console.log("Form submitted!")
   };
 
 
   console.log("%cWe are using client side routing to navigate to the EditUSerProfile route when the user clicks 'Edit Profile'. EditUserProfile will be a parent component to three two modal components. Delete account button will remain on the UserProfile component.", "color: orange");
 
-  const navigateToEditProfilePasswordConfirm = () => {
-    navigate("/EditProfilePasswordConfirm");
+  const navigateToChangePassword = () => {
+    navigate("/ChangePassword");
   };
 
   function backToBootstrapUserProfile() {
@@ -122,7 +129,7 @@ const EditUserProfile = ({
         variant={getButtonVariantByLightMode(lightMode)}
         size="lg"
         className="edit-user-profile-submit-button"
-        onClick={() => navigateToEditProfilePasswordConfirm()}
+        onClick={() => console.log("submit edit user form")}
       >
         Submit
       </Button>
@@ -130,6 +137,7 @@ const EditUserProfile = ({
         variant={getButtonVariantByLightMode(lightMode)}
         size="lg"
         className="change-password-button"
+        onClick={() => navigateToChangePassword()}
       >
         Change Password
       </Button>
