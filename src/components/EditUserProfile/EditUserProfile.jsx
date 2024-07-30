@@ -17,6 +17,7 @@ const EditUserProfile = ({
   const [validated, setValidated] = useState(false);
   const [confirmButtonClicked, setConfrimButtonClicked] = useState(false);
   const navigate = useNavigate();
+
   const [editedUserProfileObject, setEditedUserProfileObject] = useState({
     first_name: "",
     last_name: "", 
@@ -24,14 +25,22 @@ const EditUserProfile = ({
     email: "",
   })
 
-  console.log(editedUserProfileObject)
+  // console.table(editedUserProfileObject)
 
-  const handleChange = () => {
-    
-  }
 
-  const handleSubmit = () => {
-    console.log("Form submitted!")
+  const handleChange = (e) => {
+    const editedUserProfileObjectCopy = { ...editedUserProfileObject };
+    setEditedUserProfileObject({
+      ...editedUserProfileObjectCopy,
+      [e.target.name]: e.target.value,
+    });
+    console.log(editedUserProfileObject)
+  };
+
+  const handleEditedUserObjectSubmit = (e) => {
+    console.log("handleEditedUserObjectSubmit() hit!")
+    e.preventDefault();
+    navigate("/userProfile")
   };
 
 
@@ -49,7 +58,7 @@ const EditUserProfile = ({
     lightMode ? "dark" : "light";
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={(e) => handleEditedUserObjectSubmit(e)}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>
@@ -61,8 +70,7 @@ const EditUserProfile = ({
               First name
             </h2>
           </Form.Label>
-          <Form.Control required type="text" placeholder="First name" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control name="first_name" required type="text" placeholder="First name" value={editedUserProfileObject.first_name} onChange={(e) => handleChange(e)}/>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustom02">
           <Form.Label
@@ -72,8 +80,7 @@ const EditUserProfile = ({
           >
             <h2>Last name</h2>
           </Form.Label>
-          <Form.Control required type="text" placeholder="Last name" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control name="last_name" required type="text" placeholder="Last name" value={editedUserProfileObject.last_name} onChange={(e) => handleChange(e)}/>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustomUsername">
           <Form.Label
@@ -85,10 +92,13 @@ const EditUserProfile = ({
           </Form.Label>
           <InputGroup hasValidation>
             <Form.Control
+            name="username"
               type="text"
               placeholder="Username"
               aria-describedby="inputGroupPrepend"
               required
+              value={editedUserProfileObject.username}
+              onChange={(e) => handleChange(e)}
             />
             <Form.Control.Feedback type="invalid">
               Please choose a username.
@@ -105,7 +115,7 @@ const EditUserProfile = ({
           >
             <h2>Email</h2>
           </Form.Label>
-          <Form.Control type="text" placeholder="email" required />
+          <Form.Control name="email" type="text" placeholder="email" required value={editedUserProfileObject.email} onChange={(e) => handleChange(e)}/>
           <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
         <Form.Group
@@ -129,7 +139,7 @@ const EditUserProfile = ({
         variant={getButtonVariantByLightMode(lightMode)}
         size="lg"
         className="edit-user-profile-submit-button"
-        onClick={() => console.log("submit edit user form")}
+        type="submit"
       >
         Submit
       </Button>

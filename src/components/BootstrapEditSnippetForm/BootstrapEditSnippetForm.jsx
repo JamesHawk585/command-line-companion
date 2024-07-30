@@ -31,7 +31,6 @@ function BootstrapEditSnippetForm({
   const handleShow = () => setShow(true);
 
   const handleChange = (e, onSnippetFormEdited) => {
-    console.log(snippetId);
     const editedSnippetCopy = { ...editedSnippetObject };
     setEditedSnippetObject({
       ...editedSnippetCopy,
