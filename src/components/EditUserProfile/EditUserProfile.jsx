@@ -25,6 +25,7 @@ const EditUserProfile = ({
     email: "",
   })
 
+
   // console.table(editedUserProfileObject)
 
 
@@ -40,8 +41,22 @@ const EditUserProfile = ({
   const handleEditedUserObjectSubmit = (e) => {
     console.log("handleEditedUserObjectSubmit() hit!")
     e.preventDefault();
+    fetch(`/user/${userId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(editedUserProfileObject),
+    })
+    .then((r) => r.json())
+    .then((responseUserObject) => onUserEdited(responseUserObject, e));
+
     navigate("/userProfile")
   };
+
+  const onUserEdited = (responseUserObject, e) => {
+    console.log("responseUserObject", responseUserObject)
+  }
 
 
   console.log("%cWe are using client side routing to navigate to the EditUSerProfile route when the user clicks 'Edit Profile'. EditUserProfile will be a parent component to three two modal components. Delete account button will remain on the UserProfile component.", "color: orange");
