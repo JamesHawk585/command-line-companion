@@ -13,6 +13,7 @@ const EditUserProfile = ({
   toggleEditUserForm,
   getClassNameSuffix,
   lightMode,
+  user
 }) => {
   const [validated, setValidated] = useState(false);
   const [confirmButtonClicked, setConfrimButtonClicked] = useState(false);
@@ -41,7 +42,7 @@ const EditUserProfile = ({
   const handleEditedUserObjectSubmit = (e) => {
     console.log("handleEditedUserObjectSubmit() hit!")
     e.preventDefault();
-    fetch(`/user/${userId}`, {
+    fetch(`/users/${user.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
