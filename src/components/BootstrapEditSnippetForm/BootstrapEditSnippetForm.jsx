@@ -111,6 +111,7 @@ function BootstrapEditSnippetForm({
                   <option value="CSS">CSS</option>
                   <option value="HTML">HTML</option>
                   <option value="CLI">CLI</option>
+                  <option value="VS Code Extension">VS Code Extension</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group
